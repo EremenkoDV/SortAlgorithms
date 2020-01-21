@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace Algorithm
 {
-    public class AlgothmBase<T>
+    public class AlgorithmBase<T>
         where T : IComparable<T>
     {
 
         public List<T> Items { get; set; } = new List<T>();
+
+        public bool IsAscending { get; set; } = true;
 
         protected void Swap(int positionA, int positionB)
         {

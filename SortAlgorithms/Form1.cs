@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Algorithm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,31 @@ namespace SortAlgorithms
 {
     public partial class Form1 : Form
     {
+        AlgorithmBase<int> algorithm = new BubbleSort<int>();
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(textBox1.Text, out int value))
+            {
+                algorithm.Items.Add(value);
+                label1.Text += " " + value;
+                textBox1.Text = "";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            algorithm.Sort();
+
+            foreach (int value in algorithm.Items)
+            {
+                label2.Text += " " + value;
+            }
         }
     }
 }

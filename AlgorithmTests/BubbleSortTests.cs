@@ -14,15 +14,29 @@ namespace Algorithm.Tests
         [TestMethod()]
         public void SortTest()
         {
+            // arrange
             BubbleSort<int> bubble = new BubbleSort<int>();
 
             Random rnd = new Random();
-            for (int i = 0; i < 10; i++)
+            List<int> items = new List<int>();
+            for (int i = 0; i < 100; i++)
             {
-                bubble.Items.Add(rnd.Next(0, 100));
+                items.Add(rnd.Next(0, 100));
             }
+            bubble.Items.AddRange(items);
+            List<int> sorted = items.OrderBy(x => x).ToList();
 
+            //bubble.IsAscending = false;
+
+            // act
             bubble.Sort();
+
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], bubble.Items[i]);
+            }
 
         }
     }
