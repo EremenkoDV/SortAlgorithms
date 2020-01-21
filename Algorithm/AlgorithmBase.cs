@@ -21,15 +21,6 @@ namespace Algorithm
             }
         }
 
-        //public void FillRandom(int count)
-        //{
-        //    Random rnd = new Random();
-        //    for (int i = 0; i < count; i++)
-        //    {
-        //        Items.Add(rnd.Next(0, 100));
-        //    }
-        //}
-
         public virtual void Sort()
         {
             Items.Sort();
