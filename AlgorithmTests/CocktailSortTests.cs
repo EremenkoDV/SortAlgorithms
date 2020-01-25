@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace Algorithm.Tests
 {
     [TestClass()]
-    public class BubbleSortTests
+    public class CocktailSortTests
     {
         [TestMethod()]
         public void SortTest()
         {
             // arrange
-            BubbleSort<int> bubble = new BubbleSort<int>();
+            CocktailSort<int> cocktail = new CocktailSort<int>();
 
             Random rnd = new Random();
             List<int> items = new List<int>();
@@ -23,18 +23,18 @@ namespace Algorithm.Tests
             {
                 items.Add(rnd.Next(0, 100));
             }
-            bubble.Items.AddRange(items);
+            cocktail.Items.AddRange(items);
             List<int> sorted = items.OrderBy(x => x).ToList();
 
-            //bubble.IsAscending = false;
+            //cocktail.IsAscending = false;
 
             // act
-            bubble.Sort();
+            cocktail.Sort();
 
             // assert
             for (int i = 0; i < items.Count; i++)
             {
-                Assert.AreEqual(sorted[i], bubble.Items[i]);
+                Assert.AreEqual(sorted[i], cocktail.Items[i]);
             }
 
         }
