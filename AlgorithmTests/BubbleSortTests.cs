@@ -29,7 +29,7 @@ namespace Algorithm.Tests
             //bubble.IsAscending = false;
 
             // act
-            bubble.Sort();
+            bubble.SortAndGetSpan();
 
             // assert
             for (int i = 0; i < items.Count; i++)

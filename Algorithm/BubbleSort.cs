@@ -10,7 +10,7 @@ namespace Algorithm
         where T : IComparable<T>
     {
 
-        public override void Sort()
+        protected override void Sort()
         {
             for (int i = 0; i < Items.Count; i++)
             {
@@ -19,6 +19,7 @@ namespace Algorithm
                     if (Items[i].CompareTo(Items[j]) == (IsAscending ? 1 : -1))
                     {
                         Swap(i, j);
+                        ComparisonCount++;
                     }
                 }
             }

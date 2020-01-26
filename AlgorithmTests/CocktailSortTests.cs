@@ -29,7 +29,7 @@ namespace Algorithm.Tests
             //cocktail.IsAscending = false;
 
             // act
-            cocktail.Sort();
+            cocktail.SortAndGetSpan();
 
             // assert
             for (int i = 0; i < items.Count; i++)
