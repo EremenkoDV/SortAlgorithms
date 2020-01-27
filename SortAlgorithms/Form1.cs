@@ -30,15 +30,38 @@ namespace SortAlgorithms
         {
             if (sortedItemsCount > 0)
             {
-                //AlgorithmBase<int> algorithm = new BubbleSort<int>();
-                //AlgorithmBase<int> algorithm = new BubbleSort<int>();
-                AlgorithmBase<int> algorithm = new InsertionSort<int>();
+                AlgorithmBase<int> algorithm = new BubbleSort<int>();
+                foreach (RadioButton radioButton in panel3.Controls.OfType<RadioButton>())
+                {
+                    if (radioButton.Checked)
+                    {
+                        switch (radioButton.Name)
+                        {
+                            case "radioButton1":
+                                algorithm = new BubbleSort<int>();
+                                break;
+                            case "radioButton2":
+                                algorithm = new CocktailSort<int>();
+                                break;
+                            case "radioButton3":
+                                algorithm = new InsertionSort<int>();
+                                break;
+                            case "radioButton4":
+                                algorithm = new BubbleSort<int>();
+                                break;
+                        }
+                        MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
+                        break;
+                    }
+                }
 
                 for (int i = 0; i < items.Count; i++)
                 {
-                    algorithm.Items.Add(items[i].VerticalProgressBar.Value);
+                    algorithm.Items.Add(items[i].Value);
                 }
 
+                algorithm.CompareEvent += Algorithm_CompareEvent;
+                algorithm.SwapEvent += Algorithm_SwapEvent;
                 algorithm.SortAndGetSpan();
 
                 VisualPanel.Controls.Clear();
@@ -52,6 +75,29 @@ namespace SortAlgorithms
                 }
             }
         }
+
+        private void Algorithm_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
+        {
+            int aux = e.Item1.Value;
+            e.Item1.SetValue(e.Item2.Value);
+            e.Item2.SetValue(aux);
+
+            VisualPanel.Refresh();
+        }
+
+        private void Algorithm_CompareEvent(object sender, Tuple<SortedItem, SortedItem> e)
+        {
+            e.Item1.SetColor(Color.Red);
+            e.Item2.SetColor(Color.Green);
+
+            VisualPanel.Refresh();
+        }
+
+        //private void Swap(SortedItem first, SortedItem second)
+        //{
+        //    first.SetColor(Color.Red);
+        //    second.SetColor(Color.Green);
+        //}
 
         private void AddNumberButton_Click(object sender, EventArgs e)
         {

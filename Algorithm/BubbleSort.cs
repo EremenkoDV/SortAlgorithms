@@ -10,16 +10,20 @@ namespace Algorithm
         where T : IComparable<T>
     {
 
+        public BubbleSort(IEnumerable<T> items) : base(items) { }
+
+        public BubbleSort() { }
+
         protected override void Sort()
         {
             for (int i = 0; i < Items.Count; i++)
             {
                 for (int j = i + 1; j < Items.Count; j++)
                 {
-                    if (Items[i].CompareTo(Items[j]) == (IsAscending ? 1 : -1))
+                    if (Compare(Items[i], Items[j]) == (IsAscending ? 1 : -1))
                     {
                         Swap(i, j);
-                        ComparisonCount++;
+                        //ComparisonCount++;
                     }
                 }
             }

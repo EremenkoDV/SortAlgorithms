@@ -16,6 +16,17 @@ namespace Algorithm
 
         public bool IsAscending { get; set; } = true;
 
+        public AlgorithmBase() { }
+
+        public AlgorithmBase(IEnumerable<T> items)
+        {
+            Items.AddRange(items);
+        }
+
+        public event EventHandler<Tuple<T, T>> CompareEvent;
+
+        public event EventHandler<Tuple<T, T>> SwapEvent;
+
         protected void Swap(int positionA, int positionB)
         {
             if (positionA < Items.Count && positionB < Items.Count)
@@ -24,8 +35,17 @@ namespace Algorithm
                 Items[positionA] = Items[positionB];
                 Items[positionB] = temp;
 
+                SwapEvent?.Invoke(this, new Tuple<T, T>(Items[positionA], Items[positionB]));
+
                 SwapCount++;
             }
+        }
+
+        protected int Compare(T first, T second)
+        {
+            CompareEvent?.Invoke(this, new Tuple<T, T>(first, second));
+            ComparisonCount++;
+            return first.CompareTo(second);
         }
 
         public TimeSpan SortAndGetSpan()

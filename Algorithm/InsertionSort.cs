@@ -10,6 +10,10 @@ namespace Algorithm
         where T : IComparable<T>
     {
 
+        public InsertionSort(IEnumerable<T> items) : base(items) { }
+
+        public InsertionSort() { }
+
         protected override void Sort()
         {
             int sortedCount = 0;
@@ -20,13 +24,13 @@ namespace Algorithm
                 T aux = Items[sortedCount + 1];
                 for (int i = sortedCount; i >= 0; i--)
                 {
-                    if (Items[i].CompareTo(aux) == (IsAscending ? 1 : -1))
+                    if (Compare(Items[i], aux) == (IsAscending ? 1 : -1))
                     {
                         //Swap(i, i + 1);
                         indexReleased = i;
                         Items[i + 1] = Items[i];
                         SwapCount++;
-                        ComparisonCount++;
+                        //ComparisonCount++;
                     }
                     else
                     {
