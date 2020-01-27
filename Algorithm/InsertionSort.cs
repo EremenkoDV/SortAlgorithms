@@ -13,14 +13,18 @@ namespace Algorithm
         protected override void Sort()
         {
             int sortedCount = 0;
-
+            int indexReleased;
             while (sortedCount < Items.Count - 1)
             {
+                indexReleased = -1;
+                T aux = Items[sortedCount + 1];
                 for (int i = sortedCount; i >= 0; i--)
                 {
-                    if (Items[i].CompareTo(Items[i + 1]) == 1)
+                    if (Items[i].CompareTo(aux) == (IsAscending ? 1 : -1))
                     {
-                        Swap(i, i + 1);
+                        //Swap(i, i + 1);
+                        indexReleased = i;
+                        Items[i + 1] = Items[i];
                         SwapCount++;
                         ComparisonCount++;
                     }
@@ -28,6 +32,10 @@ namespace Algorithm
                     {
                         break;
                     }
+                }
+                if (indexReleased > -1)
+                {
+                    Items[indexReleased] = aux;
                 }
                 sortedCount++;
             }

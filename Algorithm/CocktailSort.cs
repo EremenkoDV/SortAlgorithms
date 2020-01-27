@@ -21,7 +21,7 @@ namespace Algorithm
 
                 for (int i = left; i < right; i++)
                 {
-                    if (Items[i].CompareTo(Items[i + 1]) == 1)
+                    if (Items[i].CompareTo(Items[i + 1]) == (IsAscending ? 1 : -1))
                     {
                         Swap(i, i + 1);
                         ComparisonCount++;
@@ -36,7 +36,7 @@ namespace Algorithm
 
                 for (int i = right; i > left; i--)
                 {
-                    if (Items[i].CompareTo(Items[i - 1]) == -1)
+                    if (Items[i].CompareTo(Items[i - 1]) == (IsAscending ? -1 : 1))
                     {
                         Swap(i, i - 1);
                         ComparisonCount++;

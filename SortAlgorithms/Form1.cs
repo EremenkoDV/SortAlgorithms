@@ -30,7 +30,9 @@ namespace SortAlgorithms
         {
             if (sortedItemsCount > 0)
             {
-                AlgorithmBase<int> algorithm = new BubbleSort<int>();
+                //AlgorithmBase<int> algorithm = new BubbleSort<int>();
+                //AlgorithmBase<int> algorithm = new BubbleSort<int>();
+                AlgorithmBase<int> algorithm = new InsertionSort<int>();
 
                 for (int i = 0; i < items.Count; i++)
                 {
