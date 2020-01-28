@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace SortAlgorithms
 
         public int Value { get; private set; }
 
-        public SortedItem(Control control, int instance, int value)
+        public SortedItem(Control control, int instance, int value, Color color = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF) )
         {
             int indent = 4;
             int border = 15;
@@ -48,6 +49,7 @@ namespace SortAlgorithms
             VerticalProgressBar.Style = ProgressBarStyle.Blocks;
             VerticalProgressBar.Step = 1;
             VerticalProgressBar.TabIndex = instance;
+            VerticalProgressBar.ForeColor = color;
             //VerticalProgressBar.Value = value;
             control.Controls.Add(VerticalProgressBar);
 
@@ -69,7 +71,7 @@ namespace SortAlgorithms
             Label.Text = value.ToString();
         }
 
-        public void SetColor(System.Drawing.Color color)
+        public void SetColor(Color color)
         {
             VerticalProgressBar.ForeColor = color;
         }

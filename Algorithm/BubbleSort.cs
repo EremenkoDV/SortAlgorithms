@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algorithm
 {
     public class BubbleSort<T> : AlgorithmBase<T>
-        where T : IComparable<T>
+        where T : IComparable
     {
 
         public BubbleSort(IEnumerable<T> items) : base(items) { }
@@ -23,8 +23,8 @@ namespace Algorithm
                     if (Compare(Items[i], Items[j]) == (IsAscending ? 1 : -1))
                     {
                         Swap(i, j);
-                        //ComparisonCount++;
                     }
+                    //System.Threading.Thread.Sleep(500);
                 }
             }
         }

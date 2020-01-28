@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace Algorithm
 {
     public class AlgorithmBase<T>
-        where T : IComparable<T>
+        where T : IComparable
     {
 
         public int SwapCount { get; protected set; } = 0;

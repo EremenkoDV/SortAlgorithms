@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algorithm
 {
     public class CocktailSort<T> : AlgorithmBase<T>
-        where T : IComparable<T>
+        where T : IComparable
     {
 
         public CocktailSort(IEnumerable<T> items) : base(items) { }

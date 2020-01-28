@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algorithm
 {
     public class InsertionSort<T> : AlgorithmBase<T>
-        where T : IComparable<T>
+        where T : IComparable
     {
 
         public InsertionSort(IEnumerable<T> items) : base(items) { }

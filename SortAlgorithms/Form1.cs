@@ -30,7 +30,7 @@ namespace SortAlgorithms
         {
             if (sortedItemsCount > 0)
             {
-                AlgorithmBase<int> algorithm = new BubbleSort<int>();
+                AlgorithmBase<SortedItem> algorithm = new BubbleSort<SortedItem>();
                 foreach (RadioButton radioButton in panel3.Controls.OfType<RadioButton>())
                 {
                     if (radioButton.Checked)
@@ -38,16 +38,16 @@ namespace SortAlgorithms
                         switch (radioButton.Name)
                         {
                             case "radioButton1":
-                                algorithm = new BubbleSort<int>();
+                                algorithm = new BubbleSort<SortedItem>();
                                 break;
                             case "radioButton2":
-                                algorithm = new CocktailSort<int>();
+                                algorithm = new CocktailSort<SortedItem>();
                                 break;
                             case "radioButton3":
-                                algorithm = new InsertionSort<int>();
+                                algorithm = new InsertionSort<SortedItem>();
                                 break;
                             case "radioButton4":
-                                algorithm = new BubbleSort<int>();
+                                algorithm = new BubbleSort<SortedItem>();
                                 break;
                         }
                         MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
@@ -55,40 +55,53 @@ namespace SortAlgorithms
                     }
                 }
 
-                for (int i = 0; i < items.Count; i++)
-                {
-                    algorithm.Items.Add(items[i].Value);
-                }
+                //for (int i = 0; i < items.Count; i++)
+                //{
+                //    algorithm.Items.Add(new SortedItem(VisualPanel, i + 1, items[i].Value));
+                //}
+MessageBox.Show("Заполнение items #1");
+                algorithm.Items.AddRange(items);
 
-                algorithm.CompareEvent += Algorithm_CompareEvent;
-                algorithm.SwapEvent += Algorithm_SwapEvent;
+                algorithm.CompareEvent += AlgorithmCompareEvent;
+                algorithm.SwapEvent += AlgorithmSwapEvent;
                 algorithm.SortAndGetSpan();
 
                 VisualPanel.Controls.Clear();
-                sortedItemsCount = 0;
+                //sortedItemsCount = 0;
                 items.Clear();
+MessageBox.Show("Очистка items");
 
                 for (int i = 0; i < algorithm.Items.Count; i++)
                 {
-                    SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, algorithm.Items[i]);
+                    SortedItem item = new SortedItem(VisualPanel, i + 1, algorithm.Items[i].Value);
                     items.Add(item);
+                    MessageBox.Show("Заполнение items #2");
                 }
+                //items.AddRange(algorithm.Items);
+                MessageBox.Show("Заполнение items #2");
             }
         }
 
-        private void Algorithm_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
+        private void AlgorithmCompareEvent(object sender, Tuple<SortedItem, SortedItem> e)
+        {
+            e.Item1.SetColor(Color.Red);
+            e.Item2.SetColor(Color.Green);
+
+            VisualPanel.Refresh();
+//            System.Threading.Thread.Sleep(500);
+
+//            e.Item1.SetColor(Color.Blue);
+//            e.Item2.SetColor(Color.Blue);
+//            VisualPanel.Refresh();
+        }
+
+        private void AlgorithmSwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
             int aux = e.Item1.Value;
             e.Item1.SetValue(e.Item2.Value);
             e.Item2.SetValue(aux);
-
-            VisualPanel.Refresh();
-        }
-
-        private void Algorithm_CompareEvent(object sender, Tuple<SortedItem, SortedItem> e)
-        {
-            e.Item1.SetColor(Color.Red);
-            e.Item2.SetColor(Color.Green);
+            e.Item1.SetColor(Color.Green);
+            e.Item2.SetColor(Color.Red);
 
             VisualPanel.Refresh();
         }
