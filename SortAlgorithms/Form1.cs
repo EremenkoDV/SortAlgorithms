@@ -75,7 +75,7 @@ MessageBox.Show("Очистка items");
                 {
                     SortedItem item = new SortedItem(VisualPanel, i + 1, algorithm.Items[i].Value);
                     items.Add(item);
-                    MessageBox.Show("Заполнение items #2");
+                    MessageBox.Show($"Заполнение items[{i}]={algorithm.Items[i].Value}");
                 }
                 //items.AddRange(algorithm.Items);
                 MessageBox.Show("Заполнение items #2");
@@ -88,7 +88,7 @@ MessageBox.Show("Очистка items");
             e.Item2.SetColor(Color.Green);
 
             VisualPanel.Refresh();
-//            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(500);
 
 //            e.Item1.SetColor(Color.Blue);
 //            e.Item2.SetColor(Color.Blue);
@@ -104,6 +104,7 @@ MessageBox.Show("Очистка items");
             e.Item2.SetColor(Color.Red);
 
             VisualPanel.Refresh();
+            System.Threading.Thread.Sleep(500);
         }
 
         //private void Swap(SortedItem first, SortedItem second)

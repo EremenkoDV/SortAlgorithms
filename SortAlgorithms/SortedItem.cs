@@ -17,7 +17,7 @@ namespace SortAlgorithms
 
         public int Value { get; private set; }
 
-        public SortedItem(Control control, int instance, int value, Color color = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF) )
+        public SortedItem(Control control, int instance, int value, int color = 0x0000FF)
         {
             int indent = 4;
             int border = 15;
@@ -31,32 +31,32 @@ namespace SortAlgorithms
                 if (control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).Any())
                 {
                     Control subControl = control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).First();
-                    subControl.Location = new System.Drawing.Point(border + (size + indent) * i, 25);
-                    subControl.Size = new System.Drawing.Size(size, 86);
+                    subControl.Location = new Point(border + (size + indent) * i, 25);
+                    subControl.Size = new Size(size, 86);
                 }
                 if (control.Controls.Find("label" + (i + 1).ToString(), false).Any())
                 {
                     Control subControl = control.Controls.Find("label" + (i + 1).ToString(), false).First();
-                    subControl.Location = new System.Drawing.Point(border + (size + indent) * i, 114);
-                    subControl.Size = new System.Drawing.Size(size, 13);
+                    subControl.Location = new Point(border + (size + indent) * i, 114);
+                    subControl.Size = new Size(size, 13);
                 }
             }
 
-            VerticalProgressBar.BackColor = System.Drawing.SystemColors.Control;
-            VerticalProgressBar.Location = new System.Drawing.Point(border + (size + indent) * (instance - 1), 25);
+            VerticalProgressBar.BackColor = SystemColors.Control;
+            VerticalProgressBar.Location = new Point(border + (size + indent) * (instance - 1), 25);
             VerticalProgressBar.Name = "verticalProgressBar" + instance.ToString();
-            VerticalProgressBar.Size = new System.Drawing.Size(size, 86);
+            VerticalProgressBar.Size = new Size(size, 86);
             VerticalProgressBar.Style = ProgressBarStyle.Blocks;
             VerticalProgressBar.Step = 1;
             VerticalProgressBar.TabIndex = instance;
-            VerticalProgressBar.ForeColor = color;
+            VerticalProgressBar.ForeColor = Color.FromArgb(color);
             //VerticalProgressBar.Value = value;
             control.Controls.Add(VerticalProgressBar);
 
             Label.AutoSize = true;
-            Label.Location = new System.Drawing.Point(border + (size + indent) * (instance - 1), 114);
+            Label.Location = new Point(border + (size + indent) * (instance - 1), 114);
             Label.Name = "label" + instance.ToString();
-            Label.Size = new System.Drawing.Size(size, 13);
+            Label.Size = new Size(size, 13);
             Label.TabIndex = instance;
             //Label.Text = value.ToString();
             control.Controls.Add(Label);
