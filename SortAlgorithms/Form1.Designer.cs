@@ -273,6 +273,12 @@
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar
     {
+
+        public VerticalProgressBar()
+        {
+            this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
+        }
+
         protected override System.Windows.Forms.CreateParams CreateParams
         {
             get
@@ -281,6 +287,17 @@
                 cp.Style |= 0x04;
                 return cp;
             }
+        }
+
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+        {
+            System.Drawing.Rectangle rec = e.ClipRectangle;
+
+            rec.Height = (int)(rec.Height * ((double)Value / Maximum)) - 4;
+            if (System.Windows.Forms.ProgressBarRenderer.IsSupported)
+                System.Windows.Forms.ProgressBarRenderer.DrawHorizontalBar(e.Graphics, e.ClipRectangle);
+            rec.Width = rec.Width - 4;
+            e.Graphics.FillRectangle(System.Drawing.Brushes.Red, 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height -21);
         }
     }
 

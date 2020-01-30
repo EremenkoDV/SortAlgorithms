@@ -46,7 +46,7 @@ namespace SortAlgorithms
             VerticalProgressBar.Location = new Point(border + (size + indent) * (instance - 1), 25);
             VerticalProgressBar.Name = "verticalProgressBar" + instance.ToString();
             VerticalProgressBar.Size = new Size(size, 86);
-            VerticalProgressBar.Style = ProgressBarStyle.Blocks;
+            VerticalProgressBar.Style = ProgressBarStyle.Continuous;
             VerticalProgressBar.Step = 1;
             VerticalProgressBar.TabIndex = instance;
             VerticalProgressBar.ForeColor = Color.FromArgb(color);
@@ -84,6 +84,8 @@ namespace SortAlgorithms
         public void SetColor(Color color)
         {
             VerticalProgressBar.ForeColor = color;
+            MessageBox.Show(VerticalProgressBar.ForeColor.ToString());
+            MessageBox.Show(VerticalProgressBar.Style.ToString());
         }
 
         public int CompareTo(object obj)
