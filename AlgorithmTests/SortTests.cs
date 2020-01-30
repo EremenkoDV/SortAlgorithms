@@ -22,7 +22,7 @@ namespace Algorithm.Tests
             items.Clear();
             for (int i = 0; i < 10000; i++)
             {
-                items.Add(rnd.Next(0, 100));
+                items.Add(rnd.Next(0, 1000));
             }
 
             sorted.Clear();
@@ -30,12 +30,27 @@ namespace Algorithm.Tests
         }
 
         [TestMethod()]
+        public void BaseSortTest()
+        {
+            // arrange
+            AlgorithmBase<int> _base = new AlgorithmBase<int>();
+            _base.Items.AddRange(items);
+
+            // act
+            _base.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], _base.Items[i]);
+            }
+        }
+
+        [TestMethod()]
         public void BubbleSortTest()
         {
             // arrange
-            BubbleSort<int> bubble = new BubbleSort<int>();
-
-            //cocktail.IsAscending = false;
+            AlgorithmBase<int> bubble = new BubbleSort<int>();
             bubble.Items.AddRange(items);
 
             // act
@@ -52,9 +67,7 @@ namespace Algorithm.Tests
         public void CocktailSortTest()
         {
             // arrange
-            CocktailSort<int> cocktail = new CocktailSort<int>();
-
-            //cocktail.IsAscending = false;
+            AlgorithmBase<int> cocktail = new CocktailSort<int>();
             cocktail.Items.AddRange(items);
 
             // act
@@ -71,9 +84,7 @@ namespace Algorithm.Tests
         public void InsertionSortTest()
         {
             // arrange
-            InsertionSort<int> insertion = new InsertionSort<int>();
-
-            //cocktail.IsAscending = false;
+            AlgorithmBase<int> insertion = new InsertionSort<int>();
             insertion.Items.AddRange(items);
 
             // act
@@ -83,6 +94,23 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], insertion.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void ShellSortTest()
+        {
+            // arrange
+            AlgorithmBase<int> shell = new ShellSort<int>();
+            shell.Items.AddRange(items);
+
+            // act
+            shell.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], shell.Items[i]);
             }
         }
     }

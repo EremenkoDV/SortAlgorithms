@@ -24,7 +24,6 @@ namespace Algorithm
                     {
                         Swap(i, j);
                     }
-                    //System.Threading.Thread.Sleep(500);
                 }
             }
         }

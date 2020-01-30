@@ -43,6 +43,9 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.RuntimeLabel = new System.Windows.Forms.Label();
+            this.ComparationLabel = new System.Windows.Forms.Label();
+            this.SwapLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -157,9 +160,9 @@
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(19, 73);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(88, 17);
+            this.radioButton4.Size = new System.Drawing.Size(67, 17);
             this.radioButton4.TabIndex = 2;
-            this.radioButton4.Text = "OtherSort???";
+            this.radioButton4.Text = "ShellSort";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton3
@@ -194,11 +197,41 @@
             this.radioButton1.Text = "BubbleSort";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // RuntimeLabel
+            // 
+            this.RuntimeLabel.AutoSize = true;
+            this.RuntimeLabel.Location = new System.Drawing.Point(397, 171);
+            this.RuntimeLabel.Name = "RuntimeLabel";
+            this.RuntimeLabel.Size = new System.Drawing.Size(106, 13);
+            this.RuntimeLabel.TabIndex = 3;
+            this.RuntimeLabel.Text = "Время выполнения:";
+            // 
+            // ComparationLabel
+            // 
+            this.ComparationLabel.AutoSize = true;
+            this.ComparationLabel.Location = new System.Drawing.Point(397, 198);
+            this.ComparationLabel.Name = "ComparationLabel";
+            this.ComparationLabel.Size = new System.Drawing.Size(127, 13);
+            this.ComparationLabel.TabIndex = 3;
+            this.ComparationLabel.Text = "Количество сравнений:";
+            // 
+            // SwapLabel
+            // 
+            this.SwapLabel.AutoSize = true;
+            this.SwapLabel.Location = new System.Drawing.Point(397, 225);
+            this.SwapLabel.Name = "SwapLabel";
+            this.SwapLabel.Size = new System.Drawing.Size(116, 13);
+            this.SwapLabel.TabIndex = 3;
+            this.SwapLabel.Text = "Количество обменов:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SwapLabel);
+            this.Controls.Add(this.ComparationLabel);
+            this.Controls.Add(this.RuntimeLabel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.VisualPanel);
             this.Controls.Add(this.panel2);
@@ -212,6 +245,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -232,6 +266,9 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label RuntimeLabel;
+        private System.Windows.Forms.Label ComparationLabel;
+        private System.Windows.Forms.Label SwapLabel;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar

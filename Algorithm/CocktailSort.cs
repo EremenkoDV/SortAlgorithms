@@ -28,7 +28,6 @@ namespace Algorithm
                     if (Compare(Items[i], Items[i + 1]) == (IsAscending ? 1 : -1))
                     {
                         Swap(i, i + 1);
-                        //ComparisonCount++;
                     }
                 }
                 right--;
@@ -43,7 +42,6 @@ namespace Algorithm
                     if (Compare(Items[i], Items[i - 1]) == (IsAscending ? -1 : 1))
                     {
                         Swap(i, i - 1);
-                        //ComparisonCount++;
                     }
                 }
                 left++;

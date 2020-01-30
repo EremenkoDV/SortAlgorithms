@@ -61,14 +61,24 @@ namespace SortAlgorithms
             //Label.Text = value.ToString();
             control.Controls.Add(Label);
 
-            SetValue(value);
-        }
-
-        public void SetValue(int value)
-        {
+            // Set value
             Value = value;
             VerticalProgressBar.Value = value;
             Label.Text = value.ToString();
+
+        }
+
+        public static void SwapPosition(SortedItem first, SortedItem second)
+        {
+            if (first.VerticalProgressBar != null && second.VerticalProgressBar != null)
+            {
+                Point locationFirst = first.VerticalProgressBar.Location;
+                first.VerticalProgressBar.Location = second.VerticalProgressBar.Location;
+                second.VerticalProgressBar.Location = locationFirst;
+                locationFirst = first.Label.Location;
+                first.Label.Location = second.Label.Location;
+                second.Label.Location = locationFirst;
+            }
         }
 
         public void SetColor(Color color)
@@ -86,6 +96,11 @@ namespace SortAlgorithms
             {
                 throw new ArgumentException($"obj is not {nameof(SortedItem)}", nameof(item));
             }
+        }
+
+        public override string ToString()
+        {
+            return Value.ToString();
         }
     }
 }

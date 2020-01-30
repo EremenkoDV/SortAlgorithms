@@ -15,32 +15,42 @@ namespace Algorithm
 
         protected override void Sort()
         {
-            int sorted;
+            int sortedIndex;
+            //int releasedIndex;                              // вариант со смещением и особождением позиции
             int step = Items.Count / 2;
 
             while (step > 0)
             {
                 for (int offset = 0; offset < step; offset++)
                 {
-                    sorted = offset;
-                    if (offset + step < Items.Count)
+                    sortedIndex = offset;
+                    while (sortedIndex + step < Items.Count)
                     {
-                        T aux = Items[offset + step];
-                        for (int i = 0; i < Items.Count; i += step)
+                        //releasedIndex = -1;                 // вариант со смещением и особождением позиции
+                        T aux = Items[sortedIndex + step];
+                        for (int i = sortedIndex; i >= 0; i -= step)
                         {
-                            for (int j = sorted; j >= 0; j--)
+                            if (Compare(Items[i], aux) == (IsAscending ? 1 : -1))
                             {
-                                if (Compare(Items[i + offset], aux) == (IsAscending ? 1 : -1))
-                                {
-                                    indexReleased = i;
-                                    Items[i + 1] = Items[i];
-                                    SwapCount++;
-                                 }
+                                //releasedIndex = i;          // вариант со смещением и особождением позиции
+                                ////Items[i + step] = Items[i]; // вариант со смещением и особождением позиции
+                                ////SwapCount++;                // вариант со смещением и особождением позиции
+                                //Swap(i, i + step, true);    // вариант со смещением и особождением позиции
+                                Swap(i, i + step); // вариант с перестановкой Swap() в тестах выполняется дольше на 5-8мс (числа <1000 размер 10000)
+                            }
+                            else
+                            {
+                                break;
                             }
                         }
+                        //if (releasedIndex > -1)             // вариант со смещением и особождением позиции
+                        //{                                   // вариант со смещением и особождением позиции
+                        //    Items[releasedIndex] = aux;     // вариант со смещением и особождением позиции
+                        //}                                   // вариант со смещением и особождением позиции
+                        sortedIndex += step;
                     }
                 }
-                step = step / 2;
+                step /= 2;
             }
 
 

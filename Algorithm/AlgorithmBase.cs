@@ -27,17 +27,23 @@ namespace Algorithm
 
         public event EventHandler<Tuple<T, T>> SwapEvent;
 
-        protected void Swap(int positionA, int positionB)
+        protected void Swap(int positionA, int positionB, bool isOffset = false)
         {
             if (positionA < Items.Count && positionB < Items.Count)
             {
-                T temp = Items[positionA];
-                Items[positionA] = Items[positionB];
-                Items[positionB] = temp;
-
                 SwapEvent?.Invoke(this, new Tuple<T, T>(Items[positionA], Items[positionB]));
 
                 SwapCount++;
+                if (isOffset)
+                {
+                    Items[positionB] = Items[positionA];
+                }
+                else
+                {
+                    T temp = Items[positionA];
+                    Items[positionA] = Items[positionB];
+                    Items[positionB] = temp;
+                }
             }
         }
 

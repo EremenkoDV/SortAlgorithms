@@ -24,6 +24,10 @@ namespace SortAlgorithms
         public Form1()
         {
             InitializeComponent();
+
+            RuntimeLabel.Text = "";
+            ComparationLabel.Text = "";
+            SwapLabel.Text = "";
         }
 
         private void SortButton_Click(object sender, EventArgs e)
@@ -47,10 +51,10 @@ namespace SortAlgorithms
                                 algorithm = new InsertionSort<SortedItem>();
                                 break;
                             case "radioButton4":
-                                algorithm = new BubbleSort<SortedItem>();
+                                algorithm = new ShellSort<SortedItem>();
                                 break;
                         }
-                        MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
+                        //MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
                         break;
                     }
                 }
@@ -59,26 +63,31 @@ namespace SortAlgorithms
                 //{
                 //    algorithm.Items.Add(new SortedItem(VisualPanel, i + 1, items[i].Value));
                 //}
-MessageBox.Show("Заполнение items #1");
+//MessageBox.Show("Заполнение items #1");
                 algorithm.Items.AddRange(items);
 
                 algorithm.CompareEvent += AlgorithmCompareEvent;
                 algorithm.SwapEvent += AlgorithmSwapEvent;
-                algorithm.SortAndGetSpan();
+                TimeSpan runTime = algorithm.SortAndGetSpan();
 
-                VisualPanel.Controls.Clear();
                 //sortedItemsCount = 0;
                 items.Clear();
-MessageBox.Show("Очистка items");
+//MessageBox.Show("Очистка items");
 
-                for (int i = 0; i < algorithm.Items.Count; i++)
+                items.AddRange(algorithm.Items);
+                VisualPanel.Controls.Clear();
+                for (int i = 0; i < items.Count; i++)
                 {
-                    SortedItem item = new SortedItem(VisualPanel, i + 1, algorithm.Items[i].Value);
-                    items.Add(item);
-                    MessageBox.Show($"Заполнение items[{i}]={algorithm.Items[i].Value}");
+                    SortedItem item = new SortedItem(VisualPanel, i + 1, items[i].Value);
+                    //items.Add(item);
+MessageBox.Show($"Заполнение items[{i}]={items[i].Value}");
                 }
-                //items.AddRange(algorithm.Items);
-                MessageBox.Show("Заполнение items #2");
+                //MessageBox.Show($"Заполнение items #2 {items.Count}");
+                VisualPanel.Refresh();
+
+                RuntimeLabel.Text = "Время выполнения: " + runTime.Seconds.ToString() + "." + runTime.Milliseconds.ToString() + " с.";
+                ComparationLabel.Text = "Количество сравнений: " + algorithm.ComparisonCount.ToString();
+                SwapLabel.Text = "Количество обменов: " + algorithm.SwapCount.ToString();
             }
         }
 
@@ -88,30 +97,33 @@ MessageBox.Show("Очистка items");
             e.Item2.SetColor(Color.Green);
 
             VisualPanel.Refresh();
-            System.Threading.Thread.Sleep(500);
 
-//            e.Item1.SetColor(Color.Blue);
-//            e.Item2.SetColor(Color.Blue);
-//            VisualPanel.Refresh();
+            //System.Threading.Thread.Sleep(500);
+
+            e.Item1.SetColor(Color.Blue);
+            e.Item2.SetColor(Color.Blue);
+
+            VisualPanel.Refresh();
         }
 
         private void AlgorithmSwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
-            int aux = e.Item1.Value;
-            e.Item1.SetValue(e.Item2.Value);
-            e.Item2.SetValue(aux);
+            //int aux = e.Item1.Value;
+            //e.Item1.SetValue(e.Item2.Value);
+            //e.Item2.SetValue(aux);
+            SortedItem.SwapPosition(e.Item1, e.Item2);
             e.Item1.SetColor(Color.Green);
             e.Item2.SetColor(Color.Red);
 
             VisualPanel.Refresh();
-            System.Threading.Thread.Sleep(500);
-        }
 
-        //private void Swap(SortedItem first, SortedItem second)
-        //{
-        //    first.SetColor(Color.Red);
-        //    second.SetColor(Color.Green);
-        //}
+            //System.Threading.Thread.Sleep(500);
+
+            e.Item1.SetColor(Color.Blue);
+            e.Item2.SetColor(Color.Blue);
+
+            VisualPanel.Refresh();
+        }
 
         private void AddNumberButton_Click(object sender, EventArgs e)
         {
