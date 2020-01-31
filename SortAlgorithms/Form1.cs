@@ -80,7 +80,7 @@ namespace SortAlgorithms
                 {
                     SortedItem item = new SortedItem(VisualPanel, i + 1, items[i].Value);
                     //items.Add(item);
-MessageBox.Show($"Заполнение items[{i}]={items[i].Value}");
+//MessageBox.Show($"Заполнение items[{i}]={items[i].Value}");
                 }
                 //MessageBox.Show($"Заполнение items #2 {items.Count}");
                 VisualPanel.Refresh();

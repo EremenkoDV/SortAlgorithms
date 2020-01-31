@@ -292,12 +292,14 @@
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             System.Drawing.Rectangle rec = e.ClipRectangle;
-
+            //base.OnPaint(e);
             rec.Height = (int)(rec.Height * ((double)Value / Maximum)) - 4;
             if (System.Windows.Forms.ProgressBarRenderer.IsSupported)
-                System.Windows.Forms.ProgressBarRenderer.DrawHorizontalBar(e.Graphics, e.ClipRectangle);
+                System.Windows.Forms.ProgressBarRenderer.DrawVerticalBar(e.Graphics, e.ClipRectangle);
             rec.Width = rec.Width - 4;
-            e.Graphics.FillRectangle(System.Drawing.Brushes.Red, 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height -21);
+            //.Graphics.FillRectangle(System.Drawing.Brushes.Red, 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
+            e.Graphics.FillRectangle(new System.Drawing.SolidBrush(this.ForeColor), 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
+            e.Graphics.DrawRectangle(new System.Drawing.Pen(System.Drawing.Color.Black), 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
         }
     }
 

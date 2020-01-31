@@ -17,7 +17,7 @@ namespace SortAlgorithms
 
         public int Value { get; private set; }
 
-        public SortedItem(Control control, int instance, int value, int color = 0x0000FF)
+        public SortedItem(Control control, int instance, int value, int color = 0xFF0000FF)
         {
             int indent = 4;
             int border = 15;
@@ -33,6 +33,7 @@ namespace SortAlgorithms
                     Control subControl = control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).First();
                     subControl.Location = new Point(border + (size + indent) * i, 25);
                     subControl.Size = new Size(size, 86);
+                    subControl.ForeColor = Color.Blue;
                 }
                 if (control.Controls.Find("label" + (i + 1).ToString(), false).Any())
                 {
@@ -52,6 +53,9 @@ namespace SortAlgorithms
             VerticalProgressBar.ForeColor = Color.FromArgb(color);
             //VerticalProgressBar.Value = value;
             control.Controls.Add(VerticalProgressBar);
+            SetColor(Color.FromArgb(color));
+            VerticalProgressBar.Refresh();
+            control.Refresh();
 
             Label.AutoSize = true;
             Label.Location = new Point(border + (size + indent) * (instance - 1), 114);
@@ -84,8 +88,9 @@ namespace SortAlgorithms
         public void SetColor(Color color)
         {
             VerticalProgressBar.ForeColor = color;
-            MessageBox.Show(VerticalProgressBar.ForeColor.ToString());
-            MessageBox.Show(VerticalProgressBar.Style.ToString());
+            //VerticalProgressBar.Refresh();
+//MessageBox.Show(VerticalProgressBar.ForeColor.ToString());
+//MessageBox.Show(VerticalProgressBar.Style.ToString());
         }
 
         public int CompareTo(object obj)
