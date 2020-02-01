@@ -50,6 +50,7 @@ namespace SortAlgorithms
             VerticalProgressBar.Size = new Size(size, 86);
             VerticalProgressBar.Style = ProgressBarStyle.Continuous;
             VerticalProgressBar.Step = 1;
+            VerticalProgressBar.Maximum = 100;
             VerticalProgressBar.TabIndex = instance;
             VerticalProgressBar.ForeColor = color;
             //VerticalProgressBar.Value = value;

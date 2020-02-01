@@ -84,7 +84,7 @@
             // 
             this.AddTextBox.Location = new System.Drawing.Point(19, 28);
             this.AddTextBox.Name = "AddTextBox";
-            this.AddTextBox.Size = new System.Drawing.Size(261, 21);
+            this.AddTextBox.Size = new System.Drawing.Size(261, 20);
             this.AddTextBox.TabIndex = 0;
             // 
             // panel2
@@ -102,7 +102,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(16, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(232, 13);
+            this.label2.Size = new System.Drawing.Size(234, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Заполнить  коллекцию случайными числами";
             // 
@@ -120,13 +120,14 @@
             // 
             this.FillTextBox.Location = new System.Drawing.Point(19, 28);
             this.FillTextBox.Name = "FillTextBox";
-            this.FillTextBox.Size = new System.Drawing.Size(261, 21);
+            this.FillTextBox.Size = new System.Drawing.Size(261, 20);
             this.FillTextBox.TabIndex = 0;
             // 
             // VisualPanel
             // 
             this.VisualPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.VisualPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.VisualPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VisualPanel.Location = new System.Drawing.Point(398, 12);
             this.VisualPanel.Name = "VisualPanel";
@@ -170,7 +171,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(19, 50);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(88, 17);
+            this.radioButton3.Size = new System.Drawing.Size(84, 17);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.Text = "InsertionSort";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -202,7 +203,7 @@
             this.RuntimeLabel.AutoSize = true;
             this.RuntimeLabel.Location = new System.Drawing.Point(397, 171);
             this.RuntimeLabel.Name = "RuntimeLabel";
-            this.RuntimeLabel.Size = new System.Drawing.Size(106, 13);
+            this.RuntimeLabel.Size = new System.Drawing.Size(108, 13);
             this.RuntimeLabel.TabIndex = 3;
             this.RuntimeLabel.Text = "Время выполнения:";
             // 
@@ -211,7 +212,7 @@
             this.ComparationLabel.AutoSize = true;
             this.ComparationLabel.Location = new System.Drawing.Point(397, 198);
             this.ComparationLabel.Name = "ComparationLabel";
-            this.ComparationLabel.Size = new System.Drawing.Size(127, 13);
+            this.ComparationLabel.Size = new System.Drawing.Size(126, 13);
             this.ComparationLabel.TabIndex = 3;
             this.ComparationLabel.Text = "Количество сравнений:";
             // 
@@ -279,8 +280,6 @@
             this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
         }
 
-        private System.Windows.Forms.Label lblPosition = new System.Windows.Forms.Label();
-
         protected override System.Windows.Forms.CreateParams CreateParams
         {
             get
@@ -294,20 +293,12 @@
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             System.Drawing.Rectangle rec = e.ClipRectangle;
-            //base.OnPaint(e);
             rec.Height = (int)(rec.Height * ((double)Value / Maximum)) - 4;
             if (System.Windows.Forms.ProgressBarRenderer.IsSupported)
                 System.Windows.Forms.ProgressBarRenderer.DrawVerticalBar(e.Graphics, e.ClipRectangle);
             rec.Width = rec.Width - 4;
-            //System.Windows.Forms.MessageBox.Show($"{e.ClipRectangle.Width.ToString()} : {e.ClipRectangle.Height.ToString()}");
-            //System.Windows.Forms.MessageBox.Show($"{2} : {e.ClipRectangle.Height - 2 - rec.Height} : {rec.Width} : {e.ClipRectangle.Height - 20}");
-            lblPosition.Location = new System.Drawing.Point(e.ClipRectangle.Width, e.ClipRectangle.Height - 50);
-            lblPosition.Text = $"{2} : {e.ClipRectangle.Height - 2 - rec.Height} : {rec.Width} : {e.ClipRectangle.Height - 20}";
-            lblPosition.Visible = true;
-
-            //.Graphics.FillRectangle(System.Drawing.Brushes.Red, 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
-            e.Graphics.FillRectangle(new System.Drawing.SolidBrush(this.ForeColor), 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
-            e.Graphics.DrawRectangle(new System.Drawing.Pen(System.Drawing.Color.Black), 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
+            e.Graphics.FillRectangle(new System.Drawing.SolidBrush(this.ForeColor), 2, e.ClipRectangle.Height - rec.Height - 2, rec.Width, rec.Height);
+            //e.Graphics.DrawRectangle(new System.Drawing.Pen(System.Drawing.Color.Black), 2, e.ClipRectangle.Height - rec.Height - 2, rec.Width, rec.Height);
         }
     }
 
