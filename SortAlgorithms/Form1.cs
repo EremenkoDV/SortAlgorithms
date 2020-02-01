@@ -15,6 +15,8 @@ namespace SortAlgorithms
     {
         private List<SortedItem> items = new List<SortedItem>();
 
+        private List<int> values = new List<int>();
+
         private int sortedItemsCount = 0;
 
         private int maxSortedItemsCount = 20;
@@ -59,35 +61,16 @@ namespace SortAlgorithms
                     }
                 }
 
-                //for (int i = 0; i < items.Count; i++)
-                //{
-                //    algorithm.Items.Add(new SortedItem(VisualPanel, i + 1, items[i].Value));
-                //}
-//MessageBox.Show("Заполнение items #1");
                 algorithm.Items.AddRange(items);
-
                 algorithm.CompareEvent += AlgorithmCompareEvent;
                 algorithm.SwapEvent += AlgorithmSwapEvent;
                 TimeSpan runTime = algorithm.SortAndGetSpan();
 
-                //sortedItemsCount = 0;
-                items.Clear();
-//MessageBox.Show("Очистка items");
-
-                items.AddRange(algorithm.Items);
-                VisualPanel.Controls.Clear();
-                for (int i = 0; i < items.Count; i++)
-                {
-                    SortedItem item = new SortedItem(VisualPanel, i + 1, items[i].Value);
-                    //items.Add(item);
-//MessageBox.Show($"Заполнение items[{i}]={items[i].Value}");
-                }
-                //MessageBox.Show($"Заполнение items #2 {items.Count}");
-                VisualPanel.Refresh();
-
                 RuntimeLabel.Text = "Время выполнения: " + runTime.Seconds.ToString() + "." + runTime.Milliseconds.ToString() + " с.";
                 ComparationLabel.Text = "Количество сравнений: " + algorithm.ComparisonCount.ToString();
                 SwapLabel.Text = "Количество обменов: " + algorithm.SwapCount.ToString();
+
+                (sender as Button).Enabled = false;
             }
         }
 
@@ -135,10 +118,12 @@ namespace SortAlgorithms
                     VisualPanel.Controls.Clear();
                     sortedItemsCount = 0;
                     items.Clear();
+                    values.Clear();
                 }
 
                 SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, value);
                 items.Add(item);
+                values.Add(value);
                 //panel3.Controls.Add(item.VerticalProgressBar);
                 //panel3.Controls.Add(item.Label);
             }
@@ -154,19 +139,68 @@ namespace SortAlgorithms
                 VisualPanel.Controls.Clear();
                 sortedItemsCount = 0;
                 items.Clear();
+                values.Clear();
 
                 Random rnd = new Random();
                 for (int i = 0; i < value; i++)
                 {
                     SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, rnd.Next(0, maxValue));
                     items.Add(item);
-                    //panel3.Controls.Add(item.VerticalProgressBar);
-                    //panel3.Controls.Add(item.Label);
+                    values.Add(item.Value);
+                    //VisualPanel.Controls.Add(item.VerticalProgressBar);
+                    //VisualPanel.Controls.Add(item.Label);
                 }
-                //label1.Text += " " + value;
             }
             FillTextBox.Text = "";
             FillTextBox.Focus();
+        }
+
+        private void RefillItems()
+        {
+            VisualPanel.Controls.Clear();
+            sortedItemsCount = 0;
+            items.Clear();
+            for (int i = 0; i < values.Count; i++)
+            {
+                SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, values[i]);
+                VisualPanel.Refresh();
+                items.Add(item);
+            }
+//MessageBox.Show($"Количество items {items.Count} : {sortedItemsCount}");
+            VisualPanel.Refresh();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                RefillItems();
+                SortButton.Enabled = true;
+            }
+        }
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                RefillItems();
+                SortButton.Enabled = true;
+            }
+        }
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                RefillItems();
+                SortButton.Enabled = true;
+            }
+        }
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                RefillItems();
+                SortButton.Enabled = true;
+            }
         }
 
     }
