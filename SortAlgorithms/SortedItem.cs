@@ -17,12 +17,13 @@ namespace SortAlgorithms
 
         public int Value { get; private set; }
 
-        public SortedItem(Control control, int instance, int value, int color = 0xFF0000FF)
+        public SortedItem(Control control, int instance, int value, uint hexColor = 0xFF0000FF)
         {
             int indent = 4;
             int border = 15;
             int controlWidth = control.Width - 2 * border;
             int size = (controlWidth - (indent * instance)) / instance > 15 ? (int)((controlWidth - (indent * instance)) / instance) : 15;
+            Color color = GetColor(hexColor);
 
             //Value = value;
 
@@ -33,7 +34,7 @@ namespace SortAlgorithms
                     Control subControl = control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).First();
                     subControl.Location = new Point(border + (size + indent) * i, 25);
                     subControl.Size = new Size(size, 86);
-                    subControl.ForeColor = Color.Blue;
+                    subControl.ForeColor = color;
                 }
                 if (control.Controls.Find("label" + (i + 1).ToString(), false).Any())
                 {
@@ -50,12 +51,12 @@ namespace SortAlgorithms
             VerticalProgressBar.Style = ProgressBarStyle.Continuous;
             VerticalProgressBar.Step = 1;
             VerticalProgressBar.TabIndex = instance;
-            VerticalProgressBar.ForeColor = Color.FromArgb(color);
+            VerticalProgressBar.ForeColor = color;
             //VerticalProgressBar.Value = value;
             control.Controls.Add(VerticalProgressBar);
-            SetColor(Color.FromArgb(color));
-            VerticalProgressBar.Refresh();
-            control.Refresh();
+            //SetColor(Color.FromArgb(color));
+            //VerticalProgressBar.Refresh();
+            //control.Refresh();
 
             Label.AutoSize = true;
             Label.Location = new Point(border + (size + indent) * (instance - 1), 114);
@@ -72,6 +73,17 @@ namespace SortAlgorithms
 
         }
 
+        public static Color GetColor(uint color)
+        {
+            int[] argb = new int[4];
+            for (int i = 0; i < 32; i += 8)
+            {
+                argb[i / 8] = (int)(color >> i) & 255;
+//MessageBox.Show("{0:X2}", BitConverter.GetBytes(argb[i / 8])[0]);
+            }
+            return Color.FromArgb(argb[3], argb[2], argb[1], argb[0]);
+        }
+
         public static void SwapPosition(SortedItem first, SortedItem second)
         {
             if (first.VerticalProgressBar != null && second.VerticalProgressBar != null)
@@ -79,6 +91,7 @@ namespace SortAlgorithms
                 Point locationFirst = first.VerticalProgressBar.Location;
                 first.VerticalProgressBar.Location = second.VerticalProgressBar.Location;
                 second.VerticalProgressBar.Location = locationFirst;
+
                 locationFirst = first.Label.Location;
                 first.Label.Location = second.Label.Location;
                 second.Label.Location = locationFirst;

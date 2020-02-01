@@ -279,6 +279,8 @@
             this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
         }
 
+        private System.Windows.Forms.Label lblPosition = new System.Windows.Forms.Label();
+
         protected override System.Windows.Forms.CreateParams CreateParams
         {
             get
@@ -297,6 +299,12 @@
             if (System.Windows.Forms.ProgressBarRenderer.IsSupported)
                 System.Windows.Forms.ProgressBarRenderer.DrawVerticalBar(e.Graphics, e.ClipRectangle);
             rec.Width = rec.Width - 4;
+            //System.Windows.Forms.MessageBox.Show($"{e.ClipRectangle.Width.ToString()} : {e.ClipRectangle.Height.ToString()}");
+            //System.Windows.Forms.MessageBox.Show($"{2} : {e.ClipRectangle.Height - 2 - rec.Height} : {rec.Width} : {e.ClipRectangle.Height - 20}");
+            lblPosition.Location = new System.Drawing.Point(e.ClipRectangle.Width, e.ClipRectangle.Height - 50);
+            lblPosition.Text = $"{2} : {e.ClipRectangle.Height - 2 - rec.Height} : {rec.Width} : {e.ClipRectangle.Height - 20}";
+            lblPosition.Visible = true;
+
             //.Graphics.FillRectangle(System.Drawing.Brushes.Red, 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
             e.Graphics.FillRectangle(new System.Drawing.SolidBrush(this.ForeColor), 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
             e.Graphics.DrawRectangle(new System.Drawing.Pen(System.Drawing.Color.Black), 2, e.ClipRectangle.Height - 2 - rec.Height, rec.Width, e.ClipRectangle.Height - 20);
