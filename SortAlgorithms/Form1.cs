@@ -55,6 +55,12 @@ namespace SortAlgorithms
                             case "radioButton4":
                                 algorithm = new ShellSort<SortedItem>();
                                 break;
+                            case "radioButton5":
+                                algorithm = new TreeSort<SortedItem>();
+                                break;
+                            case "radioButton6":
+                                algorithm = new HeapSort<SortedItem>();
+                                break;
                         }
                         //MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
                         break;
@@ -203,6 +209,23 @@ namespace SortAlgorithms
             }
         }
 
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                RefillItems();
+                SortButton.Enabled = true;
+            }
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                RefillItems();
+                SortButton.Enabled = true;
+            }
+        }
     }
 
 }

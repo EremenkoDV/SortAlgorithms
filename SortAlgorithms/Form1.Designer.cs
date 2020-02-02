@@ -39,6 +39,7 @@
             this.VisualPanel = new System.Windows.Forms.Panel();
             this.SortButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -46,6 +47,7 @@
             this.RuntimeLabel = new System.Windows.Forms.Label();
             this.ComparationLabel = new System.Windows.Forms.Label();
             this.SwapLabel = new System.Windows.Forms.Label();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -146,6 +148,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.radioButton6);
+            this.panel3.Controls.Add(this.radioButton5);
             this.panel3.Controls.Add(this.radioButton4);
             this.panel3.Controls.Add(this.radioButton3);
             this.panel3.Controls.Add(this.radioButton2);
@@ -155,6 +159,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(379, 100);
             this.panel3.TabIndex = 2;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(102, 4);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(66, 17);
+            this.radioButton5.TabIndex = 2;
+            this.radioButton5.Text = "TreeSort";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -229,6 +244,17 @@
             this.SwapLabel.TabIndex = 3;
             this.SwapLabel.Text = "Количество обменов:";
             // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(102, 27);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(70, 17);
+            this.radioButton6.TabIndex = 2;
+            this.radioButton6.Text = "HeapSort";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +300,8 @@
         private System.Windows.Forms.Label RuntimeLabel;
         private System.Windows.Forms.Label ComparationLabel;
         private System.Windows.Forms.Label SwapLabel;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton6;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar
