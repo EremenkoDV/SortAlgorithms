@@ -59,7 +59,7 @@ namespace SortAlgorithms
                                 algorithm = new TreeSort<SortedItem>();
                                 break;
                             case "radioButton6":
-                                algorithm = new HeapSort<SortedItem>();
+                                algorithm = new Algorithm.DataStructures.Heap<SortedItem>();
                                 break;
                         }
                         //MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
