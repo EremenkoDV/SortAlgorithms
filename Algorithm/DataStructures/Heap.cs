@@ -51,7 +51,7 @@ namespace Algorithm.DataStructures
                 items[index] = items[Count - 1];
                 items.RemoveAt(Count - 1);
                 result = count > Count;
-                Reorder(index);
+                Reorder(index, false);
             }
             return result;
         }
@@ -61,13 +61,13 @@ namespace Algorithm.DataStructures
             T item = items[0];
             items[0] = items[Count - 1];
             items.RemoveAt(Count - 1);
-            Reorder(0);
+            Reorder(0, false);
             //if (!Remove(item))
             //    throw new Exception("Куча пустая!");
             return item;
         }
 
-        private void Reorder(int index)
+        private void Reorder(int index, bool isUp = true)
         {
             int upIndex = (int)(index - 1) / 2;
             int downIndex1 = 2 * index + 1;
@@ -86,7 +86,7 @@ namespace Algorithm.DataStructures
                         if (items[i].CompareTo(items[index]) == (i == upIndex ? -1 * maxHeap : maxHeap))
                         {
                             Swap(i, index);
-                            Reorder(i);
+                            Reorder(i == upIndex & isUp ? i : index, isUp);
                         }
                     }
                 }
