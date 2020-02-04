@@ -37,6 +37,13 @@ namespace Algorithm.DataStructures
             Reorder(Items.Count - 1);
         }
 
+        public override void AddRange(IEnumerable<T> items)
+        {
+            Items.AddRange(items);
+            for (int i = 0; i < Items.Count; i++)
+                Reorder(i);
+        }
+
         public bool Remove(T data)
         {
             if (!(data is T))
@@ -58,6 +65,7 @@ namespace Algorithm.DataStructures
         {
             T item = Items[0];
             Items[0] = Items[Items.Count - 1];
+            //Swap(0, Items.Count - 1, true);
             Items.RemoveAt(Items.Count - 1);
             Reorder(0, false);
             return item;
@@ -94,6 +102,11 @@ namespace Algorithm.DataStructures
                 items.Add(GetTop());
             }
             Items.AddRange(items);
+
+            //for (int i = 1; i < Items.Count - i; i++)
+            //{
+            //    Swap(i, Items.Count - i);
+            //}
         }
     }
 

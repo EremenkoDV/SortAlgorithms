@@ -36,7 +36,8 @@ namespace SortAlgorithms
         {
             if (sortedItemsCount > 0)
             {
-                AlgorithmBase<SortedItem> algorithm = new BubbleSort<SortedItem>();
+                int sortMethodNumber = 0;
+                AlgorithmBase<SortedItem> algorithm = new AlgorithmBase<SortedItem>();
                 foreach (RadioButton radioButton in panel3.Controls.OfType<RadioButton>())
                 {
                     if (radioButton.Checked)
@@ -44,22 +45,31 @@ namespace SortAlgorithms
                         switch (radioButton.Name)
                         {
                             case "radioButton1":
+                                sortMethodNumber = 1;
                                 algorithm = new BubbleSort<SortedItem>();
                                 break;
                             case "radioButton2":
+                                sortMethodNumber = 2;
                                 algorithm = new CocktailSort<SortedItem>();
                                 break;
                             case "radioButton3":
+                                sortMethodNumber = 3;
                                 algorithm = new InsertionSort<SortedItem>();
                                 break;
                             case "radioButton4":
+                                sortMethodNumber = 4;
                                 algorithm = new ShellSort<SortedItem>();
                                 break;
                             case "radioButton5":
-                                algorithm = new TreeSort<SortedItem>();
+                                sortMethodNumber = 5;
+                                algorithm = new Algorithm.DataStructures.Tree<SortedItem>();
                                 break;
                             case "radioButton6":
-                                algorithm = new Algorithm.DataStructures.Heap<SortedItem>();
+                                sortMethodNumber = 6;
+                                algorithm = new Algorithm.DataStructures.Heap<SortedItem>(false);
+                                break;
+                            default:
+                                algorithm = new BubbleSort<SortedItem>();
                                 break;
                         }
                         //MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
@@ -67,10 +77,20 @@ namespace SortAlgorithms
                     }
                 }
 
-                algorithm.Items.AddRange(items);
-                algorithm.CompareEvent += AlgorithmCompareEvent;
-                algorithm.SwapEvent += AlgorithmSwapEvent;
+                if (SpeedTrackBar.Value > 0)
+                {
+                    algorithm.CompareEvent += AlgorithmCompareEvent;
+                    algorithm.SwapEvent += AlgorithmSwapEvent;
+                }
+
+                algorithm.AddRange(items);
                 TimeSpan runTime = algorithm.SortAndGetSpan();
+
+                if (sortMethodNumber == 6)
+                {
+                        SortedItem.Replace(VisualPanel, algorithm.Items.Count);
+                        VisualPanel.Refresh();
+                }
 
                 RuntimeLabel.Text = "Время выполнения: " + runTime.Seconds.ToString() + "." + runTime.Milliseconds.ToString() + " с.";
                 ComparationLabel.Text = "Количество сравнений: " + algorithm.ComparisonCount.ToString();
@@ -82,36 +102,40 @@ namespace SortAlgorithms
 
         private void AlgorithmCompareEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
-            e.Item1.SetColor(Color.Red);
-            e.Item2.SetColor(Color.Green);
+            if (SpeedTrackBar.Value > 0)
+            {
+                e.Item1.SetColor(Color.Red);
+                e.Item2.SetColor(Color.Green);
 
-            VisualPanel.Refresh();
+                VisualPanel.Refresh();
 
-            //System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(50 * SpeedTrackBar.Value - 1);
 
-            e.Item1.SetColor(Color.Blue);
-            e.Item2.SetColor(Color.Blue);
+                e.Item1.SetColor(Color.Blue);
+                e.Item2.SetColor(Color.Blue);
 
-            VisualPanel.Refresh();
+                VisualPanel.Refresh();
+            }
         }
 
         private void AlgorithmSwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
-            //int aux = e.Item1.Value;
-            //e.Item1.SetValue(e.Item2.Value);
-            //e.Item2.SetValue(aux);
-            SortedItem.SwapPosition(e.Item1, e.Item2);
-            e.Item1.SetColor(Color.Green);
-            e.Item2.SetColor(Color.Red);
+            if (SpeedTrackBar.Value > 0)
+            {
 
-            VisualPanel.Refresh();
+                SortedItem.SwapPosition(e.Item1, e.Item2);
+                e.Item1.SetColor(Color.Green);
+                e.Item2.SetColor(Color.Red);
 
-            //System.Threading.Thread.Sleep(500);
+                VisualPanel.Refresh();
 
-            e.Item1.SetColor(Color.Blue);
-            e.Item2.SetColor(Color.Blue);
+                //System.Threading.Thread.Sleep(500);
 
-            VisualPanel.Refresh();
+                e.Item1.SetColor(Color.Blue);
+                e.Item2.SetColor(Color.Blue);
+
+                VisualPanel.Refresh();
+            }
         }
 
         private void AddNumberButton_Click(object sender, EventArgs e)
@@ -224,6 +248,22 @@ namespace SortAlgorithms
             {
                 RefillItems();
                 SortButton.Enabled = true;
+            }
+        }
+
+        private void AddTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AddNumberButton_Click(sender, e);
+            }
+        }
+
+        private void FillTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FillRandomNumbersButton_Click(sender, e);
             }
         }
     }

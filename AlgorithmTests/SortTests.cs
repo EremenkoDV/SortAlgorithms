@@ -20,9 +20,9 @@ namespace Algorithm.Tests
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 10; i++)
             {
-                items.Add(rnd.Next(0, 1000));
+                items.Add(rnd.Next(0, 10));
             }
 
             sorted.Clear();
@@ -33,8 +33,7 @@ namespace Algorithm.Tests
         public void BaseSortTest()
         {
             // arrange
-            AlgorithmBase<int> _base = new AlgorithmBase<int>();
-            _base.Items.AddRange(items);
+            AlgorithmBase<int> _base = new AlgorithmBase<int>(items);
 
             // act
             _base.SortAndGetSpan();
@@ -50,8 +49,7 @@ namespace Algorithm.Tests
         public void BubbleSortTest()
         {
             // arrange
-            AlgorithmBase<int> bubble = new BubbleSort<int>();
-            bubble.Items.AddRange(items);
+            AlgorithmBase<int> bubble = new BubbleSort<int>(items);
 
             // act
             bubble.SortAndGetSpan();
@@ -67,8 +65,7 @@ namespace Algorithm.Tests
         public void CocktailSortTest()
         {
             // arrange
-            AlgorithmBase<int> cocktail = new CocktailSort<int>();
-            cocktail.Items.AddRange(items);
+            AlgorithmBase<int> cocktail = new CocktailSort<int>(items);
 
             // act
             cocktail.SortAndGetSpan();
@@ -84,8 +81,7 @@ namespace Algorithm.Tests
         public void InsertionSortTest()
         {
             // arrange
-            AlgorithmBase<int> insertion = new InsertionSort<int>();
-            insertion.Items.AddRange(items);
+            AlgorithmBase<int> insertion = new InsertionSort<int>(items);
 
             // act
             insertion.SortAndGetSpan();
@@ -101,8 +97,7 @@ namespace Algorithm.Tests
         public void ShellSortTest()
         {
             // arrange
-            AlgorithmBase<int> shell = new ShellSort<int>();
-            shell.Items.AddRange(items);
+            AlgorithmBase<int> shell = new ShellSort<int>(items);
 
             // act
             shell.SortAndGetSpan();
@@ -118,8 +113,8 @@ namespace Algorithm.Tests
         public void TreeSortTest()
         {
             // arrange
-            AlgorithmBase<int> tree = new TreeSort<int>();
-            tree.Items.AddRange(items);
+            AlgorithmBase<int> tree = new DataStructures.Tree<int>(items);
+            //tree.Items.AddRange(items);
 
             // act
             tree.SortAndGetSpan();
@@ -136,7 +131,6 @@ namespace Algorithm.Tests
         {
             // arrange
             AlgorithmBase<int> heap = new DataStructures.Heap<int>(items, false);
-            //heap.Items.AddRange(items);
 
             // act
             heap.SortAndGetSpan();
@@ -145,6 +139,22 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], heap.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void SelectionSortTest()
+        {
+            // arrange
+            AlgorithmBase<int> selection = new SelectionSort<int>(items);
+
+            // act
+            selection.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], selection.Items[i]);
             }
         }
 

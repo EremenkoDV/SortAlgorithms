@@ -17,10 +17,12 @@ namespace SortAlgorithms
 
         public int Value { get; private set; }
 
+        private static int indent = 4;
+
+        private static int border = 15;
+
         public SortedItem(Control control, int instance, int value, uint hexColor = 0xFF0000FF)
         {
-            int indent = 4;
-            int border = 15;
             int controlWidth = control.Width - 2 * border;
             int size = (controlWidth - (indent * instance)) / instance > 15 ? (int)((controlWidth - (indent * instance)) / instance) : 15;
             Color color = GetColor(hexColor);
@@ -87,7 +89,7 @@ namespace SortAlgorithms
 
         public static void SwapPosition(SortedItem first, SortedItem second)
         {
-            if (first.VerticalProgressBar != null && second.VerticalProgressBar != null)
+            if (first.VerticalProgressBar != null && second.VerticalProgressBar != null && first != second)
             {
                 Point locationFirst = first.VerticalProgressBar.Location;
                 first.VerticalProgressBar.Location = second.VerticalProgressBar.Location;
@@ -96,6 +98,32 @@ namespace SortAlgorithms
                 locationFirst = first.Label.Location;
                 first.Label.Location = second.Label.Location;
                 second.Label.Location = locationFirst;
+            }
+        }
+
+        public static void Replace(Control control, int instances)
+        {
+            
+            for (int i = 0; i < instances; i++)
+            {
+                int value = 0;
+                int size = 0;
+                if (control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).Any())
+                {
+                    Control subControl = control.Controls["verticalProgressBar" + (i + 1).ToString()];
+                    value = (subControl as VerticalProgressBar).Value;
+                    size = (subControl as VerticalProgressBar).Size.Width;
+                    subControl.Location = new Point(border + (size + indent) * i, 25);
+                }
+                if (control.Controls.Find("label" + (i + 1).ToString(), false).Any())
+                {
+                    Control subControl = control.Controls["label" + (i + 1).ToString()];
+                    if (value.ToString() == (subControl as Label).Text)
+                    {
+                        size = (subControl as Label).Size.Width;
+                        subControl.Location = new Point(border + (size + indent) * i, 114);
+                    }
+                }
             }
         }
 

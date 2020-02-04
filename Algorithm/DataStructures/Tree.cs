@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithm.DataStructures
 {
-    public class Tree<T>
+    public class Tree<T> : AlgorithmBase<T>
         where T : IComparable
     {
 
@@ -21,8 +21,15 @@ namespace Algorithm.DataStructures
 
         public Tree(IEnumerable<T> items)
         {
-            foreach (T item in items)
+            AddRange(items);
+        }
+
+        public override void AddRange(IEnumerable<T> items)
+        {
+            List<T> list = items.ToList();
+            foreach (T item in list)
             {
+                Items.Add(item);
                 Add(item);
             }
 
@@ -41,7 +48,7 @@ namespace Algorithm.DataStructures
                 while (current != null)
                 {
                     //if (current.Data.CompareTo(data) > 0)
-                    if (current.CompareTo(node) > 0) // налево идут элементы меньше текущего
+                    if (Compare(current.Data, node.Data) > 0) // налево идут элементы меньше текущего
                     {
                         if (current.Left != null)
                             current = current.Left;
@@ -63,6 +70,11 @@ namespace Algorithm.DataStructures
                     }
                 }
             }
+        }
+
+        protected override void Sort()
+        {
+            Items = InfixIteration();
         }
 
         public bool Remove(T data)

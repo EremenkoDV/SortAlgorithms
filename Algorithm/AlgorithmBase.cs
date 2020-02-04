@@ -23,6 +23,11 @@ namespace Algorithm
             Items.AddRange(items);
         }
 
+        public virtual void AddRange(IEnumerable<T> items)
+        {
+            Items.AddRange(items);
+        }
+
         public event EventHandler<Tuple<T, T>> CompareEvent;
 
         public event EventHandler<Tuple<T, T>> SwapEvent;

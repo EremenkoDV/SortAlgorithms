@@ -39,6 +39,7 @@
             this.VisualPanel = new System.Windows.Forms.Panel();
             this.SortButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -47,10 +48,13 @@
             this.RuntimeLabel = new System.Windows.Forms.Label();
             this.ComparationLabel = new System.Windows.Forms.Label();
             this.SwapLabel = new System.Windows.Forms.Label();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.SpeedTrackBar = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpeedTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,8 +90,9 @@
             // 
             this.AddTextBox.Location = new System.Drawing.Point(19, 28);
             this.AddTextBox.Name = "AddTextBox";
-            this.AddTextBox.Size = new System.Drawing.Size(261, 20);
+            this.AddTextBox.Size = new System.Drawing.Size(261, 21);
             this.AddTextBox.TabIndex = 0;
+            this.AddTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddTextBox_KeyDown);
             // 
             // panel2
             // 
@@ -104,7 +109,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(16, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(234, 13);
+            this.label2.Size = new System.Drawing.Size(232, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Заполнить  коллекцию случайными числами";
             // 
@@ -122,8 +127,9 @@
             // 
             this.FillTextBox.Location = new System.Drawing.Point(19, 28);
             this.FillTextBox.Name = "FillTextBox";
-            this.FillTextBox.Size = new System.Drawing.Size(261, 20);
+            this.FillTextBox.Size = new System.Drawing.Size(261, 21);
             this.FillTextBox.TabIndex = 0;
+            this.FillTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FillTextBox_KeyDown);
             // 
             // VisualPanel
             // 
@@ -133,7 +139,7 @@
             this.VisualPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VisualPanel.Location = new System.Drawing.Point(398, 12);
             this.VisualPanel.Name = "VisualPanel";
-            this.VisualPanel.Size = new System.Drawing.Size(390, 152);
+            this.VisualPanel.Size = new System.Drawing.Size(408, 152);
             this.VisualPanel.TabIndex = 1;
             // 
             // SortButton
@@ -160,12 +166,23 @@
             this.panel3.Size = new System.Drawing.Size(379, 100);
             this.panel3.TabIndex = 2;
             // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(102, 27);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(70, 17);
+            this.radioButton6.TabIndex = 2;
+            this.radioButton6.Text = "HeapSort";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(102, 4);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(66, 17);
+            this.radioButton5.Size = new System.Drawing.Size(67, 17);
             this.radioButton5.TabIndex = 2;
             this.radioButton5.Text = "TreeSort";
             this.radioButton5.UseVisualStyleBackColor = true;
@@ -187,7 +204,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(19, 50);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(84, 17);
+            this.radioButton3.Size = new System.Drawing.Size(88, 17);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.Text = "InsertionSort";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -222,7 +239,7 @@
             this.RuntimeLabel.AutoSize = true;
             this.RuntimeLabel.Location = new System.Drawing.Point(397, 171);
             this.RuntimeLabel.Name = "RuntimeLabel";
-            this.RuntimeLabel.Size = new System.Drawing.Size(108, 13);
+            this.RuntimeLabel.Size = new System.Drawing.Size(106, 13);
             this.RuntimeLabel.TabIndex = 3;
             this.RuntimeLabel.Text = "Время выполнения:";
             // 
@@ -231,7 +248,7 @@
             this.ComparationLabel.AutoSize = true;
             this.ComparationLabel.Location = new System.Drawing.Point(397, 198);
             this.ComparationLabel.Name = "ComparationLabel";
-            this.ComparationLabel.Size = new System.Drawing.Size(126, 13);
+            this.ComparationLabel.Size = new System.Drawing.Size(127, 13);
             this.ComparationLabel.TabIndex = 3;
             this.ComparationLabel.Text = "Количество сравнений:";
             // 
@@ -244,22 +261,40 @@
             this.SwapLabel.TabIndex = 3;
             this.SwapLabel.Text = "Количество обменов:";
             // 
-            // radioButton6
+            // SpeedTrackBar
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(102, 27);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(70, 17);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.Text = "HeapSort";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            this.SpeedTrackBar.Location = new System.Drawing.Point(701, 186);
+            this.SpeedTrackBar.Name = "SpeedTrackBar";
+            this.SpeedTrackBar.Size = new System.Drawing.Size(104, 42);
+            this.SpeedTrackBar.TabIndex = 4;
+            this.SpeedTrackBar.Value = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(698, 215);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "0 - тест по скорости";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(720, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "замедление";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(818, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.SpeedTrackBar);
             this.Controls.Add(this.SwapLabel);
             this.Controls.Add(this.ComparationLabel);
             this.Controls.Add(this.RuntimeLabel);
@@ -275,6 +310,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpeedTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,6 +338,9 @@
         private System.Windows.Forms.Label SwapLabel;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.TrackBar SpeedTrackBar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar
