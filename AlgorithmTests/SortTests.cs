@@ -20,9 +20,9 @@ namespace Algorithm.Tests
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1000000; i++)
             {
-                items.Add(rnd.Next(0, 10));
+                items.Add(rnd.Next(0, 1000));
             }
 
             sorted.Clear();
@@ -130,7 +130,7 @@ namespace Algorithm.Tests
         public void HeapSortTest()
         {
             // arrange
-            AlgorithmBase<int> heap = new DataStructures.Heap<int>(items, false);
+            AlgorithmBase<int> heap = new DataStructures.Heap<int>(items);
 
             // act
             heap.SortAndGetSpan();

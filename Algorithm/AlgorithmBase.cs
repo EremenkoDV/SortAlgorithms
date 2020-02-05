@@ -32,31 +32,49 @@ namespace Algorithm
 
         public event EventHandler<Tuple<T, T>> SwapEvent;
 
-        protected void Swap(int positionA, int positionB, bool isOffset = false)
-        {
-            if (positionA < Items.Count && positionB < Items.Count)
-            {
-                SwapEvent?.Invoke(this, new Tuple<T, T>(Items[positionA], Items[positionB]));
+        public event EventHandler<T> RemoveEvent;
 
+        protected void Swap(int index1, int index2)
+        {
+            if (index1 < Items.Count && index2 < Items.Count)
+            {
+                SwapEvent?.Invoke(this, new Tuple<T, T>(Items[index1], Items[index2]));
+                T temp = Items[index1];
+                Items[index1] = Items[index2];
+                Items[index2] = temp;
                 SwapCount++;
-                if (isOffset)
-                {
-                    Items[positionB] = Items[positionA];
-                }
-                else
-                {
-                    T temp = Items[positionA];
-                    Items[positionA] = Items[positionB];
-                    Items[positionB] = temp;
-                }
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
             }
         }
 
-        protected int Compare(T first, T second)
+        protected int Compare(int index1, int index2)
         {
-            CompareEvent?.Invoke(this, new Tuple<T, T>(first, second));
-            ComparisonCount++;
-            return first.CompareTo(second);
+            if (index1 < Items.Count && index2 < Items.Count)
+            {
+                CompareEvent?.Invoke(this, new Tuple<T, T>(Items[index1], Items[index2]));
+                ComparisonCount++;
+                return Items[index1].CompareTo(Items[index2]);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        protected void RemoveAt(int index)
+        {
+            if (index < Items.Count)
+            {
+                RemoveEvent?.Invoke(this, Items[index]);
+                Items.RemoveAt(index);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
 
         public TimeSpan SortAndGetSpan()

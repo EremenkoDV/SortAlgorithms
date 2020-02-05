@@ -32,6 +32,11 @@ namespace SortAlgorithms
             SwapLabel.Text = "";
         }
 
+        private void AfterLoad(object sender, EventArgs e)
+        {
+            FillTextBox.Focus();
+        }
+
         private void SortButton_Click(object sender, EventArgs e)
         {
             if (sortedItemsCount > 0)
@@ -66,7 +71,11 @@ namespace SortAlgorithms
                                 break;
                             case "radioButton6":
                                 sortMethodNumber = 6;
-                                algorithm = new Algorithm.DataStructures.Heap<SortedItem>(false);
+                                algorithm = new Algorithm.DataStructures.Heap<SortedItem>();
+                                break;
+                            case "radioButton7":
+                                sortMethodNumber = 7;
+                                algorithm = new SelectionSort<SortedItem>();
                                 break;
                             default:
                                 algorithm = new BubbleSort<SortedItem>();
@@ -81,6 +90,12 @@ namespace SortAlgorithms
                 {
                     algorithm.CompareEvent += AlgorithmCompareEvent;
                     algorithm.SwapEvent += AlgorithmSwapEvent;
+                    algorithm.RemoveEvent += AlgorithmRemoveEvent;
+                }
+
+                if (reverseSortCheckBox.Checked)
+                {
+                    algorithm.IsAscending = false;
                 }
 
                 algorithm.AddRange(items);
@@ -88,10 +103,17 @@ namespace SortAlgorithms
 
                 if (sortMethodNumber == 6)
                 {
-                        SortedItem.Replace(VisualPanel, algorithm.Items.Count);
+                    VisualPanel.Controls.Clear();
+                    sortedItemsCount = 0;
+                    for (int i = 0; i < algorithm.Items.Count; i++)
+                    {
+                        SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, algorithm.Items[i].Value);
                         VisualPanel.Refresh();
+                    }
+                    VisualPanel.Refresh();
                 }
 
+                ResultTableLayoutPanel.ce
                 RuntimeLabel.Text = "Время выполнения: " + runTime.Seconds.ToString() + "." + runTime.Milliseconds.ToString() + " с.";
                 ComparationLabel.Text = "Количество сравнений: " + algorithm.ComparisonCount.ToString();
                 SwapLabel.Text = "Количество обменов: " + algorithm.SwapCount.ToString();
@@ -122,7 +144,6 @@ namespace SortAlgorithms
         {
             if (SpeedTrackBar.Value > 0)
             {
-
                 SortedItem.SwapPosition(e.Item1, e.Item2);
                 e.Item1.SetColor(Color.Green);
                 e.Item2.SetColor(Color.Red);
@@ -133,6 +154,16 @@ namespace SortAlgorithms
 
                 e.Item1.SetColor(Color.Blue);
                 e.Item2.SetColor(Color.Blue);
+
+                VisualPanel.Refresh();
+            }
+        }
+
+        private void AlgorithmRemoveEvent(object sender, SortedItem e)
+        {
+            if (SpeedTrackBar.Value > 0)
+            {
+                SortedItem.Remove(e);
 
                 VisualPanel.Refresh();
             }
@@ -224,6 +255,7 @@ namespace SortAlgorithms
                 SortButton.Enabled = true;
             }
         }
+
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             if ((sender as RadioButton).Checked)
@@ -251,11 +283,21 @@ namespace SortAlgorithms
             }
         }
 
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                RefillItems();
+                SortButton.Enabled = true;
+            }
+        }
+
         private void AddTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 AddNumberButton_Click(sender, e);
+                SortButton.Enabled = true;
             }
         }
 
@@ -264,8 +306,10 @@ namespace SortAlgorithms
             if (e.KeyCode == Keys.Enter)
             {
                 FillRandomNumbersButton_Click(sender, e);
+                SortButton.Enabled = true;
             }
         }
+
     }
 
 }

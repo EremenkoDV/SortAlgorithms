@@ -47,8 +47,8 @@ namespace Algorithm.DataStructures
                 Node<T> current = Root;
                 while (current != null)
                 {
-                    //if (current.Data.CompareTo(data) > 0)
-                    if (Compare(current.Data, node.Data) > 0) // налево идут элементы меньше текущего
+                    if (current.Data.CompareTo(data) > 0)
+                    //if (Compare(current.Data, node.Data) > 0) // налево идут элементы меньше текущего
                     {
                         if (current.Left != null)
                             current = current.Left;
@@ -70,84 +70,6 @@ namespace Algorithm.DataStructures
                     }
                 }
             }
-        }
-
-        protected override void Sort()
-        {
-            Items = InfixIteration();
-        }
-
-        public bool Remove(T data)
-        {
-            Node<T> node = new Node<T>(data);
-            Node<T> previous = null;
-            Node<T> current = Root;
-            while (current != null)
-            {
-                //if (current.Data.CompareTo(data) > 0)
-                if (current.CompareTo(node) > 0) // налево идут элементы меньше текущего
-                {
-                    if (current.Left != null)
-                    {
-                        previous = current;
-                        current = current.Left;
-                    }
-                }
-                else if (current.CompareTo(node) == 0) // элемент равен текущего - удаление
-                {
-
-                    List<T> prefix = PrefixIteration(current);
-                    prefix.RemoveAt(0);
-
-                    if (previous.CompareTo(node) > 0) // элемент равен текущего - удаление
-                        previous.Left = null;
-                    else
-                        previous.Right = null;
-
-                    foreach (T switchData in prefix)
-                        Add(switchData);
-
-                    return true;
-                }
-                else // направо идут элементы больше текущего
-                {
-                    if (current.Right != null)
-                    {
-                        previous = current;
-                        current = current.Right;
-                    }
-                }
-            }
-            return false;
-        }
-
-        public List<T> PrefixIteration(Node<T> node = null)
-        {
-            List<T> result = new List<T>();
-
-            if (node == null)
-                node = Root;
-
-            result.Add(node.Data);
-
-            if (node.Left != null)
-            {
-                result.AddRange(PrefixIteration(node.Left));
-                //foreach (T data in PrefixIteration(node.Left))
-                //{
-                //    result.Add(data);
-                //}
-            }
-            if (node.Right != null)
-            {
-                result.AddRange(PrefixIteration(node.Right));
-                //foreach (T data in PrefixIteration(node.Right))
-                //{
-                //    result.Add(data);
-                //}
-            }
-
-            return result;
         }
 
         public List<T> InfixIteration(Node<T> node = null)
@@ -180,36 +102,10 @@ namespace Algorithm.DataStructures
             return result;
         }
 
-        public List<T> PostfixIteration(Node<T> node = null)
+        protected override void Sort()
         {
-            List<T> result = new List<T>();
-
-            if (node == null)
-                node = Root;
-
-            if (node.Left != null)
-            {
-                result.AddRange(PostfixIteration(node.Left));
-                //foreach (T data in PostfixIteration(node.Left))
-                //{
-                //    result.Add(data);
-                //}
-            }
-
-            if (node.Right != null)
-            {
-                result.AddRange(PostfixIteration(node.Right));
-                //foreach (T data in PostfixIteration(node.Right))
-                //{
-                //    result.Add(data);
-                //}
-            }
-
-            result.Add(node.Data);
-
-            return result;
+            Items = InfixIteration();
         }
-
 
     }
 }

@@ -17,6 +17,8 @@ namespace SortAlgorithms
 
         public int Value { get; private set; }
 
+        public int Index { get; set; }
+
         private static int indent = 4;
 
         private static int border = 15;
@@ -53,7 +55,6 @@ namespace SortAlgorithms
             VerticalProgressBar.Style = ProgressBarStyle.Continuous;
             VerticalProgressBar.Step = 1;
             VerticalProgressBar.Maximum = 100;
-            VerticalProgressBar.TabIndex = instance;
             VerticalProgressBar.ForeColor = color;
             //VerticalProgressBar.Value = value;
             control.Controls.Add(VerticalProgressBar);
@@ -65,7 +66,6 @@ namespace SortAlgorithms
             Label.Location = new Point(border + (size + indent) * (instance - 1), 114);
             Label.Name = "label" + instance.ToString();
             Label.Size = new Size(size, 13);
-            Label.TabIndex = instance;
             //Label.Text = value.ToString();
             control.Controls.Add(Label);
 
@@ -73,6 +73,11 @@ namespace SortAlgorithms
             Value = value;
             VerticalProgressBar.Value = value;
             Label.Text = value.ToString();
+
+            // Set index
+            Index = instance;
+            VerticalProgressBar.TabIndex = instance;
+            Label.TabIndex = instance;
 
         }
 
@@ -91,6 +96,7 @@ namespace SortAlgorithms
         {
             if (first.VerticalProgressBar != null && second.VerticalProgressBar != null && first != second)
             {
+                // Swap location
                 Point locationFirst = first.VerticalProgressBar.Location;
                 first.VerticalProgressBar.Location = second.VerticalProgressBar.Location;
                 second.VerticalProgressBar.Location = locationFirst;
@@ -98,30 +104,72 @@ namespace SortAlgorithms
                 locationFirst = first.Label.Location;
                 first.Label.Location = second.Label.Location;
                 second.Label.Location = locationFirst;
+
+                // Swap index
+                int index = first.Index;
+                first.Index = second.Index;
+                second.Index = first.Index;
+
+                first.VerticalProgressBar.TabIndex = second.VerticalProgressBar.TabIndex;
+                second.VerticalProgressBar.TabIndex = index;
+
+                first.Label.TabIndex = second.Label.TabIndex;
+                second.Label.TabIndex = index;
+
+                // Swap name
+                string name = first.VerticalProgressBar.Name;
+                first.VerticalProgressBar.Name = second.VerticalProgressBar.Name;
+                second.VerticalProgressBar.Name = name;
+
+                name = first.Label.Name;
+                first.Label.Name = second.Label.Name;
+                second.Label.Name = name;
+
             }
         }
 
-        public static void Replace(Control control, int instances)
+        public static void Remove(SortedItem item)
         {
-            
+            Control control = null;
+            if (item.VerticalProgressBar != null)
+            {
+                control = item.VerticalProgressBar.Parent;
+                control.Controls.Remove(item.VerticalProgressBar);
+            }
+            if (item.Label != null)
+            {
+                if (control == null)
+                {
+                    control = item.Label.Parent;
+                }
+                control.Controls.Remove(item.Label);
+            }
+            item = null;
+            Replace(control);
+        }
+
+        public static void Replace(Control control)
+        {
+            int instances = control.Controls.OfType<VerticalProgressBar>().Count();
             for (int i = 0; i < instances; i++)
             {
                 int value = 0;
-                int size = 0;
+                int controlWidth = control.Width - 2 * border;
+                int size = (controlWidth - (indent * instances)) / instances > 15 ? (int)((controlWidth - (indent * instances)) / instances) : 15;
                 if (control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).Any())
                 {
                     Control subControl = control.Controls["verticalProgressBar" + (i + 1).ToString()];
                     value = (subControl as VerticalProgressBar).Value;
-                    size = (subControl as VerticalProgressBar).Size.Width;
                     subControl.Location = new Point(border + (size + indent) * i, 25);
+                    subControl.Size = new Size(size, 86);
                 }
                 if (control.Controls.Find("label" + (i + 1).ToString(), false).Any())
                 {
                     Control subControl = control.Controls["label" + (i + 1).ToString()];
                     if (value.ToString() == (subControl as Label).Text)
                     {
-                        size = (subControl as Label).Size.Width;
                         subControl.Location = new Point(border + (size + indent) * i, 114);
+                        subControl.Size = new Size(size, 13);
                     }
                 }
             }
@@ -130,9 +178,6 @@ namespace SortAlgorithms
         public void SetColor(Color color)
         {
             VerticalProgressBar.ForeColor = color;
-            //VerticalProgressBar.Refresh();
-//MessageBox.Show(VerticalProgressBar.ForeColor.ToString());
-//MessageBox.Show(VerticalProgressBar.Style.ToString());
         }
 
         public int CompareTo(object obj)

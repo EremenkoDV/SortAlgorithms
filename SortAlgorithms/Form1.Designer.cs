@@ -29,48 +29,105 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ResultTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.RuntimeLabel = new System.Windows.Forms.Label();
+            this.ComparationLabel = new System.Windows.Forms.Label();
+            this.SwapLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AddNumberButton = new System.Windows.Forms.Button();
             this.AddTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.reverseSortCheckBox = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.SpeedTrackBar = new System.Windows.Forms.TrackBar();
             this.FillRandomNumbersButton = new System.Windows.Forms.Button();
             this.FillTextBox = new System.Windows.Forms.TextBox();
             this.VisualPanel = new System.Windows.Forms.Panel();
             this.SortButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.RuntimeLabel = new System.Windows.Forms.Label();
-            this.ComparationLabel = new System.Windows.Forms.Label();
-            this.SwapLabel = new System.Windows.Forms.Label();
-            this.SpeedTrackBar = new System.Windows.Forms.TrackBar();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.ResultTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedTrackBar)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.AddNumberButton);
-            this.panel1.Controls.Add(this.AddTextBox);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Controls.Add(this.ResultTableLayoutPanel);
+            this.panel1.Location = new System.Drawing.Point(12, 277);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(379, 73);
+            this.panel1.Size = new System.Drawing.Size(793, 161);
             this.panel1.TabIndex = 0;
+            // 
+            // ResultTableLayoutPanel
+            // 
+            this.ResultTableLayoutPanel.ColumnCount = 11;
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.ResultTableLayoutPanel.Controls.Add(this.RuntimeLabel, 0, 1);
+            this.ResultTableLayoutPanel.Controls.Add(this.ComparationLabel, 0, 2);
+            this.ResultTableLayoutPanel.Controls.Add(this.SwapLabel, 0, 3);
+            this.ResultTableLayoutPanel.Location = new System.Drawing.Point(4, 4);
+            this.ResultTableLayoutPanel.Name = "ResultTableLayoutPanel";
+            this.ResultTableLayoutPanel.RowCount = 4;
+            this.ResultTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ResultTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ResultTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ResultTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ResultTableLayoutPanel.Size = new System.Drawing.Size(786, 154);
+            this.ResultTableLayoutPanel.TabIndex = 0;
+            // 
+            // RuntimeLabel
+            // 
+            this.RuntimeLabel.AutoSize = true;
+            this.RuntimeLabel.Location = new System.Drawing.Point(3, 38);
+            this.RuntimeLabel.Name = "RuntimeLabel";
+            this.RuntimeLabel.Size = new System.Drawing.Size(106, 13);
+            this.RuntimeLabel.TabIndex = 3;
+            this.RuntimeLabel.Text = "Время выполнения:";
+            // 
+            // ComparationLabel
+            // 
+            this.ComparationLabel.AutoSize = true;
+            this.ComparationLabel.Location = new System.Drawing.Point(3, 76);
+            this.ComparationLabel.Name = "ComparationLabel";
+            this.ComparationLabel.Size = new System.Drawing.Size(127, 13);
+            this.ComparationLabel.TabIndex = 3;
+            this.ComparationLabel.Text = "Количество сравнений:";
+            // 
+            // SwapLabel
+            // 
+            this.SwapLabel.AutoSize = true;
+            this.SwapLabel.Location = new System.Drawing.Point(3, 114);
+            this.SwapLabel.Name = "SwapLabel";
+            this.SwapLabel.Size = new System.Drawing.Size(116, 13);
+            this.SwapLabel.TabIndex = 3;
+            this.SwapLabel.Text = "Количество обменов:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 12);
+            this.label1.Location = new System.Drawing.Point(16, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 2;
@@ -78,7 +135,7 @@
             // 
             // AddNumberButton
             // 
-            this.AddNumberButton.Location = new System.Drawing.Point(286, 25);
+            this.AddNumberButton.Location = new System.Drawing.Point(286, 55);
             this.AddNumberButton.Name = "AddNumberButton";
             this.AddNumberButton.Size = new System.Drawing.Size(75, 23);
             this.AddNumberButton.TabIndex = 1;
@@ -88,30 +145,74 @@
             // 
             // AddTextBox
             // 
-            this.AddTextBox.Location = new System.Drawing.Point(19, 28);
+            this.AddTextBox.Location = new System.Drawing.Point(143, 55);
             this.AddTextBox.Name = "AddTextBox";
-            this.AddTextBox.Size = new System.Drawing.Size(261, 21);
+            this.AddTextBox.Size = new System.Drawing.Size(137, 21);
             this.AddTextBox.TabIndex = 0;
             this.AddTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddTextBox_KeyDown);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.reverseSortCheckBox);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.AddNumberButton);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.AddTextBox);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.SpeedTrackBar);
             this.panel2.Controls.Add(this.FillRandomNumbersButton);
             this.panel2.Controls.Add(this.FillTextBox);
-            this.panel2.Location = new System.Drawing.Point(12, 91);
+            this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(379, 73);
+            this.panel2.Size = new System.Drawing.Size(379, 152);
             this.panel2.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(291, 90);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "замедление";
+            // 
+            // reverseSortCheckBox
+            // 
+            this.reverseSortCheckBox.AutoSize = true;
+            this.reverseSortCheckBox.Location = new System.Drawing.Point(19, 82);
+            this.reverseSortCheckBox.Name = "reverseSortCheckBox";
+            this.reverseSortCheckBox.Size = new System.Drawing.Size(138, 17);
+            this.reverseSortCheckBox.TabIndex = 3;
+            this.reverseSortCheckBox.Text = "Обратная сортировка";
+            this.reverseSortCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(269, 134);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "0 - тест по скорости";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 12);
+            this.label2.Location = new System.Drawing.Point(16, 25);
+            this.label2.MaximumSize = new System.Drawing.Size(130, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(232, 13);
+            this.label2.Size = new System.Drawing.Size(127, 26);
             this.label2.TabIndex = 2;
             this.label2.Text = "Заполнить  коллекцию случайными числами";
+            // 
+            // SpeedTrackBar
+            // 
+            this.SpeedTrackBar.Location = new System.Drawing.Point(272, 105);
+            this.SpeedTrackBar.Name = "SpeedTrackBar";
+            this.SpeedTrackBar.Size = new System.Drawing.Size(104, 42);
+            this.SpeedTrackBar.TabIndex = 4;
+            this.SpeedTrackBar.Value = 1;
             // 
             // FillRandomNumbersButton
             // 
@@ -125,9 +226,9 @@
             // 
             // FillTextBox
             // 
-            this.FillTextBox.Location = new System.Drawing.Point(19, 28);
+            this.FillTextBox.Location = new System.Drawing.Point(143, 28);
             this.FillTextBox.Name = "FillTextBox";
-            this.FillTextBox.Size = new System.Drawing.Size(261, 21);
+            this.FillTextBox.Size = new System.Drawing.Size(137, 21);
             this.FillTextBox.TabIndex = 0;
             this.FillTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FillTextBox_KeyDown);
             // 
@@ -154,6 +255,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.radioButton7);
             this.panel3.Controls.Add(this.radioButton6);
             this.panel3.Controls.Add(this.radioButton5);
             this.panel3.Controls.Add(this.radioButton4);
@@ -165,6 +267,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(379, 100);
             this.panel3.TabIndex = 2;
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Location = new System.Drawing.Point(102, 50);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(88, 17);
+            this.radioButton7.TabIndex = 2;
+            this.radioButton7.Text = "SelectionSort";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
             // 
             // radioButton6
             // 
@@ -234,85 +347,35 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // RuntimeLabel
+            // panel4
             // 
-            this.RuntimeLabel.AutoSize = true;
-            this.RuntimeLabel.Location = new System.Drawing.Point(397, 171);
-            this.RuntimeLabel.Name = "RuntimeLabel";
-            this.RuntimeLabel.Size = new System.Drawing.Size(106, 13);
-            this.RuntimeLabel.TabIndex = 3;
-            this.RuntimeLabel.Text = "Время выполнения:";
-            // 
-            // ComparationLabel
-            // 
-            this.ComparationLabel.AutoSize = true;
-            this.ComparationLabel.Location = new System.Drawing.Point(397, 198);
-            this.ComparationLabel.Name = "ComparationLabel";
-            this.ComparationLabel.Size = new System.Drawing.Size(127, 13);
-            this.ComparationLabel.TabIndex = 3;
-            this.ComparationLabel.Text = "Количество сравнений:";
-            // 
-            // SwapLabel
-            // 
-            this.SwapLabel.AutoSize = true;
-            this.SwapLabel.Location = new System.Drawing.Point(397, 225);
-            this.SwapLabel.Name = "SwapLabel";
-            this.SwapLabel.Size = new System.Drawing.Size(116, 13);
-            this.SwapLabel.TabIndex = 3;
-            this.SwapLabel.Text = "Количество обменов:";
-            // 
-            // SpeedTrackBar
-            // 
-            this.SpeedTrackBar.Location = new System.Drawing.Point(701, 186);
-            this.SpeedTrackBar.Name = "SpeedTrackBar";
-            this.SpeedTrackBar.Size = new System.Drawing.Size(104, 42);
-            this.SpeedTrackBar.TabIndex = 4;
-            this.SpeedTrackBar.Value = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(698, 215);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "0 - тест по скорости";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(720, 171);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "замедление";
+            this.panel4.Location = new System.Drawing.Point(398, 171);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(408, 100);
+            this.panel4.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 450);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.SpeedTrackBar);
-            this.Controls.Add(this.SwapLabel);
-            this.Controls.Add(this.ComparationLabel);
-            this.Controls.Add(this.RuntimeLabel);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.VisualPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Shown += new System.EventHandler(this.AfterLoad);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.ResultTableLayoutPanel.ResumeLayout(false);
+            this.ResultTableLayoutPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpeedTrackBar)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpeedTrackBar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -341,6 +404,10 @@
         private System.Windows.Forms.TrackBar SpeedTrackBar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.CheckBox reverseSortCheckBox;
+        private System.Windows.Forms.TableLayoutPanel ResultTableLayoutPanel;
+        private System.Windows.Forms.Panel panel4;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar

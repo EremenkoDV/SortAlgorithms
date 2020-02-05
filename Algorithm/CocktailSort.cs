@@ -25,7 +25,7 @@ namespace Algorithm
 
                 for (int i = left; i < right; i++)
                 {
-                    if (Compare(Items[i], Items[i + 1]) == (IsAscending ? 1 : -1))
+                    if (Compare(i, i + 1) == (IsAscending ? 1 : -1))
                     {
                         Swap(i, i + 1);
                     }
@@ -39,7 +39,7 @@ namespace Algorithm
 
                 for (int i = right; i > left; i--)
                 {
-                    if (Compare(Items[i], Items[i - 1]) == (IsAscending ? -1 : 1))
+                    if (Compare(i, i - 1) == (IsAscending ? -1 : 1))
                     {
                         Swap(i, i - 1);
                     }
