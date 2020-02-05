@@ -26,13 +26,9 @@ namespace SortAlgorithms
         public Form1()
         {
             InitializeComponent();
-
-            RuntimeLabel.Text = "";
-            ComparationLabel.Text = "";
-            SwapLabel.Text = "";
         }
 
-        private void AfterLoad(object sender, EventArgs e)
+        private void AfterShown(object sender, EventArgs e)
         {
             FillTextBox.Focus();
         }
@@ -41,84 +37,117 @@ namespace SortAlgorithms
         {
             if (sortedItemsCount > 0)
             {
-                int sortMethodNumber = 0;
-                AlgorithmBase<SortedItem> algorithm = new AlgorithmBase<SortedItem>();
-                foreach (RadioButton radioButton in panel3.Controls.OfType<RadioButton>())
-                {
-                    if (radioButton.Checked)
-                    {
-                        switch (radioButton.Name)
-                        {
-                            case "radioButton1":
-                                sortMethodNumber = 1;
-                                algorithm = new BubbleSort<SortedItem>();
-                                break;
-                            case "radioButton2":
-                                sortMethodNumber = 2;
-                                algorithm = new CocktailSort<SortedItem>();
-                                break;
-                            case "radioButton3":
-                                sortMethodNumber = 3;
-                                algorithm = new InsertionSort<SortedItem>();
-                                break;
-                            case "radioButton4":
-                                sortMethodNumber = 4;
-                                algorithm = new ShellSort<SortedItem>();
-                                break;
-                            case "radioButton5":
-                                sortMethodNumber = 5;
-                                algorithm = new Algorithm.DataStructures.Tree<SortedItem>();
-                                break;
-                            case "radioButton6":
-                                sortMethodNumber = 6;
-                                algorithm = new Algorithm.DataStructures.Heap<SortedItem>();
-                                break;
-                            case "radioButton7":
-                                sortMethodNumber = 7;
-                                algorithm = new SelectionSort<SortedItem>();
-                                break;
-                            default:
-                                algorithm = new BubbleSort<SortedItem>();
-                                break;
-                        }
-                        //MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
-                        break;
-                    }
-                }
+                (sender as Button).Enabled = false;
 
-                if (SpeedTrackBar.Value > 0)
-                {
-                    algorithm.CompareEvent += AlgorithmCompareEvent;
-                    algorithm.SwapEvent += AlgorithmSwapEvent;
-                    algorithm.RemoveEvent += AlgorithmRemoveEvent;
-                }
+                int methods = 1;
+                testsLabel.ForeColor = SystemColors.ControlText;
+                testsLabel.BackColor = SystemColors.Control;
 
-                if (reverseSortCheckBox.Checked)
+                if (SpeedTrackBar.Value == 0)
                 {
-                    algorithm.IsAscending = false;
-                }
-
-                algorithm.AddRange(items);
-                TimeSpan runTime = algorithm.SortAndGetSpan();
-
-                if (sortMethodNumber == 6)
-                {
+                    methods = 7;
                     VisualPanel.Controls.Clear();
-                    sortedItemsCount = 0;
-                    for (int i = 0; i < algorithm.Items.Count; i++)
+                    testsLabel.ForeColor = SystemColors.ControlLight;
+                    testsLabel.BackColor = Color.DarkRed;
+                }
+
+                for (int methodNumber = 1; methodNumber <= methods; methodNumber++)
+                {
+
+                    Label label = new Label();
+                    AlgorithmBase<SortedItem> algorithm = new AlgorithmBase<SortedItem>();
+
+                    if (SpeedTrackBar.Value > 0)
                     {
-                        SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, algorithm.Items[i].Value);
+                        foreach (RadioButton radioButton in panel3.Controls.OfType<RadioButton>())
+                        {
+                            if (radioButton.Checked)
+                            {
+                                if (!Int32.TryParse(radioButton.Name.Substring(radioButton.Name.Length - 1), out methodNumber))
+                                {
+                                    methodNumber = 1;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    else if (methodNumber > 1)
+                    {
+                        RefillItems();
+                    }
+
+                    switch (methodNumber)
+                    {
+                        case 1:
+                            algorithm = new BubbleSort<SortedItem>();
+                            break;
+                        case 2:
+                            algorithm = new CocktailSort<SortedItem>();
+                            break;
+                        case 3:
+                            algorithm = new InsertionSort<SortedItem>();
+                            break;
+                        case 4:
+                            algorithm = new ShellSort<SortedItem>();
+                            break;
+                        case 5:
+                            algorithm = new Algorithm.DataStructures.Tree<SortedItem>();
+                            break;
+                        case 6:
+                            algorithm = new Algorithm.DataStructures.Heap<SortedItem>();
+                            break;
+                        case 7:
+                            algorithm = new SelectionSort<SortedItem>();
+                            break;
+                        default:
+                            algorithm = new BubbleSort<SortedItem>();
+                            break;
+                    }
+                    //MessageBox.Show("Вы выбрали метод сортировки " + radioButton.Text);
+
+                    if (SpeedTrackBar.Value > 0)
+                    {
+                        algorithm.CompareEvent += AlgorithmCompareEvent;
+                        algorithm.SwapEvent += AlgorithmSwapEvent;
+                        algorithm.RemoveEvent += AlgorithmRemoveEvent;
+                    }
+                    else
+                    {
+                        label.Name = "label_" + methodNumber.ToString();
+                        label.Text = "Идет сортировка " + items.Count.ToString() + "-элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " ...";
+                        VisualPanel.Controls.Add(label);
+                    }
+
+                    if (reverseSortCheckBox.Checked)
+                    {
+                        algorithm.IsAscending = false;
+                    }
+
+                    algorithm.AddRange(items);
+                    TimeSpan runTime = algorithm.SortAndGetSpan();
+
+                    if (SpeedTrackBar.Value > 0 && methodNumber == 6)
+                    {
+                        VisualPanel.Controls.Clear();
+                        sortedItemsCount = 0;
+                        for (int i = 0; i < algorithm.Items.Count; i++)
+                        {
+                            SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, algorithm.Items[i].Value);
+                            VisualPanel.Refresh();
+                        }
                         VisualPanel.Refresh();
                     }
-                    VisualPanel.Refresh();
+
+                    label.Text = "Сортировка " + items.Count.ToString() + "-элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " завершена.";
+
+                    ResultTableLayoutPanel.Controls["label_" + methodNumber.ToString() + "1"].Text = runTime.Seconds.ToString() + "." + runTime.Milliseconds.ToString();
+                    ResultTableLayoutPanel.Controls["label_" + methodNumber.ToString() + "2"].Text = algorithm.ComparisonCount.ToString();
+                    ResultTableLayoutPanel.Controls["label_" + methodNumber.ToString() + "3"].Text = algorithm.SwapCount.ToString();
+
                 }
 
-                ResultTableLayoutPanel.ce
-                RuntimeLabel.Text = "Время выполнения: " + runTime.Seconds.ToString() + "." + runTime.Milliseconds.ToString() + " с.";
-                ComparationLabel.Text = "Количество сравнений: " + algorithm.ComparisonCount.ToString();
-                SwapLabel.Text = "Количество обменов: " + algorithm.SwapCount.ToString();
+                SpeedTrackBar.Enabled = true;
 
-                (sender as Button).Enabled = false;
             }
         }
 
@@ -126,8 +155,8 @@ namespace SortAlgorithms
         {
             if (SpeedTrackBar.Value > 0)
             {
-                e.Item1.SetColor(Color.Red);
-                e.Item2.SetColor(Color.Green);
+                e.Item1.SetColor(Color.Green);
+                e.Item2.SetColor(Color.Yellow);
 
                 VisualPanel.Refresh();
 
@@ -144,13 +173,14 @@ namespace SortAlgorithms
         {
             if (SpeedTrackBar.Value > 0)
             {
-                SortedItem.SwapPosition(e.Item1, e.Item2);
-                e.Item1.SetColor(Color.Green);
+                e.Item1.SetColor(Color.Red);
                 e.Item2.SetColor(Color.Red);
 
                 VisualPanel.Refresh();
 
-                //System.Threading.Thread.Sleep(500);
+                SortedItem.SwapPosition(e.Item1, e.Item2);
+
+                System.Threading.Thread.Sleep(50 * SpeedTrackBar.Value - 1);
 
                 e.Item1.SetColor(Color.Blue);
                 e.Item2.SetColor(Color.Blue);
@@ -163,6 +193,10 @@ namespace SortAlgorithms
         {
             if (SpeedTrackBar.Value > 0)
             {
+                e.SetColor(Color.Black);
+
+                VisualPanel.Refresh();
+
                 SortedItem.Remove(e);
 
                 VisualPanel.Refresh();
@@ -185,8 +219,6 @@ namespace SortAlgorithms
                 SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, value);
                 items.Add(item);
                 values.Add(value);
-                //panel3.Controls.Add(item.VerticalProgressBar);
-                //panel3.Controls.Add(item.Label);
             }
             AddTextBox.Text = "";
             AddTextBox.Focus();
@@ -195,25 +227,36 @@ namespace SortAlgorithms
         private void FillRandomNumbersButton_Click(object sender, EventArgs e)
         {
 
-            if (int.TryParse(FillTextBox.Text, out int value) && value <= maxSortedItemsCount)
+            if (int.TryParse(FillTextBox.Text, out int numbers))
             {
-                VisualPanel.Controls.Clear();
-                sortedItemsCount = 0;
-                items.Clear();
-                values.Clear();
-
-                Random rnd = new Random();
-                for (int i = 0; i < value; i++)
+                if (SpeedTrackBar.Value > 0 && numbers <= maxSortedItemsCount || SpeedTrackBar.Value == 0)
                 {
-                    SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, rnd.Next(0, maxValue));
-                    items.Add(item);
-                    values.Add(item.Value);
-                    //VisualPanel.Controls.Add(item.VerticalProgressBar);
-                    //VisualPanel.Controls.Add(item.Label);
+                    VisualPanel.Controls.Clear();
+                    sortedItemsCount = 0;
+                    items.Clear();
+                    values.Clear();
+
+                    if (SpeedTrackBar.Value == 0)
+                    {
+                        SpeedTrackBar.Enabled = false;
+                    }
+
+                    int value;
+                    Random rnd = new Random();
+                    for (int i = 0; i < numbers; i++)
+                    {
+                        value = rnd.Next(0, maxValue);
+                        values.Add(value);
+                        if (SpeedTrackBar.Value > 0)
+                        {
+                            SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, value);
+                            items.Add(item);
+                        }
+                    }
+                    FillTextBox.Text = "";
+                    FillTextBox.Focus();
                 }
             }
-            FillTextBox.Text = "";
-            FillTextBox.Focus();
         }
 
         private void RefillItems()
@@ -223,9 +266,12 @@ namespace SortAlgorithms
             items.Clear();
             for (int i = 0; i < values.Count; i++)
             {
-                SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, values[i]);
-                VisualPanel.Refresh();
-                items.Add(item);
+                if (SpeedTrackBar.Value > 0)
+                {
+                    SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, values[i]);
+                    VisualPanel.Refresh();
+                    items.Add(item);
+                }
             }
 //MessageBox.Show($"Количество items {items.Count} : {sortedItemsCount}");
             VisualPanel.Refresh();
