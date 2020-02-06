@@ -20,7 +20,7 @@ namespace Algorithm.Tests
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 1000000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 items.Add(rnd.Next(0, 1000));
             }
@@ -155,6 +155,22 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], selection.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void GnomeSortTest()
+        {
+            // arrange
+            AlgorithmBase<int> gnome = new GnomeSort<int>(items);
+
+            // act
+            gnome.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], gnome.Items[i]);
             }
         }
 

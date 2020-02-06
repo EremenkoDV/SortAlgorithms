@@ -95,6 +95,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.ResultTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -104,6 +105,8 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.ResultTableLayoutPanel);
             this.panel1.Location = new System.Drawing.Point(12, 277);
             this.panel1.Name = "panel1";
@@ -182,7 +185,7 @@
             this.ComparationLabel.AutoSize = true;
             this.ComparationLabel.Location = new System.Drawing.Point(3, 76);
             this.ComparationLabel.Name = "ComparationLabel";
-            this.ComparationLabel.Size = new System.Drawing.Size(126, 13);
+            this.ComparationLabel.Size = new System.Drawing.Size(127, 13);
             this.ComparationLabel.TabIndex = 3;
             this.ComparationLabel.Text = "Количество сравнений:";
             // 
@@ -200,7 +203,7 @@
             this.RuntimeLabel.AutoSize = true;
             this.RuntimeLabel.Location = new System.Drawing.Point(3, 38);
             this.RuntimeLabel.Name = "RuntimeLabel";
-            this.RuntimeLabel.Size = new System.Drawing.Size(120, 13);
+            this.RuntimeLabel.Size = new System.Drawing.Size(118, 13);
             this.RuntimeLabel.TabIndex = 3;
             this.RuntimeLabel.Text = "Время выполнения, с:";
             // 
@@ -209,7 +212,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(139, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 26);
+            this.label5.Size = new System.Drawing.Size(42, 26);
             this.label5.TabIndex = 3;
             this.label5.Text = "Bubble Sort";
             // 
@@ -218,7 +221,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(204, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 26);
+            this.label6.Size = new System.Drawing.Size(47, 26);
             this.label6.TabIndex = 3;
             this.label6.Text = "Cocktail Sort";
             // 
@@ -227,7 +230,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(269, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 26);
+            this.label7.Size = new System.Drawing.Size(53, 26);
             this.label7.TabIndex = 3;
             this.label7.Text = "Insertion Sort";
             // 
@@ -245,7 +248,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(399, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 13);
+            this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 3;
             this.label9.Text = "Tree Sort";
             // 
@@ -263,7 +266,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(529, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 26);
+            this.label11.Size = new System.Drawing.Size(53, 26);
             this.label11.TabIndex = 3;
             this.label11.Text = "Selection Sort";
             // 
@@ -272,7 +275,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(594, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 26);
+            this.label12.Size = new System.Drawing.Size(43, 26);
             this.label12.TabIndex = 3;
             this.label12.Text = "Gnome Sort";
             // 
@@ -281,7 +284,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(659, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 13);
+            this.label13.Size = new System.Drawing.Size(57, 13);
             this.label13.TabIndex = 3;
             this.label13.Text = "Radix Sort";
             // 
@@ -290,7 +293,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(724, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
+            this.label14.Size = new System.Drawing.Size(56, 13);
             this.label14.TabIndex = 3;
             this.label14.Text = "Quick Sort";
             // 
@@ -299,7 +302,7 @@
             this.label_11.AutoSize = true;
             this.label_11.Location = new System.Drawing.Point(139, 38);
             this.label_11.Name = "label_11";
-            this.label_11.Size = new System.Drawing.Size(10, 13);
+            this.label_11.Size = new System.Drawing.Size(11, 13);
             this.label_11.TabIndex = 3;
             this.label_11.Text = "-";
             // 
@@ -308,7 +311,7 @@
             this.label_12.AutoSize = true;
             this.label_12.Location = new System.Drawing.Point(139, 76);
             this.label_12.Name = "label_12";
-            this.label_12.Size = new System.Drawing.Size(10, 13);
+            this.label_12.Size = new System.Drawing.Size(11, 13);
             this.label_12.TabIndex = 3;
             this.label_12.Text = "-";
             // 
@@ -317,7 +320,7 @@
             this.label_13.AutoSize = true;
             this.label_13.Location = new System.Drawing.Point(139, 114);
             this.label_13.Name = "label_13";
-            this.label_13.Size = new System.Drawing.Size(10, 13);
+            this.label_13.Size = new System.Drawing.Size(11, 13);
             this.label_13.TabIndex = 3;
             this.label_13.Text = "-";
             // 
@@ -326,7 +329,7 @@
             this.label_21.AutoSize = true;
             this.label_21.Location = new System.Drawing.Point(204, 38);
             this.label_21.Name = "label_21";
-            this.label_21.Size = new System.Drawing.Size(10, 13);
+            this.label_21.Size = new System.Drawing.Size(11, 13);
             this.label_21.TabIndex = 3;
             this.label_21.Text = "-";
             // 
@@ -335,7 +338,7 @@
             this.label_22.AutoSize = true;
             this.label_22.Location = new System.Drawing.Point(204, 76);
             this.label_22.Name = "label_22";
-            this.label_22.Size = new System.Drawing.Size(10, 13);
+            this.label_22.Size = new System.Drawing.Size(11, 13);
             this.label_22.TabIndex = 3;
             this.label_22.Text = "-";
             // 
@@ -344,7 +347,7 @@
             this.label_23.AutoSize = true;
             this.label_23.Location = new System.Drawing.Point(204, 114);
             this.label_23.Name = "label_23";
-            this.label_23.Size = new System.Drawing.Size(10, 13);
+            this.label_23.Size = new System.Drawing.Size(11, 13);
             this.label_23.TabIndex = 3;
             this.label_23.Text = "-";
             // 
@@ -353,7 +356,7 @@
             this.label_31.AutoSize = true;
             this.label_31.Location = new System.Drawing.Point(269, 38);
             this.label_31.Name = "label_31";
-            this.label_31.Size = new System.Drawing.Size(10, 13);
+            this.label_31.Size = new System.Drawing.Size(11, 13);
             this.label_31.TabIndex = 3;
             this.label_31.Text = "-";
             // 
@@ -362,7 +365,7 @@
             this.label_32.AutoSize = true;
             this.label_32.Location = new System.Drawing.Point(269, 76);
             this.label_32.Name = "label_32";
-            this.label_32.Size = new System.Drawing.Size(10, 13);
+            this.label_32.Size = new System.Drawing.Size(11, 13);
             this.label_32.TabIndex = 3;
             this.label_32.Text = "-";
             // 
@@ -371,7 +374,7 @@
             this.label_33.AutoSize = true;
             this.label_33.Location = new System.Drawing.Point(269, 114);
             this.label_33.Name = "label_33";
-            this.label_33.Size = new System.Drawing.Size(10, 13);
+            this.label_33.Size = new System.Drawing.Size(11, 13);
             this.label_33.TabIndex = 3;
             this.label_33.Text = "-";
             // 
@@ -380,7 +383,7 @@
             this.label_41.AutoSize = true;
             this.label_41.Location = new System.Drawing.Point(334, 38);
             this.label_41.Name = "label_41";
-            this.label_41.Size = new System.Drawing.Size(10, 13);
+            this.label_41.Size = new System.Drawing.Size(11, 13);
             this.label_41.TabIndex = 3;
             this.label_41.Text = "-";
             // 
@@ -389,7 +392,7 @@
             this.label_42.AutoSize = true;
             this.label_42.Location = new System.Drawing.Point(334, 76);
             this.label_42.Name = "label_42";
-            this.label_42.Size = new System.Drawing.Size(10, 13);
+            this.label_42.Size = new System.Drawing.Size(11, 13);
             this.label_42.TabIndex = 3;
             this.label_42.Text = "-";
             // 
@@ -398,7 +401,7 @@
             this.label_43.AutoSize = true;
             this.label_43.Location = new System.Drawing.Point(334, 114);
             this.label_43.Name = "label_43";
-            this.label_43.Size = new System.Drawing.Size(10, 13);
+            this.label_43.Size = new System.Drawing.Size(11, 13);
             this.label_43.TabIndex = 3;
             this.label_43.Text = "-";
             // 
@@ -407,7 +410,7 @@
             this.label_51.AutoSize = true;
             this.label_51.Location = new System.Drawing.Point(399, 38);
             this.label_51.Name = "label_51";
-            this.label_51.Size = new System.Drawing.Size(10, 13);
+            this.label_51.Size = new System.Drawing.Size(11, 13);
             this.label_51.TabIndex = 3;
             this.label_51.Text = "-";
             // 
@@ -416,7 +419,7 @@
             this.label_52.AutoSize = true;
             this.label_52.Location = new System.Drawing.Point(399, 76);
             this.label_52.Name = "label_52";
-            this.label_52.Size = new System.Drawing.Size(10, 13);
+            this.label_52.Size = new System.Drawing.Size(11, 13);
             this.label_52.TabIndex = 3;
             this.label_52.Text = "-";
             // 
@@ -425,7 +428,7 @@
             this.label_53.AutoSize = true;
             this.label_53.Location = new System.Drawing.Point(399, 114);
             this.label_53.Name = "label_53";
-            this.label_53.Size = new System.Drawing.Size(10, 13);
+            this.label_53.Size = new System.Drawing.Size(11, 13);
             this.label_53.TabIndex = 3;
             this.label_53.Text = "-";
             // 
@@ -434,7 +437,7 @@
             this.label_61.AutoSize = true;
             this.label_61.Location = new System.Drawing.Point(464, 38);
             this.label_61.Name = "label_61";
-            this.label_61.Size = new System.Drawing.Size(10, 13);
+            this.label_61.Size = new System.Drawing.Size(11, 13);
             this.label_61.TabIndex = 3;
             this.label_61.Text = "-";
             // 
@@ -443,7 +446,7 @@
             this.label_62.AutoSize = true;
             this.label_62.Location = new System.Drawing.Point(464, 76);
             this.label_62.Name = "label_62";
-            this.label_62.Size = new System.Drawing.Size(10, 13);
+            this.label_62.Size = new System.Drawing.Size(11, 13);
             this.label_62.TabIndex = 3;
             this.label_62.Text = "-";
             // 
@@ -452,7 +455,7 @@
             this.label_63.AutoSize = true;
             this.label_63.Location = new System.Drawing.Point(464, 114);
             this.label_63.Name = "label_63";
-            this.label_63.Size = new System.Drawing.Size(10, 13);
+            this.label_63.Size = new System.Drawing.Size(11, 13);
             this.label_63.TabIndex = 3;
             this.label_63.Text = "-";
             // 
@@ -461,7 +464,7 @@
             this.label_71.AutoSize = true;
             this.label_71.Location = new System.Drawing.Point(529, 38);
             this.label_71.Name = "label_71";
-            this.label_71.Size = new System.Drawing.Size(10, 13);
+            this.label_71.Size = new System.Drawing.Size(11, 13);
             this.label_71.TabIndex = 3;
             this.label_71.Text = "-";
             // 
@@ -470,7 +473,7 @@
             this.label_72.AutoSize = true;
             this.label_72.Location = new System.Drawing.Point(529, 76);
             this.label_72.Name = "label_72";
-            this.label_72.Size = new System.Drawing.Size(10, 13);
+            this.label_72.Size = new System.Drawing.Size(11, 13);
             this.label_72.TabIndex = 3;
             this.label_72.Text = "-";
             // 
@@ -479,7 +482,7 @@
             this.label_73.AutoSize = true;
             this.label_73.Location = new System.Drawing.Point(529, 114);
             this.label_73.Name = "label_73";
-            this.label_73.Size = new System.Drawing.Size(10, 13);
+            this.label_73.Size = new System.Drawing.Size(11, 13);
             this.label_73.TabIndex = 3;
             this.label_73.Text = "-";
             // 
@@ -488,7 +491,7 @@
             this.label_81.AutoSize = true;
             this.label_81.Location = new System.Drawing.Point(594, 38);
             this.label_81.Name = "label_81";
-            this.label_81.Size = new System.Drawing.Size(10, 13);
+            this.label_81.Size = new System.Drawing.Size(11, 13);
             this.label_81.TabIndex = 3;
             this.label_81.Text = "-";
             // 
@@ -497,7 +500,7 @@
             this.label_82.AutoSize = true;
             this.label_82.Location = new System.Drawing.Point(594, 76);
             this.label_82.Name = "label_82";
-            this.label_82.Size = new System.Drawing.Size(10, 13);
+            this.label_82.Size = new System.Drawing.Size(11, 13);
             this.label_82.TabIndex = 3;
             this.label_82.Text = "-";
             // 
@@ -506,7 +509,7 @@
             this.label_83.AutoSize = true;
             this.label_83.Location = new System.Drawing.Point(594, 114);
             this.label_83.Name = "label_83";
-            this.label_83.Size = new System.Drawing.Size(10, 13);
+            this.label_83.Size = new System.Drawing.Size(11, 13);
             this.label_83.TabIndex = 3;
             this.label_83.Text = "-";
             // 
@@ -515,7 +518,7 @@
             this.label_91.AutoSize = true;
             this.label_91.Location = new System.Drawing.Point(659, 38);
             this.label_91.Name = "label_91";
-            this.label_91.Size = new System.Drawing.Size(10, 13);
+            this.label_91.Size = new System.Drawing.Size(11, 13);
             this.label_91.TabIndex = 3;
             this.label_91.Text = "-";
             // 
@@ -524,7 +527,7 @@
             this.label_92.AutoSize = true;
             this.label_92.Location = new System.Drawing.Point(659, 76);
             this.label_92.Name = "label_92";
-            this.label_92.Size = new System.Drawing.Size(10, 13);
+            this.label_92.Size = new System.Drawing.Size(11, 13);
             this.label_92.TabIndex = 3;
             this.label_92.Text = "-";
             // 
@@ -533,7 +536,7 @@
             this.label_93.AutoSize = true;
             this.label_93.Location = new System.Drawing.Point(659, 114);
             this.label_93.Name = "label_93";
-            this.label_93.Size = new System.Drawing.Size(10, 13);
+            this.label_93.Size = new System.Drawing.Size(11, 13);
             this.label_93.TabIndex = 3;
             this.label_93.Text = "-";
             // 
@@ -542,7 +545,7 @@
             this.label_101.AutoSize = true;
             this.label_101.Location = new System.Drawing.Point(724, 38);
             this.label_101.Name = "label_101";
-            this.label_101.Size = new System.Drawing.Size(10, 13);
+            this.label_101.Size = new System.Drawing.Size(11, 13);
             this.label_101.TabIndex = 3;
             this.label_101.Text = "-";
             // 
@@ -551,7 +554,7 @@
             this.label_102.AutoSize = true;
             this.label_102.Location = new System.Drawing.Point(724, 76);
             this.label_102.Name = "label_102";
-            this.label_102.Size = new System.Drawing.Size(10, 13);
+            this.label_102.Size = new System.Drawing.Size(11, 13);
             this.label_102.TabIndex = 3;
             this.label_102.Text = "-";
             // 
@@ -560,7 +563,7 @@
             this.label_103.AutoSize = true;
             this.label_103.Location = new System.Drawing.Point(724, 114);
             this.label_103.Name = "label_103";
-            this.label_103.Size = new System.Drawing.Size(10, 13);
+            this.label_103.Size = new System.Drawing.Size(11, 13);
             this.label_103.TabIndex = 3;
             this.label_103.Text = "-";
             // 
@@ -587,7 +590,7 @@
             // 
             this.AddTextBox.Location = new System.Drawing.Point(143, 55);
             this.AddTextBox.Name = "AddTextBox";
-            this.AddTextBox.Size = new System.Drawing.Size(137, 20);
+            this.AddTextBox.Size = new System.Drawing.Size(137, 21);
             this.AddTextBox.TabIndex = 0;
             this.AddTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddTextBox_KeyDown);
             // 
@@ -613,7 +616,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(291, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "замедление";
             // 
@@ -622,7 +625,7 @@
             this.reverseSortCheckBox.AutoSize = true;
             this.reverseSortCheckBox.Location = new System.Drawing.Point(19, 82);
             this.reverseSortCheckBox.Name = "reverseSortCheckBox";
-            this.reverseSortCheckBox.Size = new System.Drawing.Size(137, 17);
+            this.reverseSortCheckBox.Size = new System.Drawing.Size(138, 17);
             this.reverseSortCheckBox.TabIndex = 3;
             this.reverseSortCheckBox.Text = "Обратная сортировка";
             this.reverseSortCheckBox.UseVisualStyleBackColor = true;
@@ -645,7 +648,7 @@
             this.label2.Location = new System.Drawing.Point(16, 25);
             this.label2.MaximumSize = new System.Drawing.Size(130, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 26);
+            this.label2.Size = new System.Drawing.Size(127, 26);
             this.label2.TabIndex = 2;
             this.label2.Text = "Заполнить  коллекцию случайными числами";
             // 
@@ -653,9 +656,10 @@
             // 
             this.SpeedTrackBar.Location = new System.Drawing.Point(272, 105);
             this.SpeedTrackBar.Name = "SpeedTrackBar";
-            this.SpeedTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.SpeedTrackBar.Size = new System.Drawing.Size(104, 42);
             this.SpeedTrackBar.TabIndex = 4;
             this.SpeedTrackBar.Value = 1;
+            this.SpeedTrackBar.ValueChanged += new System.EventHandler(this.SpeedTrackBar_ValueChanged);
             // 
             // FillRandomNumbersButton
             // 
@@ -671,7 +675,7 @@
             // 
             this.FillTextBox.Location = new System.Drawing.Point(143, 28);
             this.FillTextBox.Name = "FillTextBox";
-            this.FillTextBox.Size = new System.Drawing.Size(137, 20);
+            this.FillTextBox.Size = new System.Drawing.Size(137, 21);
             this.FillTextBox.TabIndex = 0;
             this.FillTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FillTextBox_KeyDown);
             // 
@@ -698,6 +702,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.radioButton8);
             this.panel3.Controls.Add(this.radioButton7);
             this.panel3.Controls.Add(this.radioButton6);
             this.panel3.Controls.Add(this.radioButton5);
@@ -738,7 +743,7 @@
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(102, 4);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(66, 17);
+            this.radioButton5.Size = new System.Drawing.Size(67, 17);
             this.radioButton5.TabIndex = 2;
             this.radioButton5.Text = "TreeSort";
             this.radioButton5.UseVisualStyleBackColor = true;
@@ -760,7 +765,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(19, 50);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(84, 17);
+            this.radioButton3.Size = new System.Drawing.Size(88, 17);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.Text = "InsertionSort";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -797,6 +802,17 @@
             this.panel4.Size = new System.Drawing.Size(408, 100);
             this.panel4.TabIndex = 0;
             // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(102, 73);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(78, 17);
+            this.radioButton8.TabIndex = 2;
+            this.radioButton8.Text = "GnomeSort";
+            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,7 +825,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Shown += new System.EventHandler(this.AfterShown);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel1.ResumeLayout(false);
             this.ResultTableLayoutPanel.ResumeLayout(false);
             this.ResultTableLayoutPanel.PerformLayout();
@@ -891,6 +907,7 @@
         private System.Windows.Forms.Label label_101;
         private System.Windows.Forms.Label label_102;
         private System.Windows.Forms.Label label_103;
+        private System.Windows.Forms.RadioButton radioButton8;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar

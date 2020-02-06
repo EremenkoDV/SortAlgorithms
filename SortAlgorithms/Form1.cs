@@ -28,7 +28,7 @@ namespace SortAlgorithms
             InitializeComponent();
         }
 
-        private void AfterShown(object sender, EventArgs e)
+        private void Form1_Shown(object sender, EventArgs e)
         {
             FillTextBox.Focus();
         }
@@ -40,15 +40,11 @@ namespace SortAlgorithms
                 (sender as Button).Enabled = false;
 
                 int methods = 1;
-                testsLabel.ForeColor = SystemColors.ControlText;
-                testsLabel.BackColor = SystemColors.Control;
 
                 if (SpeedTrackBar.Value == 0)
                 {
-                    methods = 7;
+                    methods = 8;
                     VisualPanel.Controls.Clear();
-                    testsLabel.ForeColor = SystemColors.ControlLight;
-                    testsLabel.BackColor = Color.DarkRed;
                 }
 
                 for (int methodNumber = 1; methodNumber <= methods; methodNumber++)
@@ -99,6 +95,9 @@ namespace SortAlgorithms
                         case 7:
                             algorithm = new SelectionSort<SortedItem>();
                             break;
+                        case 8:
+                            algorithm = new GnomeSort<SortedItem>();
+                            break;
                         default:
                             algorithm = new BubbleSort<SortedItem>();
                             break;
@@ -114,8 +113,11 @@ namespace SortAlgorithms
                     else
                     {
                         label.Name = "label_" + methodNumber.ToString();
-                        label.Text = "Идет сортировка " + items.Count.ToString() + "-элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " ...";
+                        label.Text = "Идет сортировка массива из " + items.Count.ToString() + " элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " ...";
+                        label.AutoSize = true;
+                        label.Location = new Point(5, 15 * (methodNumber - 1));
                         VisualPanel.Controls.Add(label);
+                        VisualPanel.Refresh();
                     }
 
                     if (reverseSortCheckBox.Checked)
@@ -138,12 +140,13 @@ namespace SortAlgorithms
                         VisualPanel.Refresh();
                     }
 
-                    label.Text = "Сортировка " + items.Count.ToString() + "-элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " завершена.";
+                    label.Text = "Сортировка " + items.Count.ToString() + " элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " завершена.";
 
                     ResultTableLayoutPanel.Controls["label_" + methodNumber.ToString() + "1"].Text = runTime.Seconds.ToString() + "." + runTime.Milliseconds.ToString();
                     ResultTableLayoutPanel.Controls["label_" + methodNumber.ToString() + "2"].Text = algorithm.ComparisonCount.ToString();
                     ResultTableLayoutPanel.Controls["label_" + methodNumber.ToString() + "3"].Text = algorithm.SwapCount.ToString();
 
+                    VisualPanel.Refresh();
                 }
 
                 SpeedTrackBar.Enabled = true;
@@ -231,11 +234,6 @@ namespace SortAlgorithms
             {
                 if (SpeedTrackBar.Value > 0 && numbers <= maxSortedItemsCount || SpeedTrackBar.Value == 0)
                 {
-                    VisualPanel.Controls.Clear();
-                    sortedItemsCount = 0;
-                    items.Clear();
-                    values.Clear();
-
                     if (SpeedTrackBar.Value == 0)
                     {
                         SpeedTrackBar.Enabled = false;
@@ -243,16 +241,13 @@ namespace SortAlgorithms
 
                     int value;
                     Random rnd = new Random();
+                    values.Clear();
                     for (int i = 0; i < numbers; i++)
                     {
                         value = rnd.Next(0, maxValue);
                         values.Add(value);
-                        if (SpeedTrackBar.Value > 0)
-                        {
-                            SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, value);
-                            items.Add(item);
-                        }
                     }
+                    RefillItems();
                     FillTextBox.Text = "";
                     FillTextBox.Focus();
                 }
@@ -261,20 +256,28 @@ namespace SortAlgorithms
 
         private void RefillItems()
         {
-            VisualPanel.Controls.Clear();
+            if (SpeedTrackBar.Value > 0)
+            {
+                VisualPanel.Controls.Clear();
+            }
             sortedItemsCount = 0;
             items.Clear();
             for (int i = 0; i < values.Count; i++)
             {
-                if (SpeedTrackBar.Value > 0)
+                if (SpeedTrackBar.Value == 0)
                 {
-                    SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, values[i]);
-                    VisualPanel.Refresh();
+                    SortedItem item = new SortedItem(++sortedItemsCount, values[i]);
                     items.Add(item);
                 }
+                else
+                {
+                    SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, values[i]);
+                    items.Add(item);
+                    VisualPanel.Refresh();
+                }
             }
-//MessageBox.Show($"Количество items {items.Count} : {sortedItemsCount}");
-            VisualPanel.Refresh();
+            //MessageBox.Show($"Количество items {items.Count} : {sortedItemsCount}");
+            //VisualPanel.Refresh();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -354,6 +357,21 @@ namespace SortAlgorithms
                 FillRandomNumbersButton_Click(sender, e);
                 SortButton.Enabled = true;
             }
+        }
+
+        private void SpeedTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            if (SpeedTrackBar.Value == 0)
+            {
+                testsLabel.ForeColor = SystemColors.ControlLight;
+                testsLabel.BackColor = Color.DarkRed;
+            }
+            else
+            {
+                testsLabel.ForeColor = SystemColors.ControlText;
+                testsLabel.BackColor = SystemColors.Control;
+            }
+            testsLabel.Refresh();
         }
 
     }

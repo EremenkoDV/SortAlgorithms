@@ -23,6 +23,20 @@ namespace SortAlgorithms
 
         private static int border = 15;
 
+        /// <summary>
+        /// Контруктор без графического представления (для групповых тестов)
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <param name="value"></param>
+        public SortedItem(int instance, int value)
+        {
+            // Set value
+            Value = value;
+
+            // Set index
+            Index = instance;
+        }
+
         public SortedItem(Control control, int instance, int value, uint hexColor = 0xFF0000FF)
         {
             int controlWidth = control.Width - 2 * border;
