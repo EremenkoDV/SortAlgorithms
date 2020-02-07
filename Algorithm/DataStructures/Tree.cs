@@ -12,10 +12,13 @@ namespace Algorithm.DataStructures
 
         public Node<T> Root { get; private set; }
 
+        public int Count { get; private set; }
+
         public Tree() { }
 
         public Tree(T data)
         {
+            Count = 1;
             Root = new Node<T>(data);
         }
 
@@ -41,6 +44,7 @@ namespace Algorithm.DataStructures
             if (Root == null)
             {
                 Root = node;
+                Count = 1;
             }
             else
             {
@@ -69,6 +73,7 @@ namespace Algorithm.DataStructures
                         }
                     }
                 }
+                Count++;
             }
         }
 
@@ -82,10 +87,6 @@ namespace Algorithm.DataStructures
             if (node.Left != null)
             {
                 result.AddRange(InfixIteration(node.Left));
-                //foreach (T data in InfixIteration(node.Left))
-                //{
-                //    result.Add(data);
-                //}
             }
 
             result.Add(node.Data);
@@ -105,6 +106,36 @@ namespace Algorithm.DataStructures
         protected override void Sort()
         {
             Items = InfixIteration();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            //Node<T> current = Root;
+            //int parentIndex = (int)(index - 1) / 2;
+            //int leftIndex = 2 * index + 1;
+            //int rightIndex2 = 2 * index + 2;
+
+            if (node == null)
+                node = Root;
+
+            if (node.Left != null)
+            {
+                foreach (T data in GetEnumerator(node.Left))
+                {
+                    yield return node.Data;
+                }
+            }
+
+            yield return node.Data;
+
+            if (node.Right != null)
+            {
+                foreach (T data in GetEnumerator(node.Right))
+                {
+                    yield return node.Data;
+                }
+            }
+
         }
 
     }
