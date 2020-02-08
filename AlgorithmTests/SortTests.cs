@@ -113,6 +113,8 @@ namespace Algorithm.Tests
         public void TreeSortTest()
         {
             // arrange
+            //items.Clear();
+            //items = new List<int> { 57, 17, 71, 11, 55, 30, 67, 74, 87, 49 };
             AlgorithmBase<int> tree = new DataStructures.Tree<int>(items);
             //tree.Items.AddRange(items);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace Algorithm.DataStructures
         {
             Count = 1;
             Root = new Node<T>(data);
+            Root.Index = 1;
         }
 
         public Tree(IEnumerable<T> items)
@@ -41,6 +43,7 @@ namespace Algorithm.DataStructures
         public void Add(T data)
         {
             Node<T> node = new Node<T>(data);
+            node.Index = Count;
             if (Root == null)
             {
                 Root = node;
@@ -51,14 +54,15 @@ namespace Algorithm.DataStructures
                 Node<T> current = Root;
                 while (current != null)
                 {
-                    if (current.Data.CompareTo(data) > 0)
-                    //if (Compare(current.Data, node.Data) > 0) // налево идут элементы меньше текущего
+                    //if (current.Data.CompareTo(data) > 0)
+                    if (Compare(current.Index, node.Index) == (IsAscending ? 1 : -1)) // налево идут элементы меньше текущего
                     {
                         if (current.Left != null)
                             current = current.Left;
                         else
                         {
                             current.Left = node;
+                            Count++;
                             return;
                         }
                     }
@@ -69,11 +73,11 @@ namespace Algorithm.DataStructures
                         else
                         {
                             current.Right = node;
+                            Count++;
                             return;
                         }
                     }
                 }
-                Count++;
             }
         }
 
@@ -94,10 +98,28 @@ namespace Algorithm.DataStructures
             if (node.Right != null)
             {
                 result.AddRange(InfixIteration(node.Right));
-                //foreach (T data in InfixIteration(node.Right))
-                //{
-                //    result.Add(data);
-                //}
+            }
+
+            return result;
+        }
+
+        public List<int> InfixIndexes(Node<T> node = null)
+        {
+            List<int> result = new List<int>();
+
+            if (node == null)
+                node = Root;
+
+            if (node.Left != null)
+            {
+                result.AddRange(InfixIndexes(node.Left));
+            }
+
+            result.Add(node.Index);
+
+            if (node.Right != null)
+            {
+                result.AddRange(InfixIndexes(node.Right));
             }
 
             return result;
@@ -105,38 +127,77 @@ namespace Algorithm.DataStructures
 
         protected override void Sort()
         {
-            Items = InfixIteration();
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            //Node<T> current = Root;
-            //int parentIndex = (int)(index - 1) / 2;
-            //int leftIndex = 2 * index + 1;
-            //int rightIndex2 = 2 * index + 2;
-
-            if (node == null)
-                node = Root;
-
-            if (node.Left != null)
+            int index;
+            List<int> indexes = InfixIndexes();
+            List<int> newIndexes = new List<int>();
+            for (int i = 0; i < indexes.Count; i++)
             {
-                foreach (T data in GetEnumerator(node.Left))
+                if (indexes.Any(e => e == i))
                 {
-                    yield return node.Data;
+                    newIndexes.Add(indexes.IndexOf(i));
                 }
             }
-
-            yield return node.Data;
-
-            if (node.Right != null)
+            for (int i = 0; i < newIndexes.Count - 1; i++)
             {
-                foreach (T data in GetEnumerator(node.Right))
-                {
-                    yield return node.Data;
-                }
-            }
+                index = newIndexes.IndexOf(i);
 
+                if (i != index)
+                {
+                    Swap(i, index);
+
+                    int temp = newIndexes[index];
+                    newIndexes[index] = newIndexes[i];
+                    newIndexes[i] = temp;
+                }
+
+            }
         }
 
+        //public T GetNext(int index, Node<T> node = null)
+        //{
+        //    T result;
+        //    if (node == null)
+        //    {
+        //        node = Root;
+        //    }
+        //    Node<T> current = node;
+        //    while (current != null)
+        //    {
+        //        if (index == current.Index)
+        //        {
+        //            result = current.Data;
+        //        }
+        //        if (current.Left != null) // налево идут элементы меньше текущего
+        //        {
+        //            result = GetNext(index, current.Left);
+        //            //current = current.Left;
+        //        }
+        //        if (current.Right != null) // направо идут элементы больше или равно текущего
+        //        {
+
+        //            result = GetNext(index, current.Right);
+        //            //current = current.Right;
+        //        }
+        //        break;
+        //    }
+        //    if (is result)
+        //    return result;
+        //}
+
+        //public IEnumerator<T> GetEnumerator()
+        //{
+        //    for (int i = 0; i < Count; i++)
+        //    {
+        //        yield return GetNext(i);
+        //    }
+        //}
+
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    for (int i = 0; i < Count; i++)
+        //    {
+        //        yield return GetNext(i);
+        //    }
+        //}
     }
 }
