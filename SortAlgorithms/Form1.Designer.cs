@@ -73,6 +73,11 @@
             this.label_101 = new System.Windows.Forms.Label();
             this.label_102 = new System.Windows.Forms.Label();
             this.label_103 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label_111 = new System.Windows.Forms.Label();
+            this.label_112 = new System.Windows.Forms.Label();
+            this.label_113 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AddNumberButton = new System.Windows.Forms.Button();
             this.AddTextBox = new System.Windows.Forms.TextBox();
@@ -96,11 +101,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label_111 = new System.Windows.Forms.Label();
-            this.label_112 = new System.Windows.Forms.Label();
-            this.label_113 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.ResultTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -222,9 +222,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label5.Location = new System.Drawing.Point(139, 0);
+            this.label5.Location = new System.Drawing.Point(136, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 26);
+            this.label5.Size = new System.Drawing.Size(49, 52);
             this.label5.TabIndex = 3;
             this.label5.Text = "Bubble Sort Сложн.: O(n²)";
             // 
@@ -232,9 +232,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label6.Location = new System.Drawing.Point(204, 0);
+            this.label6.Location = new System.Drawing.Point(200, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 26);
+            this.label6.Size = new System.Drawing.Size(49, 52);
             this.label6.TabIndex = 3;
             this.label6.Text = "Cocktail Sort Сложн.: O(n²)";
             // 
@@ -242,7 +242,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label7.Location = new System.Drawing.Point(269, 0);
+            this.label7.Location = new System.Drawing.Point(264, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 52);
             this.label7.TabIndex = 3;
@@ -251,7 +251,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(334, 0);
+            this.label8.Location = new System.Drawing.Point(328, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 39);
             this.label8.TabIndex = 3;
@@ -261,16 +261,16 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label9.Location = new System.Drawing.Point(399, 0);
+            this.label9.Location = new System.Drawing.Point(392, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 52);
+            this.label9.Size = new System.Drawing.Size(56, 52);
             this.label9.TabIndex = 3;
             this.label9.Text = "Tree Sort Сложн.: O(n log n) - O(n²)";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(464, 0);
+            this.label10.Location = new System.Drawing.Point(456, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 39);
             this.label10.TabIndex = 3;
@@ -279,7 +279,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(529, 0);
+            this.label11.Location = new System.Drawing.Point(520, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(54, 52);
             this.label11.TabIndex = 3;
@@ -289,27 +289,27 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label12.Location = new System.Drawing.Point(594, 0);
+            this.label12.Location = new System.Drawing.Point(584, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 26);
+            this.label12.Size = new System.Drawing.Size(49, 52);
             this.label12.TabIndex = 3;
             this.label12.Text = "Gnome Sort Сложн.: O(n²)";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(659, 0);
+            this.label13.Location = new System.Drawing.Point(648, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 52);
+            this.label13.Size = new System.Drawing.Size(56, 52);
             this.label13.TabIndex = 3;
-            this.label13.Text = "Radix Sort (символы) Сложн.: O(n k)";
+            this.label13.Text = "Radix Sort (символ) Сложн.: O(n k)";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(724, 0);
+            this.label14.Location = new System.Drawing.Point(712, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 52);
+            this.label14.Size = new System.Drawing.Size(57, 52);
             this.label14.TabIndex = 3;
             this.label14.Text = "Quick Sort Сложн.: O(n log n) - O(n²)";
             // 
@@ -317,7 +317,7 @@
             // 
             this.label_11.AutoSize = true;
             this.label_11.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_11.Location = new System.Drawing.Point(139, 61);
+            this.label_11.Location = new System.Drawing.Point(136, 61);
             this.label_11.Name = "label_11";
             this.label_11.Size = new System.Drawing.Size(10, 13);
             this.label_11.TabIndex = 3;
@@ -327,7 +327,7 @@
             // 
             this.label_12.AutoSize = true;
             this.label_12.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_12.Location = new System.Drawing.Point(139, 91);
+            this.label_12.Location = new System.Drawing.Point(136, 91);
             this.label_12.Name = "label_12";
             this.label_12.Size = new System.Drawing.Size(10, 13);
             this.label_12.TabIndex = 3;
@@ -337,7 +337,7 @@
             // 
             this.label_13.AutoSize = true;
             this.label_13.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_13.Location = new System.Drawing.Point(139, 121);
+            this.label_13.Location = new System.Drawing.Point(136, 121);
             this.label_13.Name = "label_13";
             this.label_13.Size = new System.Drawing.Size(10, 13);
             this.label_13.TabIndex = 3;
@@ -347,7 +347,7 @@
             // 
             this.label_21.AutoSize = true;
             this.label_21.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_21.Location = new System.Drawing.Point(204, 61);
+            this.label_21.Location = new System.Drawing.Point(200, 61);
             this.label_21.Name = "label_21";
             this.label_21.Size = new System.Drawing.Size(10, 13);
             this.label_21.TabIndex = 3;
@@ -357,7 +357,7 @@
             // 
             this.label_22.AutoSize = true;
             this.label_22.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_22.Location = new System.Drawing.Point(204, 91);
+            this.label_22.Location = new System.Drawing.Point(200, 91);
             this.label_22.Name = "label_22";
             this.label_22.Size = new System.Drawing.Size(10, 13);
             this.label_22.TabIndex = 3;
@@ -367,7 +367,7 @@
             // 
             this.label_23.AutoSize = true;
             this.label_23.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_23.Location = new System.Drawing.Point(204, 121);
+            this.label_23.Location = new System.Drawing.Point(200, 121);
             this.label_23.Name = "label_23";
             this.label_23.Size = new System.Drawing.Size(10, 13);
             this.label_23.TabIndex = 3;
@@ -377,7 +377,7 @@
             // 
             this.label_31.AutoSize = true;
             this.label_31.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_31.Location = new System.Drawing.Point(269, 61);
+            this.label_31.Location = new System.Drawing.Point(264, 61);
             this.label_31.Name = "label_31";
             this.label_31.Size = new System.Drawing.Size(10, 13);
             this.label_31.TabIndex = 3;
@@ -387,7 +387,7 @@
             // 
             this.label_32.AutoSize = true;
             this.label_32.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_32.Location = new System.Drawing.Point(269, 91);
+            this.label_32.Location = new System.Drawing.Point(264, 91);
             this.label_32.Name = "label_32";
             this.label_32.Size = new System.Drawing.Size(10, 13);
             this.label_32.TabIndex = 3;
@@ -397,7 +397,7 @@
             // 
             this.label_33.AutoSize = true;
             this.label_33.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_33.Location = new System.Drawing.Point(269, 121);
+            this.label_33.Location = new System.Drawing.Point(264, 121);
             this.label_33.Name = "label_33";
             this.label_33.Size = new System.Drawing.Size(10, 13);
             this.label_33.TabIndex = 3;
@@ -406,7 +406,7 @@
             // label_41
             // 
             this.label_41.AutoSize = true;
-            this.label_41.Location = new System.Drawing.Point(334, 61);
+            this.label_41.Location = new System.Drawing.Point(328, 61);
             this.label_41.Name = "label_41";
             this.label_41.Size = new System.Drawing.Size(10, 13);
             this.label_41.TabIndex = 3;
@@ -415,7 +415,7 @@
             // label_42
             // 
             this.label_42.AutoSize = true;
-            this.label_42.Location = new System.Drawing.Point(334, 91);
+            this.label_42.Location = new System.Drawing.Point(328, 91);
             this.label_42.Name = "label_42";
             this.label_42.Size = new System.Drawing.Size(10, 13);
             this.label_42.TabIndex = 3;
@@ -424,7 +424,7 @@
             // label_43
             // 
             this.label_43.AutoSize = true;
-            this.label_43.Location = new System.Drawing.Point(334, 121);
+            this.label_43.Location = new System.Drawing.Point(328, 121);
             this.label_43.Name = "label_43";
             this.label_43.Size = new System.Drawing.Size(10, 13);
             this.label_43.TabIndex = 3;
@@ -434,7 +434,7 @@
             // 
             this.label_51.AutoSize = true;
             this.label_51.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_51.Location = new System.Drawing.Point(399, 61);
+            this.label_51.Location = new System.Drawing.Point(392, 61);
             this.label_51.Name = "label_51";
             this.label_51.Size = new System.Drawing.Size(10, 13);
             this.label_51.TabIndex = 3;
@@ -444,7 +444,7 @@
             // 
             this.label_52.AutoSize = true;
             this.label_52.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_52.Location = new System.Drawing.Point(399, 91);
+            this.label_52.Location = new System.Drawing.Point(392, 91);
             this.label_52.Name = "label_52";
             this.label_52.Size = new System.Drawing.Size(10, 13);
             this.label_52.TabIndex = 3;
@@ -454,7 +454,7 @@
             // 
             this.label_53.AutoSize = true;
             this.label_53.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_53.Location = new System.Drawing.Point(399, 121);
+            this.label_53.Location = new System.Drawing.Point(392, 121);
             this.label_53.Name = "label_53";
             this.label_53.Size = new System.Drawing.Size(10, 13);
             this.label_53.TabIndex = 3;
@@ -463,7 +463,7 @@
             // label_61
             // 
             this.label_61.AutoSize = true;
-            this.label_61.Location = new System.Drawing.Point(464, 61);
+            this.label_61.Location = new System.Drawing.Point(456, 61);
             this.label_61.Name = "label_61";
             this.label_61.Size = new System.Drawing.Size(10, 13);
             this.label_61.TabIndex = 3;
@@ -472,7 +472,7 @@
             // label_62
             // 
             this.label_62.AutoSize = true;
-            this.label_62.Location = new System.Drawing.Point(464, 91);
+            this.label_62.Location = new System.Drawing.Point(456, 91);
             this.label_62.Name = "label_62";
             this.label_62.Size = new System.Drawing.Size(10, 13);
             this.label_62.TabIndex = 3;
@@ -481,7 +481,7 @@
             // label_63
             // 
             this.label_63.AutoSize = true;
-            this.label_63.Location = new System.Drawing.Point(464, 121);
+            this.label_63.Location = new System.Drawing.Point(456, 121);
             this.label_63.Name = "label_63";
             this.label_63.Size = new System.Drawing.Size(10, 13);
             this.label_63.TabIndex = 3;
@@ -490,7 +490,7 @@
             // label_71
             // 
             this.label_71.AutoSize = true;
-            this.label_71.Location = new System.Drawing.Point(529, 61);
+            this.label_71.Location = new System.Drawing.Point(520, 61);
             this.label_71.Name = "label_71";
             this.label_71.Size = new System.Drawing.Size(10, 13);
             this.label_71.TabIndex = 3;
@@ -499,7 +499,7 @@
             // label_72
             // 
             this.label_72.AutoSize = true;
-            this.label_72.Location = new System.Drawing.Point(529, 91);
+            this.label_72.Location = new System.Drawing.Point(520, 91);
             this.label_72.Name = "label_72";
             this.label_72.Size = new System.Drawing.Size(10, 13);
             this.label_72.TabIndex = 3;
@@ -508,7 +508,7 @@
             // label_73
             // 
             this.label_73.AutoSize = true;
-            this.label_73.Location = new System.Drawing.Point(529, 121);
+            this.label_73.Location = new System.Drawing.Point(520, 121);
             this.label_73.Name = "label_73";
             this.label_73.Size = new System.Drawing.Size(10, 13);
             this.label_73.TabIndex = 3;
@@ -518,7 +518,7 @@
             // 
             this.label_81.AutoSize = true;
             this.label_81.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_81.Location = new System.Drawing.Point(594, 61);
+            this.label_81.Location = new System.Drawing.Point(584, 61);
             this.label_81.Name = "label_81";
             this.label_81.Size = new System.Drawing.Size(10, 13);
             this.label_81.TabIndex = 3;
@@ -528,7 +528,7 @@
             // 
             this.label_82.AutoSize = true;
             this.label_82.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_82.Location = new System.Drawing.Point(594, 91);
+            this.label_82.Location = new System.Drawing.Point(584, 91);
             this.label_82.Name = "label_82";
             this.label_82.Size = new System.Drawing.Size(10, 13);
             this.label_82.TabIndex = 3;
@@ -538,7 +538,7 @@
             // 
             this.label_83.AutoSize = true;
             this.label_83.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_83.Location = new System.Drawing.Point(594, 121);
+            this.label_83.Location = new System.Drawing.Point(584, 121);
             this.label_83.Name = "label_83";
             this.label_83.Size = new System.Drawing.Size(10, 13);
             this.label_83.TabIndex = 3;
@@ -547,7 +547,7 @@
             // label_91
             // 
             this.label_91.AutoSize = true;
-            this.label_91.Location = new System.Drawing.Point(659, 61);
+            this.label_91.Location = new System.Drawing.Point(648, 61);
             this.label_91.Name = "label_91";
             this.label_91.Size = new System.Drawing.Size(10, 13);
             this.label_91.TabIndex = 3;
@@ -556,7 +556,7 @@
             // label_92
             // 
             this.label_92.AutoSize = true;
-            this.label_92.Location = new System.Drawing.Point(659, 91);
+            this.label_92.Location = new System.Drawing.Point(648, 91);
             this.label_92.Name = "label_92";
             this.label_92.Size = new System.Drawing.Size(10, 13);
             this.label_92.TabIndex = 3;
@@ -565,7 +565,7 @@
             // label_93
             // 
             this.label_93.AutoSize = true;
-            this.label_93.Location = new System.Drawing.Point(659, 121);
+            this.label_93.Location = new System.Drawing.Point(648, 121);
             this.label_93.Name = "label_93";
             this.label_93.Size = new System.Drawing.Size(10, 13);
             this.label_93.TabIndex = 3;
@@ -574,7 +574,7 @@
             // label_101
             // 
             this.label_101.AutoSize = true;
-            this.label_101.Location = new System.Drawing.Point(724, 61);
+            this.label_101.Location = new System.Drawing.Point(712, 61);
             this.label_101.Name = "label_101";
             this.label_101.Size = new System.Drawing.Size(10, 13);
             this.label_101.TabIndex = 3;
@@ -583,7 +583,7 @@
             // label_102
             // 
             this.label_102.AutoSize = true;
-            this.label_102.Location = new System.Drawing.Point(724, 91);
+            this.label_102.Location = new System.Drawing.Point(712, 91);
             this.label_102.Name = "label_102";
             this.label_102.Size = new System.Drawing.Size(10, 13);
             this.label_102.TabIndex = 3;
@@ -592,11 +592,62 @@
             // label_103
             // 
             this.label_103.AutoSize = true;
-            this.label_103.Location = new System.Drawing.Point(724, 121);
+            this.label_103.Location = new System.Drawing.Point(712, 121);
             this.label_103.Name = "label_103";
             this.label_103.Size = new System.Drawing.Size(10, 13);
             this.label_103.TabIndex = 3;
             this.label_103.Text = "-";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(126, 60);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Устойчивая сортировка не меняет взаимного расположения элементов с одинаковыми кл" +
+    "ючами (голубой)";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label15.Location = new System.Drawing.Point(776, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(62, 39);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Меrge Sort Сложн.: O(n log n)";
+            // 
+            // label_111
+            // 
+            this.label_111.AutoSize = true;
+            this.label_111.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label_111.Location = new System.Drawing.Point(776, 61);
+            this.label_111.Name = "label_111";
+            this.label_111.Size = new System.Drawing.Size(10, 13);
+            this.label_111.TabIndex = 3;
+            this.label_111.Text = "-";
+            // 
+            // label_112
+            // 
+            this.label_112.AutoSize = true;
+            this.label_112.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label_112.Location = new System.Drawing.Point(776, 91);
+            this.label_112.Name = "label_112";
+            this.label_112.Size = new System.Drawing.Size(10, 13);
+            this.label_112.TabIndex = 3;
+            this.label_112.Text = "-";
+            // 
+            // label_113
+            // 
+            this.label_113.AutoSize = true;
+            this.label_113.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label_113.Location = new System.Drawing.Point(776, 121);
+            this.label_113.Name = "label_113";
+            this.label_113.Size = new System.Drawing.Size(10, 13);
+            this.label_113.TabIndex = 3;
+            this.label_113.Text = "-";
             // 
             // label1
             // 
@@ -843,56 +894,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(461, 100);
             this.panel4.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 60);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Устойчивая сортировка не меняет взаимного расположения элементов с одинаковыми кл" +
-    "ючами (голубой)";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label15.Location = new System.Drawing.Point(724, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(59, 52);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Меrge Sort Сложн.: O(n log n)";
-            // 
-            // label_111
-            // 
-            this.label_111.AutoSize = true;
-            this.label_111.Location = new System.Drawing.Point(724, 61);
-            this.label_111.Name = "label_111";
-            this.label_111.Size = new System.Drawing.Size(10, 13);
-            this.label_111.TabIndex = 3;
-            this.label_111.Text = "-";
-            // 
-            // label_112
-            // 
-            this.label_112.AutoSize = true;
-            this.label_112.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_112.Location = new System.Drawing.Point(724, 91);
-            this.label_112.Name = "label_112";
-            this.label_112.Size = new System.Drawing.Size(10, 13);
-            this.label_112.TabIndex = 3;
-            this.label_112.Text = "-";
-            // 
-            // label_113
-            // 
-            this.label_113.AutoSize = true;
-            this.label_113.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label_113.Location = new System.Drawing.Point(724, 121);
-            this.label_113.Name = "label_113";
-            this.label_113.Size = new System.Drawing.Size(10, 13);
-            this.label_113.TabIndex = 3;
-            this.label_113.Text = "-";
             // 
             // Form1
             // 

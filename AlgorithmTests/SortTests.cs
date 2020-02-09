@@ -176,5 +176,23 @@ namespace Algorithm.Tests
             }
         }
 
+        [TestMethod()]
+        public void RadixSortTest()
+        {
+            // arrange
+            //items.Clear();
+            //items = new List<int> { 57, 17, 71, 11, 55, 30, 67, 74, 87, 49 };
+            AlgorithmBase<int> radix = new RadixSort<int>(items, false);
+
+            // act
+            radix.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], radix.Items[i]);
+            }
+        }
+
     }
 }
