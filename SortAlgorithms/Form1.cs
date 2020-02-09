@@ -365,6 +365,12 @@ namespace SortAlgorithms
             {
                 testsLabel.ForeColor = SystemColors.ControlLight;
                 testsLabel.BackColor = Color.DarkRed;
+                for (int i = 1; i < 11; i++)
+                {
+                    ResultTableLayoutPanel.Controls["label_" + i.ToString() + "1"].Text = "-";
+                    ResultTableLayoutPanel.Controls["label_" + i.ToString() + "2"].Text = "-";
+                    ResultTableLayoutPanel.Controls["label_" + i.ToString() + "3"].Text = "-";
+                }
             }
             else
             {
@@ -373,7 +379,6 @@ namespace SortAlgorithms
             }
             testsLabel.Refresh();
         }
-
     }
 
 }
