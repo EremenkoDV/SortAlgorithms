@@ -34,7 +34,7 @@ namespace Algorithm
             AddRange(items);
         }
 
-        public void AddRange(IEnumerable<T> items)
+        public override void AddRange(IEnumerable<T> items)
         {
             bool isCorrectValue = false;
             List<T> list = items.ToList();
@@ -44,9 +44,9 @@ namespace Algorithm
                 {
                     isCorrectValue = Convert.ToInt32(list[i]) > -1;
                 }
-                if (list[i].GetType() == typeof(string))
+                if (IsMSD && list[i].GetType() == typeof(string))
                 {
-                    isCorrectValue = Int32.TryParse(list[i].ToString(), out _);
+                    isCorrectValue = true;
                 }
                 if (isCorrectValue)
                 {
@@ -55,27 +55,33 @@ namespace Algorithm
                 else
                 {
                     throw new ArrayTypeMismatchException();
-                    break;
                 }
             }
         }
 
         protected override void Sort()
         {
-            List<T> buckets = Items;
-            if (IsMSD)
+            List<T> result = Items;
+            //int maxLength = Convert.ToString(result.Max()).Length;
+            int length = 0;
+            int maxLength = 0;
+            for (int i = 0; i < result.Count; i++)
             {
-            }
-            else
-            {
-                //Items = buckets;
-                int maxLenght = Convert.ToString(buckets.Max()).Length;
-                for (int i = 0; i < maxLenght; i++)
+                length = Convert.ToString(result[i]).Length;
+                if (length > maxLength)
                 {
-                    buckets = GetFromLSDBucket(buckets, i);
+                    maxLength = length;
                 }
-                Items = buckets;
             }
+            ////int index = IsMSD ? maxLength - 1 : 0;
+            ////while (index >= 0 && index < maxLength)
+            //for (int index = 0; index < maxLength; index++)
+            {
+                //result = GetFromBuckets(result, index);
+                result = GetFromBuckets(result, maxLength);
+                ////index = IsMSD ? index - 1 : index + 1;
+            }
+            Items = result;
             if (!IsAscending)
             {
                 Items.Reverse();
@@ -83,34 +89,58 @@ namespace Algorithm
 
         }
 
-        private List<T> GetFromLSDBucket(List<T> items, int rank = 0)
+        //private List<T> GetFromBuckets(List<T> items, int index = 0)
+        private List<T> GetFromBuckets(List<T> items, int maxLength, int index = 0)
         {
             List<T> result = new List<T>();
-            List<T>[] bucket = new List<T>[10];
-            for (int j = 0; j < bucket.Length; j++)
+            List<T>[] buckets = new List<T>[IsMSD ? 255 : 10];
+            while (index < maxLength)
             {
-                bucket[j] = new List<T>();
-                for (int i = 0; i < items.Count; i++)
+                for (int numBucket = 0; numBucket < buckets.Length; numBucket++)
                 {
-                    if (GetRadix(Convert.ToInt32(items[i]), rank) == j)
+                    buckets[numBucket] = new List<T>();
+                    for (int i = 0; i < items.Count; i++)
                     {
-                        bucket[j].Add(items[i]);
+                        if ((!IsMSD && GetDigit(Convert.ToInt32(items[i]), index) == numBucket) ||
+                            (IsMSD && GetASCIICode(Convert.ToString(items[i]), index) == numBucket))
+                        {
+                            buckets[numBucket].Add(items[i]);
+                            Swap(i, buckets[numBucket].Count - 1);
+                        }
+                    }
+                    //result.AddRange(buckets[numBucket]);
+                    if (buckets[numBucket].Count == 1)
+                    {
+                        result.AddRange(buckets[numBucket]);
+                    }
+                    else if (buckets[numBucket].Count > 1)
+                    {
+                        result.AddRange(GetFromBuckets(buckets[numBucket], maxLength, ++index));
                     }
                 }
-                //bucket[j].Sort();
-                result.AddRange(bucket[j]);
             }
             return result;
         }
 
-        private int GetRadix(long number, int rank)
+        private int GetDigit(long number, int index)
         {
             string value = number.ToString();
-            //if (rank >= value.Length)
-            //{
-            //    throw new ArgumentOutOfRangeException();
-            //}
-            return rank >= value.Length ? 0 : Convert.ToInt32(value.Substring(value.Length - rank - 1, 1));
+            return index >= 0 && index < value.Length ? Convert.ToInt32(value.Substring(value.Length - index - 1, 1)) : 0;
+        }
+
+        private int GetASCIICode(string wordOrNumber, int index)
+        {
+            int result = 0;
+            if (index >= 0 && index < wordOrNumber.Length)
+            {
+                byte[] bytes = new byte[1];
+                if (Encoding.ASCII.GetBytes(wordOrNumber, index, 1, bytes, 0) == 1)
+                {
+                    result = bytes[0];
+                }
+            }
+            //return index >= 0 && index < wordOrNumber.Length ? Encoding.ASCII.GetBytes(wordOrNumber, wordOrNumber.Length - index - 1, 1, bytes, 0) : 0;
+            return result;
         }
     }
 }

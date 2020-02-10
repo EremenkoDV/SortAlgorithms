@@ -181,7 +181,9 @@ namespace Algorithm.Tests
         {
             // arrange
             //items.Clear();
-            //items = new List<int> { 57, 17, 71, 11, 55, 30, 67, 74, 87, 49 };
+            List<int> items = new List<int> { 57, 7, 471, 311, 1552, 730, 77, 74234, 87, 419 };
+            //List<string> items = new List<string> { "EA57", "17", "71", "tyw11", "5f5", "30", "6fdg7", "74fgjj", "87", "g49k" };
+            //AlgorithmBase<string> radix = new RadixSort<string>(items, true);
             AlgorithmBase<int> radix = new RadixSort<int>(items, false);
 
             // act
