@@ -40,11 +40,11 @@ namespace Algorithm
             List<T> list = items.ToList();
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].GetType() == typeof(int))
+                if (Convert.ToInt32(list[i].ToString()).GetType() == typeof(int))
                 {
-                    isCorrectValue = Convert.ToInt32(list[i]) > -1;
+                    isCorrectValue = true;
                 }
-                if (IsMSD && list[i].GetType() == typeof(string))
+                if (IsMSD && list[i].ToString().GetType() == typeof(string))
                 {
                     isCorrectValue = true;
                 }
@@ -62,25 +62,7 @@ namespace Algorithm
         protected override void Sort()
         {
             List<T> result = Items;
-            //int maxLength = Convert.ToString(result.Max()).Length;
-            int length = 0;
-            int maxLength = 0;
-            for (int i = 0; i < result.Count; i++)
-            {
-                length = Convert.ToString(result[i]).Length;
-                if (length > maxLength)
-                {
-                    maxLength = length;
-                }
-            }
-            ////int index = IsMSD ? maxLength - 1 : 0;
-            ////while (index >= 0 && index < maxLength)
-            //for (int index = 0; index < maxLength; index++)
-            {
-                //result = GetFromBuckets(result, index);
-                result = GetFromBuckets(result, maxLength);
-                ////index = IsMSD ? index - 1 : index + 1;
-            }
+            result = GetFromBuckets(result);
             Items = result;
             if (!IsAscending)
             {
@@ -89,37 +71,91 @@ namespace Algorithm
 
         }
 
-        //private List<T> GetFromBuckets(List<T> items, int index = 0)
-        private List<T> GetFromBuckets(List<T> items, int maxLength, int index = 0)
+        private List<T> GetFromBuckets(List<T> items, int index = 0)
         {
+            int count = 0;
+            int numBucket = -1;
             List<T> result = new List<T>();
             List<T>[] buckets = new List<T>[IsMSD ? 255 : 10];
-            while (index < maxLength)
+            for (int i = 0; i < items.Count; i++)
             {
-                for (int numBucket = 0; numBucket < buckets.Length; numBucket++)
+                if (!IsMSD)
+                {
+                    numBucket = GetDigit(Convert.ToInt32(items[i]), index);
+                }
+                else
+                {
+                    numBucket = GetASCIICode(Convert.ToString(items[i]), index);
+                }
+
+                if (buckets[numBucket] == null)
                 {
                     buckets[numBucket] = new List<T>();
-                    for (int i = 0; i < items.Count; i++)
+                }
+                buckets[numBucket].Add(items[i]);
+                Swap(i, index);
+            }
+            if (numBucket > -1)
+            {
+                for (numBucket = 0; numBucket < buckets.Length; numBucket++)
+                {
+                    if (buckets[numBucket] != null)
                     {
-                        if ((!IsMSD && GetDigit(Convert.ToInt32(items[i]), index) == numBucket) ||
-                            (IsMSD && GetASCIICode(Convert.ToString(items[i]), index) == numBucket))
+                        if (IsMSD)
                         {
-                            buckets[numBucket].Add(items[i]);
-                            Swap(i, buckets[numBucket].Count - 1);
+                            if (buckets[numBucket].Count == 1)
+                            {
+                                result.AddRange(buckets[numBucket]);
+                                if (++count == items.Count)
+                                {
+                                    break;
+                                }
+                            }
+                            else if (buckets[numBucket].Count > 1)
+                            {
+                                result.AddRange(GetFromBuckets(buckets[numBucket], index + 1));
+                                count += buckets[numBucket].Count;
+                                if (count == items.Count)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (buckets[numBucket].Count > 0)
+                            {
+                                result.AddRange(buckets[numBucket]);
+                            }
                         }
                     }
-                    //result.AddRange(buckets[numBucket]);
-                    if (buckets[numBucket].Count == 1)
+                }
+                if (!IsMSD)
+                {
+                    int maxLength = GetMaxLength(result);
+                    for (int i = index + 1; i < maxLength; i++)
                     {
-                        result.AddRange(buckets[numBucket]);
+                        result = GetFromBuckets(result, i);
                     }
-                    else if (buckets[numBucket].Count > 1)
-                    {
-                        result.AddRange(GetFromBuckets(buckets[numBucket], maxLength, ++index));
-                    }
+
                 }
             }
             return result;
+        }
+
+        private int GetMaxLength(List<T> items)
+        {
+            int length;
+            int maxLength = 0;
+            for (int i = 0; i < items.Count; i++)
+            {
+                length = Convert.ToString(items[i]).Length;
+                if (length > maxLength)
+                {
+                    maxLength = length;
+                }
+            }
+            return maxLength;
         }
 
         private int GetDigit(long number, int index)
@@ -139,7 +175,6 @@ namespace Algorithm
                     result = bytes[0];
                 }
             }
-            //return index >= 0 && index < wordOrNumber.Length ? Encoding.ASCII.GetBytes(wordOrNumber, wordOrNumber.Length - index - 1, 1, bytes, 0) : 0;
             return result;
         }
     }

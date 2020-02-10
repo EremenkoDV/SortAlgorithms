@@ -101,6 +101,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.ResultTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -787,6 +788,7 @@
             this.panel3.Controls.Add(this.radioButton8);
             this.panel3.Controls.Add(this.radioButton7);
             this.panel3.Controls.Add(this.radioButton6);
+            this.panel3.Controls.Add(this.radioButton9);
             this.panel3.Controls.Add(this.radioButton5);
             this.panel3.Controls.Add(this.radioButton4);
             this.panel3.Controls.Add(this.radioButton3);
@@ -807,7 +809,7 @@
             this.radioButton8.TabIndex = 2;
             this.radioButton8.Text = "GnomeSort";
             this.radioButton8.UseVisualStyleBackColor = true;
-            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton7
             // 
@@ -818,7 +820,7 @@
             this.radioButton7.TabIndex = 2;
             this.radioButton7.Text = "SelectionSort";
             this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton6
             // 
@@ -829,7 +831,7 @@
             this.radioButton6.TabIndex = 2;
             this.radioButton6.Text = "HeapSort";
             this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton5
             // 
@@ -840,7 +842,7 @@
             this.radioButton5.TabIndex = 2;
             this.radioButton5.Text = "TreeSort";
             this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -851,7 +853,7 @@
             this.radioButton4.TabIndex = 2;
             this.radioButton4.Text = "ShellSort";
             this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -862,7 +864,7 @@
             this.radioButton3.TabIndex = 2;
             this.radioButton3.Text = "InsertionSort";
             this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -873,7 +875,7 @@
             this.radioButton2.TabIndex = 2;
             this.radioButton2.Text = "CocktailSort";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -886,7 +888,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "BubbleSort";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // panel4
             // 
@@ -894,6 +896,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(461, 100);
             this.panel4.TabIndex = 0;
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(183, 4);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(71, 17);
+            this.radioButton9.TabIndex = 2;
+            this.radioButton9.Text = "RadixSort";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // Form1
             // 
@@ -996,6 +1009,7 @@
         private System.Windows.Forms.Label label_111;
         private System.Windows.Forms.Label label_112;
         private System.Windows.Forms.Label label_113;
+        private System.Windows.Forms.RadioButton radioButton9;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar

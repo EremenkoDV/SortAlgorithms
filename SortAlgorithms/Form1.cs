@@ -98,6 +98,9 @@ namespace SortAlgorithms
                         case 8:
                             algorithm = new GnomeSort<SortedItem>();
                             break;
+                        case 9:
+                            algorithm = new RadixSort<SortedItem>();
+                            break;
                         default:
                             algorithm = new BubbleSort<SortedItem>();
                             break;
@@ -280,59 +283,7 @@ namespace SortAlgorithms
             //VisualPanel.Refresh();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as RadioButton).Checked)
-            {
-                RefillItems();
-                SortButton.Enabled = true;
-            }
-        }
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as RadioButton).Checked)
-            {
-                RefillItems();
-                SortButton.Enabled = true;
-            }
-        }
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as RadioButton).Checked)
-            {
-                RefillItems();
-                SortButton.Enabled = true;
-            }
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as RadioButton).Checked)
-            {
-                RefillItems();
-                SortButton.Enabled = true;
-            }
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as RadioButton).Checked)
-            {
-                RefillItems();
-                SortButton.Enabled = true;
-            }
-        }
-
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as RadioButton).Checked)
-            {
-                RefillItems();
-                SortButton.Enabled = true;
-            }
-        }
-
-        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             if ((sender as RadioButton).Checked)
             {
@@ -379,6 +330,7 @@ namespace SortAlgorithms
             }
             testsLabel.Refresh();
         }
+
     }
 
 }
