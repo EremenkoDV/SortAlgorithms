@@ -43,7 +43,7 @@ namespace SortAlgorithms
 
                 if (SpeedTrackBar.Value == 0)
                 {
-                    methods = 8;
+                    methods = 9;
                     VisualPanel.Controls.Clear();
                 }
 
@@ -99,7 +99,7 @@ namespace SortAlgorithms
                             algorithm = new GnomeSort<SortedItem>();
                             break;
                         case 9:
-                            algorithm = new RadixSort<SortedItem>();
+                            algorithm = new RadixSort<SortedItem>(false);
                             break;
                         default:
                             algorithm = new BubbleSort<SortedItem>();

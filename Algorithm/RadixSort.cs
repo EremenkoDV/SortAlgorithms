@@ -75,6 +75,7 @@ namespace Algorithm
         {
             int count = 0;
             int numBucket = -1;
+            int[] exchangeIndexes = new int[items.Count];
             List<T> result = new List<T>();
             List<T>[] buckets = new List<T>[IsMSD ? 255 : 10];
             for (int i = 0; i < items.Count; i++)
@@ -93,7 +94,7 @@ namespace Algorithm
                     buckets[numBucket] = new List<T>();
                 }
                 buckets[numBucket].Add(items[i]);
-                Swap(i, index);
+                exchangeIndexes[i] = numBucket;
             }
             if (numBucket > -1)
             {
@@ -126,6 +127,19 @@ namespace Algorithm
                             if (buckets[numBucket].Count > 0)
                             {
                                 result.AddRange(buckets[numBucket]);
+
+                                int oldIndex = Array.IndexOf(exchangeIndexes, numBucket);
+
+                                if (count != oldIndex)
+                                {
+                                    Swap(count, oldIndex);
+
+                                    int temp = exchangeIndexes[oldIndex];
+                                    exchangeIndexes[oldIndex] = exchangeIndexes[count];
+                                    exchangeIndexes[count] = temp;
+                                }
+
+                                count++;
                             }
                         }
                     }
@@ -149,7 +163,7 @@ namespace Algorithm
             int maxLength = 0;
             for (int i = 0; i < items.Count; i++)
             {
-                length = Convert.ToString(items[i]).Length;
+                length = items[i].ToString().Length;
                 if (length > maxLength)
                 {
                     maxLength = length;
