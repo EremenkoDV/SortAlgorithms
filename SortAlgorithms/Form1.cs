@@ -99,7 +99,7 @@ namespace SortAlgorithms
                             algorithm = new GnomeSort<SortedItem>();
                             break;
                         case 9:
-                            algorithm = new RadixSort<SortedItem>(false);
+                            algorithm = new RadixSort<SortedItem>(true);
                             break;
                         default:
                             algorithm = new BubbleSort<SortedItem>();
