@@ -40,9 +40,9 @@ namespace Algorithm
             List<T> list = items.ToList();
             for (int i = 0; i < list.Count; i++)
             {
-                if (Convert.ToInt32(list[i].ToString()).GetType() == typeof(int))
+                if (Convert.ToInt32(list[i]).GetType() == typeof(int))
                 {
-                    isCorrectValue = true;
+                    isCorrectValue = Convert.ToInt32(list[i]) >= 0;
                 }
                 if (IsMSD && list[i].ToString().GetType() == typeof(string))
                 {
@@ -64,11 +64,6 @@ namespace Algorithm
             List<T> result = Items;
             result = GetFromBuckets(result);
             Items = result;
-            if (!IsAscending)
-            {
-                Items.Reverse();
-            }
-
         }
 
         private List<T> GetFromBuckets(List<T> items, int index = 0)
@@ -96,7 +91,7 @@ namespace Algorithm
             }
             if (numBucket > -1)
             {
-                for (numBucket = 0; numBucket < buckets.Length; numBucket++)
+                for (numBucket = IsAscending ? 0 : buckets.Length - 1; IsAscending ? numBucket < buckets.Length : numBucket >= 0; numBucket += (IsAscending ? 1 : -1))
                 {
                     if (buckets[numBucket] != null)
                     {
@@ -122,21 +117,16 @@ namespace Algorithm
                         }
                         else
                         {
+                            result.AddRange(buckets[numBucket]);
+
                             int oldIndex;
                             for (int i = 0; i < buckets[numBucket].Count; i++)
                             {
-                                if (i == 0)
-                                {
-                                    result.AddRange(buckets[numBucket]);
-                                }
-
                                 oldIndex = Array.IndexOf(Items.ToArray(), buckets[numBucket][i]);
-
                                 if (count != oldIndex)
                                 {
                                     Swap(count, oldIndex);
                                 }
-
                                 count++;
                             }
                         }

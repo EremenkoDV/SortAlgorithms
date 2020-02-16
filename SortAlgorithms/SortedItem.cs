@@ -288,7 +288,7 @@ namespace SortAlgorithms
 
         public string ToString(IFormatProvider provider)
         {
-            throw new NotImplementedException();
+            return Value.ToString();
         }
 
         public object ToType(Type conversionType, IFormatProvider provider)
