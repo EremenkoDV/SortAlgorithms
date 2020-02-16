@@ -75,7 +75,6 @@ namespace Algorithm
         {
             int count = 0;
             int numBucket = -1;
-            int[] exchangeIndexes = new int[items.Count];
             List<T> result = new List<T>();
             List<T>[] buckets = new List<T>[IsMSD ? 255 : 10];
             for (int i = 0; i < items.Count; i++)
@@ -94,7 +93,6 @@ namespace Algorithm
                     buckets[numBucket] = new List<T>();
                 }
                 buckets[numBucket].Add(items[i]);
-                exchangeIndexes[i] = numBucket;
             }
             if (numBucket > -1)
             {
@@ -124,19 +122,19 @@ namespace Algorithm
                         }
                         else
                         {
-                            if (buckets[numBucket].Count > 0)
+                            int oldIndex;
+                            for (int i = 0; i < buckets[numBucket].Count; i++)
                             {
-                                result.AddRange(buckets[numBucket]);
+                                if (i == 0)
+                                {
+                                    result.AddRange(buckets[numBucket]);
+                                }
 
-                                int oldIndex = Array.IndexOf(exchangeIndexes, numBucket);
+                                oldIndex = Array.IndexOf(Items.ToArray(), buckets[numBucket][i]);
 
                                 if (count != oldIndex)
                                 {
                                     Swap(count, oldIndex);
-
-                                    int temp = exchangeIndexes[oldIndex];
-                                    exchangeIndexes[oldIndex] = exchangeIndexes[count];
-                                    exchangeIndexes[count] = temp;
                                 }
 
                                 count++;
@@ -146,10 +144,9 @@ namespace Algorithm
                 }
                 if (!IsMSD)
                 {
-                    int maxLength = GetMaxLength(result);
-                    for (int i = index + 1; i < maxLength; i++)
+                    if (index + 1 < GetMaxLength(result))
                     {
-                        result = GetFromBuckets(result, i);
+                        result = GetFromBuckets(result, index + 1);
                     }
 
                 }
