@@ -116,9 +116,18 @@ namespace Algorithm
                         for (int i = 0; i < buckets[numBucket].Count; i++)
                         {
                             oldIndex = Array.IndexOf(Items.ToArray(), buckets[numBucket][i]);
-                            if (count != oldIndex)
+                            int newIndex = Array.IndexOf(result.ToArray(), buckets[numBucket][i]);
+                            if (newIndex != oldIndex)
                             {
-                                Swap(count, oldIndex);
+                                //int newIndex = count;
+                                if (IsMSD)
+                                {
+                                    //newIndex += oldIndex * (index > 0 ? 1 : 0);
+                                    //newIndex += prevIndex;
+                                    //newIndex = newIndex < Items.Count ? newIndex : Items.Count - 1;
+                                }
+                                //Swap(count + (IsMSD ? (count + oldIndex * (index > 0 ? 1 : 0) < Items.Count ? count + oldIndex * (index > 0 ? 1 : 0) : Items.Count - 1) : 0), oldIndex);
+                                Swap(newIndex, oldIndex);
                             }
                             count++;
                         }

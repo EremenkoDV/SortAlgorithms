@@ -120,10 +120,11 @@ namespace SortAlgorithms
                 second.Label.Location = locationFirst;
 
                 // Swap index
-                int index = first.Index;
-                first.Index = second.Index;
-                second.Index = first.Index;
+                //int index = first.Index;
+                //first.Index = second.Index;
+                //second.Index = first.Index;
 
+                int index = first.VerticalProgressBar.TabIndex;
                 first.VerticalProgressBar.TabIndex = second.VerticalProgressBar.TabIndex;
                 second.VerticalProgressBar.TabIndex = index;
 
