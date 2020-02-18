@@ -113,10 +113,11 @@ namespace Algorithm
 
                         // визуализация
                         int oldIndex;
+                        int newIndex;
                         for (int i = 0; i < buckets[numBucket].Count; i++)
                         {
                             oldIndex = Array.IndexOf(Items.ToArray(), buckets[numBucket][i]);
-                            int newIndex = Array.IndexOf(result.ToArray(), buckets[numBucket][i]);
+                            newIndex = Array.IndexOf(result.ToArray(), buckets[numBucket][i]);
                             if (newIndex != oldIndex)
                             {
                                 //int newIndex = count;
