@@ -95,13 +95,14 @@
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.RadixSortCheckBox = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.ResultTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -680,6 +681,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.RadixSortCheckBox);
             this.panel2.Controls.Add(this.reverseSortCheckBox);
             this.panel2.Controls.Add(this.testsLabel);
             this.panel2.Controls.Add(this.AddNumberButton);
@@ -712,6 +714,7 @@
             this.reverseSortCheckBox.TabIndex = 3;
             this.reverseSortCheckBox.Text = "Обратная сортировка";
             this.reverseSortCheckBox.UseVisualStyleBackColor = true;
+            this.reverseSortCheckBox.CheckedChanged += new System.EventHandler(this.reverseSortCheckBox_CheckedChanged);
             // 
             // testsLabel
             // 
@@ -833,6 +836,17 @@
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(183, 4);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(71, 17);
+            this.radioButton9.TabIndex = 2;
+            this.radioButton9.Text = "RadixSort";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
@@ -897,16 +911,17 @@
             this.panel4.Size = new System.Drawing.Size(461, 100);
             this.panel4.TabIndex = 0;
             // 
-            // radioButton9
+            // RadixSortCheckBox
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(183, 4);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(71, 17);
-            this.radioButton9.TabIndex = 2;
-            this.radioButton9.Text = "RadixSort";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.RadixSortCheckBox.AutoSize = true;
+            this.RadixSortCheckBox.Location = new System.Drawing.Point(19, 105);
+            this.RadixSortCheckBox.Name = "RadixSortCheckBox";
+            this.RadixSortCheckBox.Size = new System.Drawing.Size(217, 17);
+            this.RadixSortCheckBox.TabIndex = 3;
+            this.RadixSortCheckBox.Text = "LSD - с младшего разряда (числовая)";
+            this.RadixSortCheckBox.UseVisualStyleBackColor = true;
+            this.RadixSortCheckBox.Visible = false;
+            this.RadixSortCheckBox.CheckedChanged += new System.EventHandler(this.RadixSortCheckBox_CheckedChanged);
             // 
             // Form1
             // 
@@ -1010,6 +1025,7 @@
         private System.Windows.Forms.Label label_112;
         private System.Windows.Forms.Label label_113;
         private System.Windows.Forms.RadioButton radioButton9;
+        private System.Windows.Forms.CheckBox RadixSortCheckBox;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar

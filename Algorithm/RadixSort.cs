@@ -63,7 +63,7 @@ namespace Algorithm
             Items = GetFromBuckets(Items);
         }
 
-        private List<T> GetFromBuckets(List<T> items, int index = 0)
+        private List<T> GetFromBuckets(List<T> items, int index = 0, int iteration = 0)
         {
             int numBucket = -1;
             List<T> result = new List<T>();
@@ -98,13 +98,12 @@ namespace Algorithm
                         {
                             if (buckets[numBucket].Count > 1 && index + 1 < GetMaxLength(buckets[numBucket]))
                             {
-                                result.AddRange(GetFromBuckets(buckets[numBucket], index + 1));
+                                result.AddRange(GetFromBuckets(buckets[numBucket], index + 1, iteration + 1));
                             }
                             else
                             {
                                 result.AddRange(buckets[numBucket]);
                             }
-                            //count += buckets[numBucket].Count;
                         }
                         else
                         {
@@ -112,25 +111,20 @@ namespace Algorithm
                         }
 
                         // визуализация
-                        int oldIndex;
-                        int newIndex;
-                        for (int i = 0; i < buckets[numBucket].Count; i++)
+                        if (iteration == 0)
                         {
-                            oldIndex = Array.IndexOf(Items.ToArray(), buckets[numBucket][i]);
-                            newIndex = Array.IndexOf(result.ToArray(), buckets[numBucket][i]);
-                            if (newIndex != oldIndex)
+                            int oldIndex;
+                            int newIndex;
+                            for (int i = 0; i < buckets[numBucket].Count; i++)
                             {
-                                //int newIndex = count;
-                                if (IsMSD)
+                                oldIndex = Array.IndexOf(Items.ToArray(), buckets[numBucket][i]);
+                                newIndex = Array.IndexOf(result.ToArray(), buckets[numBucket][i]);
+                                if (newIndex != oldIndex)
                                 {
-                                    //newIndex += oldIndex * (index > 0 ? 1 : 0);
-                                    //newIndex += prevIndex;
-                                    //newIndex = newIndex < Items.Count ? newIndex : Items.Count - 1;
+                                    Swap(newIndex, oldIndex);
                                 }
-                                //Swap(count + (IsMSD ? (count + oldIndex * (index > 0 ? 1 : 0) < Items.Count ? count + oldIndex * (index > 0 ? 1 : 0) : Items.Count - 1) : 0), oldIndex);
-                                Swap(newIndex, oldIndex);
+                                count++;
                             }
-                            count++;
                         }
 
                         if (count == items.Count)

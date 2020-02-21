@@ -99,7 +99,7 @@ namespace SortAlgorithms
                             algorithm = new GnomeSort<SortedItem>();
                             break;
                         case 9:
-                            algorithm = new RadixSort<SortedItem>(true);
+                            algorithm = new RadixSort<SortedItem>(RadixSortCheckBox.Checked);
                             break;
                         default:
                             algorithm = new BubbleSort<SortedItem>();
@@ -283,10 +283,32 @@ namespace SortAlgorithms
             //VisualPanel.Refresh();
         }
 
+        private void RadixSortCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!(sender as CheckBox).Checked)
+            {
+                RadixSortCheckBox.Text = "LSD - с младшего разряда (числовая)";
+            }
+            else
+            {
+                RadixSortCheckBox.Text = "MSD - со старшего разряда (алфавитная)";
+            }
+            RefillItems();
+            SortButton.Enabled = true;
+        }
+
+        private void reverseSortCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            RefillItems();
+            SortButton.Enabled = true;
+        }
+
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             if ((sender as RadioButton).Checked)
             {
+                RadixSortCheckBox.Visible = (sender as RadioButton).Name == "radioButton9";
+                RadixSortCheckBox.Refresh();
                 RefillItems();
                 SortButton.Enabled = true;
             }
