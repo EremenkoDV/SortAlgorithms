@@ -200,7 +200,8 @@ namespace Algorithm.Tests
         public void MergeSortTest()
         {
             // arrange
-            AlgorithmBase<int> merge = new GetHalfList<int>(items);
+            //List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
+            AlgorithmBase<int> merge = new MergeSort<int>(items);
 
             // act
             merge.SortAndGetSpan();

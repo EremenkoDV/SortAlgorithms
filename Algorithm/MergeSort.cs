@@ -6,64 +6,86 @@ using System.Threading.Tasks;
 
 namespace Algorithm
 {
-    public class GetHalfList<T> : AlgorithmBase<T>
+    public class MergeSort<T> : AlgorithmBase<T>
         where T : IComparable
     {
 
-        private List<T> leftPairItems = new List<T>();
+        public MergeSort() { }
 
-        private List<T> rightPairItems = new List<T>();
-
-        public GetHalfList() { }
-
-        public GetHalfList(IEnumerable<T> items) : base(items)
+        public MergeSort(IEnumerable<T> items) : base(items)
         {
 
         }
 
         protected override void Sort()
         {
-            base.Sort();
+            Items = GetHalfList(Items);
         }
 
-        private void SetHalfList(List<T> items = null)
+        private List<T> GetHalfList(List<T> items, int startIndex = 0)
         {
-            if (items == null)
-            {
-                items = Items;
-            }
+            List<T> leftOfPairItems = new List<T>();
+            List<T> rightOfPairItems = new List<T>();
+            List<T> sortedItems = new List<T>();
+
             if (items.Count > 2)
             {
-                //leftPairItems.AddRange(items.GetRange(0, items.Count / 2));
-                //rightPairItems.AddRange(items.GetRange(items.Count / 2 + 1, items.Count - items.Count / 2));
-                leftPairItems = items.GetRange(0, items.Count / 2);
-                rightPairItems = items.GetRange(items.Count / 2 + 1, items.Count - items.Count / 2);
-                SetHalfList(leftPairItems);
-                //return GetHalfList(items.GetRange(0, items.Count / 2));
+                leftOfPairItems = GetHalfList(items.GetRange(0, items.Count / 2), startIndex);
+                rightOfPairItems = GetHalfList(items.GetRange(items.Count / 2, items.Count - items.Count / 2), startIndex + items.Count / 2);
             }
             else
             {
-                //leftPairItems.AddRange(items.GetRange(0, items.Count / 2));
-                rightPairItems = new List<T>(items[0]);
-                //return items;
+                leftOfPairItems.Add(items[0]);
+                if (items.Count == 2)
+                {
+                    rightOfPairItems.Add(items[1]);
+                }
             }
-
-            Merge();
+            sortedItems = GetMergedList(leftOfPairItems, rightOfPairItems, startIndex);
+            return sortedItems;
         }
 
-        private void Merge()
+        private List<T> GetMergedList(List<T> leftOfPairItems, List<T> rightOfPairItems, int startIndex)
         {
-            for (int i = 0; i < leftPairItems.Count; i++)
+            List<T> mergedItems = new List<T>();
+            int i = 0;
+            int j = 0;
+            do
             {
-                for (int j = 0; j < rightPairItems.Count; j++)
+                if (i >= leftOfPairItems.Count && j < rightOfPairItems.Count)
                 {
-                    if (Compare(i, j) == (IsAscending ? 1 : -1))
+                    mergedItems.AddRange(rightOfPairItems.GetRange(j, rightOfPairItems.Count - j));
+                    break;
+                }
+                else if (j >= rightOfPairItems.Count && i < leftOfPairItems.Count)
+                {
+                    mergedItems.AddRange(leftOfPairItems.GetRange(i, leftOfPairItems.Count - i));
+                    break;
+                }
+                else if (i < leftOfPairItems.Count && j < rightOfPairItems.Count)
+                {
+                    int leftIndex = Array.IndexOf(Items.ToArray(), leftOfPairItems[i], startIndex, leftOfPairItems.Count + rightOfPairItems.Count);
+                    int rightIndex = Array.IndexOf(Items.ToArray(), rightOfPairItems[j], startIndex, leftOfPairItems.Count + rightOfPairItems.Count);
+
+                    if (Compare(leftIndex, rightIndex) == (IsAscending ? -1 : 1))
                     {
-                        Swap(i, j);
+                        mergedItems.Add(leftOfPairItems[i]);
+                        i++;
+                    }
+                    else
+                    {
+                        mergedItems.Add(rightOfPairItems[j]);
+                        Swap(leftIndex, rightIndex);
+                        j++;
                     }
                 }
+                else
+                {
+                    break;
+                }
 
-            }
+            } while (mergedItems.Count < leftOfPairItems.Count + rightOfPairItems.Count);
+            return mergedItems;
         }
 
     }

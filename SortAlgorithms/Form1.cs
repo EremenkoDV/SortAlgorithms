@@ -43,7 +43,7 @@ namespace SortAlgorithms
 
                 if (SpeedTrackBar.Value == 0)
                 {
-                    methods = 9;
+                    methods = 10;
                     VisualPanel.Controls.Clear();
                 }
 
@@ -59,7 +59,7 @@ namespace SortAlgorithms
                         {
                             if (radioButton.Checked)
                             {
-                                if (!Int32.TryParse(radioButton.Name.Substring(radioButton.Name.Length - 1), out methodNumber))
+                                if (!Int32.TryParse(radioButton.Name.Substring("radioButton".Length), out methodNumber))
                                 {
                                     methodNumber = 1;
                                 }
@@ -100,6 +100,9 @@ namespace SortAlgorithms
                             break;
                         case 9:
                             algorithm = new RadixSort<SortedItem>(RadixSortCheckBox.Checked);
+                            break;
+                        case 10:
+                            algorithm = new MergeSort<SortedItem>();
                             break;
                         default:
                             algorithm = new BubbleSort<SortedItem>();

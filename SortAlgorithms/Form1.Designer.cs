@@ -83,6 +83,7 @@
             this.AddTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.RadixSortCheckBox = new System.Windows.Forms.CheckBox();
             this.reverseSortCheckBox = new System.Windows.Forms.CheckBox();
             this.testsLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -102,7 +103,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.RadixSortCheckBox = new System.Windows.Forms.CheckBox();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.ResultTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -135,6 +136,7 @@
             this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.ResultTableLayoutPanel.Controls.Add(this.label14, 11, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.ComparationLabel, 0, 2);
             this.ResultTableLayoutPanel.Controls.Add(this.SwapLabel, 0, 3);
             this.ResultTableLayoutPanel.Controls.Add(this.RuntimeLabel, 0, 1);
@@ -147,7 +149,6 @@
             this.ResultTableLayoutPanel.Controls.Add(this.label11, 7, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label12, 8, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label13, 9, 0);
-            this.ResultTableLayoutPanel.Controls.Add(this.label14, 10, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label_11, 1, 1);
             this.ResultTableLayoutPanel.Controls.Add(this.label_12, 1, 2);
             this.ResultTableLayoutPanel.Controls.Add(this.label_13, 1, 3);
@@ -179,10 +180,10 @@
             this.ResultTableLayoutPanel.Controls.Add(this.label_102, 10, 2);
             this.ResultTableLayoutPanel.Controls.Add(this.label_103, 10, 3);
             this.ResultTableLayoutPanel.Controls.Add(this.label3, 0, 0);
-            this.ResultTableLayoutPanel.Controls.Add(this.label15, 11, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label_111, 11, 1);
             this.ResultTableLayoutPanel.Controls.Add(this.label_112, 11, 2);
             this.ResultTableLayoutPanel.Controls.Add(this.label_113, 11, 3);
+            this.ResultTableLayoutPanel.Controls.Add(this.label15, 10, 0);
             this.ResultTableLayoutPanel.Location = new System.Drawing.Point(4, 4);
             this.ResultTableLayoutPanel.Name = "ResultTableLayoutPanel";
             this.ResultTableLayoutPanel.RowCount = 4;
@@ -309,9 +310,9 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(712, 0);
+            this.label14.Location = new System.Drawing.Point(776, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 52);
+            this.label14.Size = new System.Drawing.Size(62, 52);
             this.label14.TabIndex = 3;
             this.label14.Text = "Quick Sort Сложн.: O(n log n) - O(n²)";
             // 
@@ -576,6 +577,7 @@
             // label_101
             // 
             this.label_101.AutoSize = true;
+            this.label_101.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_101.Location = new System.Drawing.Point(712, 61);
             this.label_101.Name = "label_101";
             this.label_101.Size = new System.Drawing.Size(10, 13);
@@ -585,6 +587,7 @@
             // label_102
             // 
             this.label_102.AutoSize = true;
+            this.label_102.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_102.Location = new System.Drawing.Point(712, 91);
             this.label_102.Name = "label_102";
             this.label_102.Size = new System.Drawing.Size(10, 13);
@@ -594,6 +597,7 @@
             // label_103
             // 
             this.label_103.AutoSize = true;
+            this.label_103.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_103.Location = new System.Drawing.Point(712, 121);
             this.label_103.Name = "label_103";
             this.label_103.Size = new System.Drawing.Size(10, 13);
@@ -615,16 +619,16 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label15.Location = new System.Drawing.Point(776, 0);
+            this.label15.Location = new System.Drawing.Point(712, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 39);
+            this.label15.Size = new System.Drawing.Size(53, 52);
             this.label15.TabIndex = 3;
             this.label15.Text = "Меrge Sort Сложн.: O(n log n)";
             // 
             // label_111
             // 
             this.label_111.AutoSize = true;
-            this.label_111.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label_111.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_111.Location = new System.Drawing.Point(776, 61);
             this.label_111.Name = "label_111";
             this.label_111.Size = new System.Drawing.Size(10, 13);
@@ -634,7 +638,7 @@
             // label_112
             // 
             this.label_112.AutoSize = true;
-            this.label_112.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label_112.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_112.Location = new System.Drawing.Point(776, 91);
             this.label_112.Name = "label_112";
             this.label_112.Size = new System.Drawing.Size(10, 13);
@@ -644,7 +648,7 @@
             // label_113
             // 
             this.label_113.AutoSize = true;
-            this.label_113.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label_113.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_113.Location = new System.Drawing.Point(776, 121);
             this.label_113.Name = "label_113";
             this.label_113.Size = new System.Drawing.Size(10, 13);
@@ -704,6 +708,18 @@
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "замедление";
+            // 
+            // RadixSortCheckBox
+            // 
+            this.RadixSortCheckBox.AutoSize = true;
+            this.RadixSortCheckBox.Location = new System.Drawing.Point(19, 105);
+            this.RadixSortCheckBox.Name = "RadixSortCheckBox";
+            this.RadixSortCheckBox.Size = new System.Drawing.Size(217, 17);
+            this.RadixSortCheckBox.TabIndex = 3;
+            this.RadixSortCheckBox.Text = "LSD - с младшего разряда (числовая)";
+            this.RadixSortCheckBox.UseVisualStyleBackColor = true;
+            this.RadixSortCheckBox.Visible = false;
+            this.RadixSortCheckBox.CheckedChanged += new System.EventHandler(this.RadixSortCheckBox_CheckedChanged);
             // 
             // reverseSortCheckBox
             // 
@@ -791,6 +807,7 @@
             this.panel3.Controls.Add(this.radioButton8);
             this.panel3.Controls.Add(this.radioButton7);
             this.panel3.Controls.Add(this.radioButton6);
+            this.panel3.Controls.Add(this.radioButton10);
             this.panel3.Controls.Add(this.radioButton9);
             this.panel3.Controls.Add(this.radioButton5);
             this.panel3.Controls.Add(this.radioButton4);
@@ -911,17 +928,16 @@
             this.panel4.Size = new System.Drawing.Size(461, 100);
             this.panel4.TabIndex = 0;
             // 
-            // RadixSortCheckBox
+            // radioButton10
             // 
-            this.RadixSortCheckBox.AutoSize = true;
-            this.RadixSortCheckBox.Location = new System.Drawing.Point(19, 105);
-            this.RadixSortCheckBox.Name = "RadixSortCheckBox";
-            this.RadixSortCheckBox.Size = new System.Drawing.Size(217, 17);
-            this.RadixSortCheckBox.TabIndex = 3;
-            this.RadixSortCheckBox.Text = "LSD - с младшего разряда (числовая)";
-            this.RadixSortCheckBox.UseVisualStyleBackColor = true;
-            this.RadixSortCheckBox.Visible = false;
-            this.RadixSortCheckBox.CheckedChanged += new System.EventHandler(this.RadixSortCheckBox_CheckedChanged);
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Location = new System.Drawing.Point(183, 27);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(74, 17);
+            this.radioButton10.TabIndex = 2;
+            this.radioButton10.Text = "MergeSort";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // Form1
             // 
@@ -1026,6 +1042,7 @@
         private System.Windows.Forms.Label label_113;
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.CheckBox RadixSortCheckBox;
+        private System.Windows.Forms.RadioButton radioButton10;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar
