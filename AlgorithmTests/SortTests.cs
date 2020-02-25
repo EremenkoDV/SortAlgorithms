@@ -196,5 +196,21 @@ namespace Algorithm.Tests
             }
         }
 
+        [TestMethod()]
+        public void MergeSortTest()
+        {
+            // arrange
+            AlgorithmBase<int> merge = new GetHalfList<int>(items);
+
+            // act
+            merge.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], merge.Items[i]);
+            }
+        }
+
     }
 }
