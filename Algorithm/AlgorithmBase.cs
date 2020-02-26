@@ -50,6 +50,27 @@ namespace Algorithm
             }
         }
 
+        protected void InsertAt(int index1, int index2)
+        {
+            if (index1 < Items.Count && index2 < Items.Count)
+            {
+                int step = index1 > index2 ? 1 : -1;
+                for (int i = index2; index1 > index2 ? i < index1 : i > index1; i =+ step)
+                {
+                    SwapEvent?.Invoke(this, new Tuple<T, T>(Items[i + step], Items[i]));
+                    T temp = Items[i + step];
+                    Items[i + step] = Items[i];
+                    Items[i] = temp;
+                }
+
+                SwapCount++;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
         protected int Compare(int index1, int index2)
         {
             if (index1 < Items.Count && index2 < Items.Count)

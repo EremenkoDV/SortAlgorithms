@@ -75,7 +75,7 @@ namespace Algorithm
                     else
                     {
                         mergedItems.Add(rightOfPairItems[j]);
-                        Swap(leftIndex, rightIndex);
+                        InsertAt(startIndex + mergedItems.Count - 1, rightIndex);
                         j++;
                     }
                 }
