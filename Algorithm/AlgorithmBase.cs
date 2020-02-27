@@ -55,7 +55,7 @@ namespace Algorithm
             if (index1 < Items.Count && index2 < Items.Count)
             {
                 int step = index1 > index2 ? 1 : -1;
-                for (int i = index2; index1 > index2 ? i < index1 : i > index1; i =+ step)
+                for (int i = index2; index1 > index2 ? i < index1 : i > index1; i += step)
                 {
                     SwapEvent?.Invoke(this, new Tuple<T, T>(Items[i + step], Items[i]));
                     T temp = Items[i + step];

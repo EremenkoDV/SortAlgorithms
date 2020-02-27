@@ -43,6 +43,7 @@ namespace SortAlgorithms
 
                 if (SpeedTrackBar.Value == 0)
                 {
+                    SpeedTrackBar.Enabled = false;
                     methods = 10;
                     VisualPanel.Controls.Clear();
                 }
@@ -240,10 +241,6 @@ namespace SortAlgorithms
             {
                 if (SpeedTrackBar.Value > 0 && numbers <= maxSortedItemsCount || SpeedTrackBar.Value == 0)
                 {
-                    if (SpeedTrackBar.Value == 0)
-                    {
-                        SpeedTrackBar.Enabled = false;
-                    }
 
                     int value;
                     Random rnd = new Random();
@@ -352,6 +349,10 @@ namespace SortAlgorithms
             {
                 testsLabel.ForeColor = SystemColors.ControlText;
                 testsLabel.BackColor = SystemColors.Control;
+                if (values.Count > maxSortedItemsCount)
+                {
+                    values.RemoveRange(maxSortedItemsCount, values.Count - maxSortedItemsCount);
+                }
             }
             testsLabel.Refresh();
         }
