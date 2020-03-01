@@ -16,60 +16,85 @@ namespace Algorithm
 
         protected override void Sort()
         {
-            GetSortedItems(Items.Count);
+            QuickSortItems(0, Items.Count - 1);
         }
 
-        private void GetSortedItems(int pivot, int startIndex = 0)
+        private void QuickSortItems(int lowIndex, int highIndex)
         {
-            //int pivot = items.Count;
-            int i = startIndex;
-            int j = startIndex + pivot < Items.Count ? startIndex + pivot : Items.Count - 1;
-            if (i == j)
+            if (lowIndex < highIndex)
             {
-                return;
+                int partIndex = Partition(lowIndex, highIndex);
+                QuickSortItems(lowIndex, partIndex);
+                QuickSortItems(partIndex + 1, highIndex);
             }
-            pivot /= 2;
-            if (pivot == 0)
+        }
+        private int Partition(int lowIndex, int highIndex)
+        {
+
+            int pivotIndex = GetPivotIndex(lowIndex, highIndex);
+            //int pivotIndex = (lowIndex + highIndex) / 2;
+            int i = lowIndex - 1;
+            int j = highIndex + 1;
+
+            while (true)
             {
-                pivot = i;
-            }
-            //int leftIndex, rightIndex, pivotIndex;
-            while (i < pivot || j > pivot)
-            {
-                //leftIndex = Array.IndexOf(Items.ToArray(), items[i], startIndex, items.Count - 1);
-                //rightIndex = Array.LastIndexOf(Items.ToArray(), items[j], startIndex + items.Count - 1, items.Count - 1);
-                //pivotIndex = Array.IndexOf(Items.ToArray(), items[pivot], startIndex, items.Count - 1);
-                if (i < pivot && Compare(i, pivot) == (IsAscending ? -1 : 1))
+                do
                 {
                     i++;
-                }
-                else if (j > pivot && Compare(pivot, j) == (IsAscending ? -1 : 1))
+                } while (Compare(i, pivotIndex) == (IsAscending ? -1 : 1));
+                
+                do
                 {
                     j--;
-                }
-                else if (i != j)
+                } while (Compare(pivotIndex, j) == (IsAscending ? -1 : 1));
+
+                if (i >= j)
                 {
-                    Swap(i, j);
-                    if (i < pivot)
-                    {
-                        i++;
-                    }
-                    if (j > pivot)
-                    {
-                        j--;
-                    }
+                    return j;
                 }
-                else
-                {
-                    break;
-                }
+
+                Swap(i, j);
             }
-            GetSortedItems(pivot, startIndex + pivot);
-            //if (pivot == Items.Count / 2)
-            //{
-            //    GetSortedItems(Items.Count, startIndex + pivot);
-            //}
+
         }
 
+        private int GetPivotIndex(int lowIndex, int highIndex)
+        {
+            int[] pivotIndexes = new int[3] { lowIndex, (lowIndex + highIndex) / 2, highIndex };
+            int[] pivots = GetIntValuesArray(pivotIndexes);
+            double middle = GetMidValue(pivots);
+            int minIndex = 0;
+            int value = (int)Math.Abs(middle - pivots[0]);
+            for (int i = 1; i < pivots.Length; i++)
+            {
+                if (value > (int)Math.Abs(middle - pivots[i]))
+                {
+                    value = (int)Math.Abs(middle - pivots[i]);
+                    minIndex = i;
+                }
+            }
+            return pivotIndexes[minIndex];
+        }
+
+        private static double GetMidValue(int[] arr)
+        {
+            double middle = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                middle += arr[i];
+            }
+            middle /= arr.Length;
+            return middle;
+        }
+
+        private int[] GetIntValuesArray(int[] arr)
+        {
+            int[] items = new int[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                items[i] = Convert.ToInt32(Items[arr[i]]);
+            }
+            return items;
+        }
     }
 }
