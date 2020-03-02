@@ -24,15 +24,17 @@ namespace Algorithm
             if (lowIndex < highIndex)
             {
                 int partIndex = Partition(lowIndex, highIndex);
-                QuickSortItems(lowIndex, partIndex);
+                QuickSortItems(lowIndex, partIndex - 1);
                 QuickSortItems(partIndex + 1, highIndex);
             }
         }
         private int Partition(int lowIndex, int highIndex)
         {
 
-            //int pivotIndex = GetPivotIndex(lowIndex, highIndex);
-            int pivotIndex = (lowIndex + highIndex) / 2;
+            //int pivotIndex = highIndex;
+            int pivotIndex = GetMedianIndex(lowIndex, highIndex);
+            //int pivotIndex = (lowIndex + highIndex) / 2;
+            int pivotIndex = new Random().Next(lowIndex, highIndex);
             int i = lowIndex - 1;
             int j = highIndex + 1;
 
@@ -58,18 +60,18 @@ namespace Algorithm
 
         }
 
-        private int GetPivotIndex(int lowIndex, int highIndex)
+        private int GetMedianIndex(int lowIndex, int highIndex)
         {
             int[] pivotIndexes = new int[3] { lowIndex, (lowIndex + highIndex) / 2, highIndex };
             int[] pivots = GetIntValuesArray(pivotIndexes);
-            double middle = GetMidValue(pivots);
+            double median = GetMidValue(pivots);
             int minIndex = 0;
-            int value = (int)Math.Abs(middle - pivots[0]);
+            int value = (int)Math.Abs(median - pivots[0]);
             for (int i = 1; i < pivots.Length; i++)
             {
-                if (value > (int)Math.Abs(middle - pivots[i]))
+                if (value > (int)Math.Abs(median - pivots[i]))
                 {
-                    value = (int)Math.Abs(middle - pivots[i]);
+                    value = (int)Math.Abs(median - pivots[i]);
                     minIndex = i;
                 }
             }
