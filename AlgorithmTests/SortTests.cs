@@ -216,7 +216,7 @@ namespace Algorithm.Tests
         public void QuickSortTest()
         {
             // arrange
-            //List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
+            List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
             AlgorithmBase<int> quick = new QuickSort<int>(items);
 
             // act

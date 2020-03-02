@@ -31,8 +31,8 @@ namespace Algorithm
         private int Partition(int lowIndex, int highIndex)
         {
 
-            int pivotIndex = GetPivotIndex(lowIndex, highIndex);
-            //int pivotIndex = (lowIndex + highIndex) / 2;
+            //int pivotIndex = GetPivotIndex(lowIndex, highIndex);
+            int pivotIndex = (lowIndex + highIndex) / 2;
             int i = lowIndex - 1;
             int j = highIndex + 1;
 

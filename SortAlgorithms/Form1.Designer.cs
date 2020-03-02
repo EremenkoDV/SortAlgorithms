@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.ResultTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
             this.ComparationLabel = new System.Windows.Forms.Label();
             this.SwapLabel = new System.Windows.Forms.Label();
             this.RuntimeLabel = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label_11 = new System.Windows.Forms.Label();
             this.label_12 = new System.Windows.Forms.Label();
             this.label_13 = new System.Windows.Forms.Label();
@@ -74,10 +74,10 @@
             this.label_102 = new System.Windows.Forms.Label();
             this.label_103 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label_111 = new System.Windows.Forms.Label();
             this.label_112 = new System.Windows.Forms.Label();
             this.label_113 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AddNumberButton = new System.Windows.Forms.Button();
             this.AddTextBox = new System.Windows.Forms.TextBox();
@@ -96,6 +96,7 @@
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -103,7 +104,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.ResultTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -194,12 +195,21 @@
             this.ResultTableLayoutPanel.Size = new System.Drawing.Size(842, 154);
             this.ResultTableLayoutPanel.TabIndex = 0;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(776, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 52);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Quick Sort Сложн.: O(n log n) - O(n²)";
+            // 
             // ComparationLabel
             // 
             this.ComparationLabel.AutoSize = true;
             this.ComparationLabel.Location = new System.Drawing.Point(3, 91);
             this.ComparationLabel.Name = "ComparationLabel";
-            this.ComparationLabel.Size = new System.Drawing.Size(126, 13);
+            this.ComparationLabel.Size = new System.Drawing.Size(127, 13);
             this.ComparationLabel.TabIndex = 3;
             this.ComparationLabel.Text = "Количество сравнений:";
             // 
@@ -217,7 +227,7 @@
             this.RuntimeLabel.AutoSize = true;
             this.RuntimeLabel.Location = new System.Drawing.Point(3, 61);
             this.RuntimeLabel.Name = "RuntimeLabel";
-            this.RuntimeLabel.Size = new System.Drawing.Size(120, 13);
+            this.RuntimeLabel.Size = new System.Drawing.Size(118, 13);
             this.RuntimeLabel.TabIndex = 3;
             this.RuntimeLabel.Text = "Время выполнения, с:";
             // 
@@ -227,7 +237,7 @@
             this.label5.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label5.Location = new System.Drawing.Point(136, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 52);
+            this.label5.Size = new System.Drawing.Size(51, 52);
             this.label5.TabIndex = 3;
             this.label5.Text = "Bubble Sort Сложн.: O(n²)";
             // 
@@ -237,7 +247,7 @@
             this.label6.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label6.Location = new System.Drawing.Point(200, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 52);
+            this.label6.Size = new System.Drawing.Size(51, 52);
             this.label6.TabIndex = 3;
             this.label6.Text = "Cocktail Sort Сложн.: O(n²)";
             // 
@@ -247,7 +257,7 @@
             this.label7.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label7.Location = new System.Drawing.Point(264, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 52);
+            this.label7.Size = new System.Drawing.Size(53, 52);
             this.label7.TabIndex = 3;
             this.label7.Text = "Insertion Sort Сложн.: O(n²)";
             // 
@@ -256,7 +266,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(328, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 39);
+            this.label8.Size = new System.Drawing.Size(57, 39);
             this.label8.TabIndex = 3;
             this.label8.Text = "Shell Sort Сложн.: O(n log²n)";
             // 
@@ -266,7 +276,7 @@
             this.label9.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label9.Location = new System.Drawing.Point(392, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 52);
+            this.label9.Size = new System.Drawing.Size(58, 52);
             this.label9.TabIndex = 3;
             this.label9.Text = "Tree Sort Сложн.: O(n log n) - O(n²)";
             // 
@@ -284,7 +294,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(520, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 52);
+            this.label11.Size = new System.Drawing.Size(53, 52);
             this.label11.TabIndex = 3;
             this.label11.Text = "Selection Sort Сложн.: O(n²)";
             // 
@@ -294,7 +304,7 @@
             this.label12.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label12.Location = new System.Drawing.Point(584, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 52);
+            this.label12.Size = new System.Drawing.Size(51, 52);
             this.label12.TabIndex = 3;
             this.label12.Text = "Gnome Sort Сложн.: O(n²)";
             // 
@@ -303,18 +313,9 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(648, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 52);
+            this.label13.Size = new System.Drawing.Size(57, 52);
             this.label13.TabIndex = 3;
             this.label13.Text = "Radix Sort (символ) Сложн.: O(n k)";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(776, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(62, 52);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Quick Sort Сложн.: O(n log n) - O(n²)";
             // 
             // label_11
             // 
@@ -322,7 +323,7 @@
             this.label_11.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_11.Location = new System.Drawing.Point(136, 61);
             this.label_11.Name = "label_11";
-            this.label_11.Size = new System.Drawing.Size(10, 13);
+            this.label_11.Size = new System.Drawing.Size(11, 13);
             this.label_11.TabIndex = 3;
             this.label_11.Text = "-";
             // 
@@ -332,7 +333,7 @@
             this.label_12.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_12.Location = new System.Drawing.Point(136, 91);
             this.label_12.Name = "label_12";
-            this.label_12.Size = new System.Drawing.Size(10, 13);
+            this.label_12.Size = new System.Drawing.Size(11, 13);
             this.label_12.TabIndex = 3;
             this.label_12.Text = "-";
             // 
@@ -342,7 +343,7 @@
             this.label_13.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_13.Location = new System.Drawing.Point(136, 121);
             this.label_13.Name = "label_13";
-            this.label_13.Size = new System.Drawing.Size(10, 13);
+            this.label_13.Size = new System.Drawing.Size(11, 13);
             this.label_13.TabIndex = 3;
             this.label_13.Text = "-";
             // 
@@ -352,7 +353,7 @@
             this.label_21.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_21.Location = new System.Drawing.Point(200, 61);
             this.label_21.Name = "label_21";
-            this.label_21.Size = new System.Drawing.Size(10, 13);
+            this.label_21.Size = new System.Drawing.Size(11, 13);
             this.label_21.TabIndex = 3;
             this.label_21.Text = "-";
             // 
@@ -362,7 +363,7 @@
             this.label_22.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_22.Location = new System.Drawing.Point(200, 91);
             this.label_22.Name = "label_22";
-            this.label_22.Size = new System.Drawing.Size(10, 13);
+            this.label_22.Size = new System.Drawing.Size(11, 13);
             this.label_22.TabIndex = 3;
             this.label_22.Text = "-";
             // 
@@ -372,7 +373,7 @@
             this.label_23.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_23.Location = new System.Drawing.Point(200, 121);
             this.label_23.Name = "label_23";
-            this.label_23.Size = new System.Drawing.Size(10, 13);
+            this.label_23.Size = new System.Drawing.Size(11, 13);
             this.label_23.TabIndex = 3;
             this.label_23.Text = "-";
             // 
@@ -382,7 +383,7 @@
             this.label_31.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_31.Location = new System.Drawing.Point(264, 61);
             this.label_31.Name = "label_31";
-            this.label_31.Size = new System.Drawing.Size(10, 13);
+            this.label_31.Size = new System.Drawing.Size(11, 13);
             this.label_31.TabIndex = 3;
             this.label_31.Text = "-";
             // 
@@ -392,7 +393,7 @@
             this.label_32.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_32.Location = new System.Drawing.Point(264, 91);
             this.label_32.Name = "label_32";
-            this.label_32.Size = new System.Drawing.Size(10, 13);
+            this.label_32.Size = new System.Drawing.Size(11, 13);
             this.label_32.TabIndex = 3;
             this.label_32.Text = "-";
             // 
@@ -402,7 +403,7 @@
             this.label_33.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_33.Location = new System.Drawing.Point(264, 121);
             this.label_33.Name = "label_33";
-            this.label_33.Size = new System.Drawing.Size(10, 13);
+            this.label_33.Size = new System.Drawing.Size(11, 13);
             this.label_33.TabIndex = 3;
             this.label_33.Text = "-";
             // 
@@ -411,7 +412,7 @@
             this.label_41.AutoSize = true;
             this.label_41.Location = new System.Drawing.Point(328, 61);
             this.label_41.Name = "label_41";
-            this.label_41.Size = new System.Drawing.Size(10, 13);
+            this.label_41.Size = new System.Drawing.Size(11, 13);
             this.label_41.TabIndex = 3;
             this.label_41.Text = "-";
             // 
@@ -420,7 +421,7 @@
             this.label_42.AutoSize = true;
             this.label_42.Location = new System.Drawing.Point(328, 91);
             this.label_42.Name = "label_42";
-            this.label_42.Size = new System.Drawing.Size(10, 13);
+            this.label_42.Size = new System.Drawing.Size(11, 13);
             this.label_42.TabIndex = 3;
             this.label_42.Text = "-";
             // 
@@ -429,7 +430,7 @@
             this.label_43.AutoSize = true;
             this.label_43.Location = new System.Drawing.Point(328, 121);
             this.label_43.Name = "label_43";
-            this.label_43.Size = new System.Drawing.Size(10, 13);
+            this.label_43.Size = new System.Drawing.Size(11, 13);
             this.label_43.TabIndex = 3;
             this.label_43.Text = "-";
             // 
@@ -439,7 +440,7 @@
             this.label_51.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_51.Location = new System.Drawing.Point(392, 61);
             this.label_51.Name = "label_51";
-            this.label_51.Size = new System.Drawing.Size(10, 13);
+            this.label_51.Size = new System.Drawing.Size(11, 13);
             this.label_51.TabIndex = 3;
             this.label_51.Text = "-";
             // 
@@ -449,7 +450,7 @@
             this.label_52.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_52.Location = new System.Drawing.Point(392, 91);
             this.label_52.Name = "label_52";
-            this.label_52.Size = new System.Drawing.Size(10, 13);
+            this.label_52.Size = new System.Drawing.Size(11, 13);
             this.label_52.TabIndex = 3;
             this.label_52.Text = "-";
             // 
@@ -459,7 +460,7 @@
             this.label_53.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_53.Location = new System.Drawing.Point(392, 121);
             this.label_53.Name = "label_53";
-            this.label_53.Size = new System.Drawing.Size(10, 13);
+            this.label_53.Size = new System.Drawing.Size(11, 13);
             this.label_53.TabIndex = 3;
             this.label_53.Text = "-";
             // 
@@ -468,7 +469,7 @@
             this.label_61.AutoSize = true;
             this.label_61.Location = new System.Drawing.Point(456, 61);
             this.label_61.Name = "label_61";
-            this.label_61.Size = new System.Drawing.Size(10, 13);
+            this.label_61.Size = new System.Drawing.Size(11, 13);
             this.label_61.TabIndex = 3;
             this.label_61.Text = "-";
             // 
@@ -477,7 +478,7 @@
             this.label_62.AutoSize = true;
             this.label_62.Location = new System.Drawing.Point(456, 91);
             this.label_62.Name = "label_62";
-            this.label_62.Size = new System.Drawing.Size(10, 13);
+            this.label_62.Size = new System.Drawing.Size(11, 13);
             this.label_62.TabIndex = 3;
             this.label_62.Text = "-";
             // 
@@ -486,7 +487,7 @@
             this.label_63.AutoSize = true;
             this.label_63.Location = new System.Drawing.Point(456, 121);
             this.label_63.Name = "label_63";
-            this.label_63.Size = new System.Drawing.Size(10, 13);
+            this.label_63.Size = new System.Drawing.Size(11, 13);
             this.label_63.TabIndex = 3;
             this.label_63.Text = "-";
             // 
@@ -495,7 +496,7 @@
             this.label_71.AutoSize = true;
             this.label_71.Location = new System.Drawing.Point(520, 61);
             this.label_71.Name = "label_71";
-            this.label_71.Size = new System.Drawing.Size(10, 13);
+            this.label_71.Size = new System.Drawing.Size(11, 13);
             this.label_71.TabIndex = 3;
             this.label_71.Text = "-";
             // 
@@ -504,7 +505,7 @@
             this.label_72.AutoSize = true;
             this.label_72.Location = new System.Drawing.Point(520, 91);
             this.label_72.Name = "label_72";
-            this.label_72.Size = new System.Drawing.Size(10, 13);
+            this.label_72.Size = new System.Drawing.Size(11, 13);
             this.label_72.TabIndex = 3;
             this.label_72.Text = "-";
             // 
@@ -513,7 +514,7 @@
             this.label_73.AutoSize = true;
             this.label_73.Location = new System.Drawing.Point(520, 121);
             this.label_73.Name = "label_73";
-            this.label_73.Size = new System.Drawing.Size(10, 13);
+            this.label_73.Size = new System.Drawing.Size(11, 13);
             this.label_73.TabIndex = 3;
             this.label_73.Text = "-";
             // 
@@ -523,7 +524,7 @@
             this.label_81.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_81.Location = new System.Drawing.Point(584, 61);
             this.label_81.Name = "label_81";
-            this.label_81.Size = new System.Drawing.Size(10, 13);
+            this.label_81.Size = new System.Drawing.Size(11, 13);
             this.label_81.TabIndex = 3;
             this.label_81.Text = "-";
             // 
@@ -533,7 +534,7 @@
             this.label_82.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_82.Location = new System.Drawing.Point(584, 91);
             this.label_82.Name = "label_82";
-            this.label_82.Size = new System.Drawing.Size(10, 13);
+            this.label_82.Size = new System.Drawing.Size(11, 13);
             this.label_82.TabIndex = 3;
             this.label_82.Text = "-";
             // 
@@ -543,7 +544,7 @@
             this.label_83.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_83.Location = new System.Drawing.Point(584, 121);
             this.label_83.Name = "label_83";
-            this.label_83.Size = new System.Drawing.Size(10, 13);
+            this.label_83.Size = new System.Drawing.Size(11, 13);
             this.label_83.TabIndex = 3;
             this.label_83.Text = "-";
             // 
@@ -552,7 +553,7 @@
             this.label_91.AutoSize = true;
             this.label_91.Location = new System.Drawing.Point(648, 61);
             this.label_91.Name = "label_91";
-            this.label_91.Size = new System.Drawing.Size(10, 13);
+            this.label_91.Size = new System.Drawing.Size(11, 13);
             this.label_91.TabIndex = 3;
             this.label_91.Text = "-";
             // 
@@ -561,7 +562,7 @@
             this.label_92.AutoSize = true;
             this.label_92.Location = new System.Drawing.Point(648, 91);
             this.label_92.Name = "label_92";
-            this.label_92.Size = new System.Drawing.Size(10, 13);
+            this.label_92.Size = new System.Drawing.Size(11, 13);
             this.label_92.TabIndex = 3;
             this.label_92.Text = "-";
             // 
@@ -570,7 +571,7 @@
             this.label_93.AutoSize = true;
             this.label_93.Location = new System.Drawing.Point(648, 121);
             this.label_93.Name = "label_93";
-            this.label_93.Size = new System.Drawing.Size(10, 13);
+            this.label_93.Size = new System.Drawing.Size(11, 13);
             this.label_93.TabIndex = 3;
             this.label_93.Text = "-";
             // 
@@ -580,7 +581,7 @@
             this.label_101.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_101.Location = new System.Drawing.Point(712, 61);
             this.label_101.Name = "label_101";
-            this.label_101.Size = new System.Drawing.Size(10, 13);
+            this.label_101.Size = new System.Drawing.Size(11, 13);
             this.label_101.TabIndex = 3;
             this.label_101.Text = "-";
             // 
@@ -590,7 +591,7 @@
             this.label_102.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_102.Location = new System.Drawing.Point(712, 91);
             this.label_102.Name = "label_102";
-            this.label_102.Size = new System.Drawing.Size(10, 13);
+            this.label_102.Size = new System.Drawing.Size(11, 13);
             this.label_102.TabIndex = 3;
             this.label_102.Text = "-";
             // 
@@ -600,7 +601,7 @@
             this.label_103.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label_103.Location = new System.Drawing.Point(712, 121);
             this.label_103.Name = "label_103";
-            this.label_103.Size = new System.Drawing.Size(10, 13);
+            this.label_103.Size = new System.Drawing.Size(11, 13);
             this.label_103.TabIndex = 3;
             this.label_103.Text = "-";
             // 
@@ -615,23 +616,13 @@
             this.label3.Text = "Устойчивая сортировка не меняет взаимного расположения элементов с одинаковыми кл" +
     "ючами (голубой)";
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label15.Location = new System.Drawing.Point(712, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(53, 52);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Меrge Sort Сложн.: O(n log n)";
-            // 
             // label_111
             // 
             this.label_111.AutoSize = true;
             this.label_111.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_111.Location = new System.Drawing.Point(776, 61);
             this.label_111.Name = "label_111";
-            this.label_111.Size = new System.Drawing.Size(10, 13);
+            this.label_111.Size = new System.Drawing.Size(11, 13);
             this.label_111.TabIndex = 3;
             this.label_111.Text = "-";
             // 
@@ -641,7 +632,7 @@
             this.label_112.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_112.Location = new System.Drawing.Point(776, 91);
             this.label_112.Name = "label_112";
-            this.label_112.Size = new System.Drawing.Size(10, 13);
+            this.label_112.Size = new System.Drawing.Size(11, 13);
             this.label_112.TabIndex = 3;
             this.label_112.Text = "-";
             // 
@@ -651,9 +642,19 @@
             this.label_113.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_113.Location = new System.Drawing.Point(776, 121);
             this.label_113.Name = "label_113";
-            this.label_113.Size = new System.Drawing.Size(10, 13);
+            this.label_113.Size = new System.Drawing.Size(11, 13);
             this.label_113.TabIndex = 3;
             this.label_113.Text = "-";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label15.Location = new System.Drawing.Point(712, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(55, 52);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Меrge Sort Сложн.: O(n log n)";
             // 
             // label1
             // 
@@ -678,7 +679,7 @@
             // 
             this.AddTextBox.Location = new System.Drawing.Point(143, 55);
             this.AddTextBox.Name = "AddTextBox";
-            this.AddTextBox.Size = new System.Drawing.Size(137, 20);
+            this.AddTextBox.Size = new System.Drawing.Size(137, 21);
             this.AddTextBox.TabIndex = 0;
             this.AddTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddTextBox_KeyDown);
             // 
@@ -705,7 +706,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(291, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "замедление";
             // 
@@ -714,7 +715,7 @@
             this.RadixSortCheckBox.AutoSize = true;
             this.RadixSortCheckBox.Location = new System.Drawing.Point(19, 105);
             this.RadixSortCheckBox.Name = "RadixSortCheckBox";
-            this.RadixSortCheckBox.Size = new System.Drawing.Size(217, 17);
+            this.RadixSortCheckBox.Size = new System.Drawing.Size(215, 17);
             this.RadixSortCheckBox.TabIndex = 3;
             this.RadixSortCheckBox.Text = "LSD - с младшего разряда (числовая)";
             this.RadixSortCheckBox.UseVisualStyleBackColor = true;
@@ -726,7 +727,7 @@
             this.reverseSortCheckBox.AutoSize = true;
             this.reverseSortCheckBox.Location = new System.Drawing.Point(19, 82);
             this.reverseSortCheckBox.Name = "reverseSortCheckBox";
-            this.reverseSortCheckBox.Size = new System.Drawing.Size(137, 17);
+            this.reverseSortCheckBox.Size = new System.Drawing.Size(138, 17);
             this.reverseSortCheckBox.TabIndex = 3;
             this.reverseSortCheckBox.Text = "Обратная сортировка";
             this.reverseSortCheckBox.UseVisualStyleBackColor = true;
@@ -750,7 +751,7 @@
             this.label2.Location = new System.Drawing.Point(16, 25);
             this.label2.MaximumSize = new System.Drawing.Size(130, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 26);
+            this.label2.Size = new System.Drawing.Size(127, 26);
             this.label2.TabIndex = 2;
             this.label2.Text = "Заполнить  коллекцию случайными числами";
             // 
@@ -758,7 +759,7 @@
             // 
             this.SpeedTrackBar.Location = new System.Drawing.Point(272, 105);
             this.SpeedTrackBar.Name = "SpeedTrackBar";
-            this.SpeedTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.SpeedTrackBar.Size = new System.Drawing.Size(104, 42);
             this.SpeedTrackBar.TabIndex = 4;
             this.SpeedTrackBar.Value = 1;
             this.SpeedTrackBar.ValueChanged += new System.EventHandler(this.SpeedTrackBar_ValueChanged);
@@ -777,7 +778,7 @@
             // 
             this.FillTextBox.Location = new System.Drawing.Point(143, 28);
             this.FillTextBox.Name = "FillTextBox";
-            this.FillTextBox.Size = new System.Drawing.Size(137, 20);
+            this.FillTextBox.Size = new System.Drawing.Size(137, 21);
             this.FillTextBox.TabIndex = 0;
             this.FillTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FillTextBox_KeyDown);
             // 
@@ -807,6 +808,7 @@
             this.panel3.Controls.Add(this.radioButton8);
             this.panel3.Controls.Add(this.radioButton7);
             this.panel3.Controls.Add(this.radioButton6);
+            this.panel3.Controls.Add(this.radioButton11);
             this.panel3.Controls.Add(this.radioButton10);
             this.panel3.Controls.Add(this.radioButton9);
             this.panel3.Controls.Add(this.radioButton5);
@@ -823,7 +825,7 @@
             // radioButton8
             // 
             this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(102, 73);
+            this.radioButton8.Location = new System.Drawing.Point(118, 73);
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(78, 17);
             this.radioButton8.TabIndex = 2;
@@ -834,7 +836,7 @@
             // radioButton7
             // 
             this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(102, 50);
+            this.radioButton7.Location = new System.Drawing.Point(118, 50);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(88, 17);
             this.radioButton7.TabIndex = 2;
@@ -845,7 +847,7 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(102, 27);
+            this.radioButton6.Location = new System.Drawing.Point(118, 27);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(70, 17);
             this.radioButton6.TabIndex = 2;
@@ -853,12 +855,23 @@
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Location = new System.Drawing.Point(207, 27);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(75, 17);
+            this.radioButton10.TabIndex = 2;
+            this.radioButton10.Text = "MergeSort";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(183, 4);
+            this.radioButton9.Location = new System.Drawing.Point(207, 4);
             this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(71, 17);
+            this.radioButton9.Size = new System.Drawing.Size(72, 17);
             this.radioButton9.TabIndex = 2;
             this.radioButton9.Text = "RadixSort";
             this.radioButton9.UseVisualStyleBackColor = true;
@@ -867,9 +880,9 @@
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(102, 4);
+            this.radioButton5.Location = new System.Drawing.Point(118, 4);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(66, 17);
+            this.radioButton5.Size = new System.Drawing.Size(67, 17);
             this.radioButton5.TabIndex = 2;
             this.radioButton5.Text = "TreeSort";
             this.radioButton5.UseVisualStyleBackColor = true;
@@ -891,7 +904,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(19, 50);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(84, 17);
+            this.radioButton3.Size = new System.Drawing.Size(88, 17);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.Text = "InsertionSort";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -928,16 +941,16 @@
             this.panel4.Size = new System.Drawing.Size(461, 100);
             this.panel4.TabIndex = 0;
             // 
-            // radioButton10
+            // radioButton11
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(183, 27);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(74, 17);
-            this.radioButton10.TabIndex = 2;
-            this.radioButton10.Text = "MergeSort";
-            this.radioButton10.UseVisualStyleBackColor = true;
-            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.Location = new System.Drawing.Point(207, 50);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(71, 17);
+            this.radioButton11.TabIndex = 2;
+            this.radioButton11.Text = "QuickSort";
+            this.radioButton11.UseVisualStyleBackColor = true;
+            this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // Form1
             // 
@@ -1043,6 +1056,7 @@
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.CheckBox RadixSortCheckBox;
         private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.RadioButton radioButton11;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar

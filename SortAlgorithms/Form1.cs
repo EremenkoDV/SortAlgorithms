@@ -44,7 +44,7 @@ namespace SortAlgorithms
                 if (SpeedTrackBar.Value == 0)
                 {
                     SpeedTrackBar.Enabled = false;
-                    methods = 10;
+                    methods = 11;
                     VisualPanel.Controls.Clear();
                 }
 
@@ -104,6 +104,9 @@ namespace SortAlgorithms
                             break;
                         case 10:
                             algorithm = new MergeSort<SortedItem>();
+                            break;
+                        case 11:
+                            algorithm = new QuickSort<SortedItem>();
                             break;
                         default:
                             algorithm = new BubbleSort<SortedItem>();
