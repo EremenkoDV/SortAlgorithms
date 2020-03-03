@@ -20,9 +20,9 @@ namespace Algorithm.Tests
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 100000; i++)
             {
-                items.Add(rnd.Next(0, 100));
+                items.Add(rnd.Next(0, 10000));
             }
 
             sorted.Clear();
@@ -216,7 +216,7 @@ namespace Algorithm.Tests
         public void QuickSortTest()
         {
             // arrange
-            List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
+            //List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
             AlgorithmBase<int> quick = new QuickSort<int>(items);
 
             // act

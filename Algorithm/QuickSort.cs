@@ -24,7 +24,7 @@ namespace Algorithm
             if (lowIndex < highIndex)
             {
                 int partIndex = Partition(lowIndex, highIndex);
-                QuickSortItems(lowIndex, partIndex - 1);
+                QuickSortItems(lowIndex, partIndex);
                 QuickSortItems(partIndex + 1, highIndex);
             }
         }
@@ -34,7 +34,7 @@ namespace Algorithm
             //int pivotIndex = highIndex;
             int pivotIndex = GetMedianIndex(lowIndex, highIndex);
             //int pivotIndex = (lowIndex + highIndex) / 2;
-            int pivotIndex = new Random().Next(lowIndex, highIndex);
+            //int pivotIndex = new Random().Next(lowIndex, highIndex);
             int i = lowIndex - 1;
             int j = highIndex + 1;
 
@@ -62,17 +62,20 @@ namespace Algorithm
 
         private int GetMedianIndex(int lowIndex, int highIndex)
         {
-            //int[] pivotIndexes = new int[3] { lowIndex, (lowIndex + highIndex) / 2, highIndex };
-            //int[] pivots = GetIntValuesArray(pivotIndexes);
             int pivotIndex = (lowIndex + highIndex) / 2;
             if (Compare(lowIndex, pivotIndex) == (IsAscending ? 1 : -1))
             {
-                Swap(0, pivotIndex);
+                Swap(lowIndex, pivotIndex);
             }
-            else if (Compare(pivotIndex, highIndex) == (IsAscending ? -1 : 1))
+            if (Compare(lowIndex, highIndex) == (IsAscending ? 1 : -1))
             {
-
+                Swap(lowIndex, highIndex);
             }
+            if (Compare(pivotIndex, highIndex) == (IsAscending ? -1 : 1))
+            {
+                Swap(pivotIndex, highIndex);
+            }
+            return highIndex;
         }
 
         private int GetAverageIndex(int lowIndex, int highIndex)
