@@ -62,6 +62,21 @@ namespace Algorithm
 
         private int GetMedianIndex(int lowIndex, int highIndex)
         {
+            //int[] pivotIndexes = new int[3] { lowIndex, (lowIndex + highIndex) / 2, highIndex };
+            //int[] pivots = GetIntValuesArray(pivotIndexes);
+            int pivotIndex = (lowIndex + highIndex) / 2;
+            if (Compare(lowIndex, pivotIndex) == (IsAscending ? 1 : -1))
+            {
+                Swap(0, pivotIndex);
+            }
+            else if (Compare(pivotIndex, highIndex) == (IsAscending ? -1 : 1))
+            {
+
+            }
+        }
+
+        private int GetAverageIndex(int lowIndex, int highIndex)
+        {
             int[] pivotIndexes = new int[3] { lowIndex, (lowIndex + highIndex) / 2, highIndex };
             int[] pivots = GetIntValuesArray(pivotIndexes);
             double median = GetMidValue(pivots);
