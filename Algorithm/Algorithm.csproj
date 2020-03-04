@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlgorithmBase.cs" />
-    <Compile Include="QuickSort2.cs" />
     <Compile Include="QuickSort.cs" />
+    <Compile Include="BadQuickSort.cs" />
     <Compile Include="BubbleSort.cs" />
     <Compile Include="CocktailSort.cs" />
     <Compile Include="DataStructures\Heap.cs" />

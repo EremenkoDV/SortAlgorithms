@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -388,17 +389,21 @@ namespace SortAlgorithms
                     if (Int32.TryParse((sender as RadioButton).Name.Substring("TestsRadioButton_".Length), out parameterNumber))
                     {
                         {
+                            //NumberStyles style = NumberStyles.AllowDecimalPoint;
+                            CultureInfo culture = CultureInfo.CreateSpecificCulture("ru-RU");
+                            string text = "";
                             float value = 0;
                             values.Clear();
                             for (int i = 1; i <= allMethods; i++)
                             {
-                                float.TryParse(ResultTableLayoutPanel.Controls["label_" + i.ToString() + parameterNumber.ToString()].Text, out value);
-                                values.Add(Convert.ToInt32(value));
+                                text = ResultTableLayoutPanel.Controls["label_" + i.ToString() + parameterNumber.ToString()].Text.Replace(".", culture.NumberFormat.NumberDecimalSeparator);
+                                float.TryParse(text, out value);
+                                values.Add(Convert.ToInt32(parameterNumber == 1 ? value * 1000 : value));
                             }
                             int maxValue = values.Max();
                             for (int i = 0; i < values.Count; i++)
                             {
-                                values[i] = 100 * values[i] / maxValue;
+                                values[i] = 100 * values[i] / (maxValue == 0 ? 100 : maxValue);
                             }
                             RefillItems(true);
                         }
