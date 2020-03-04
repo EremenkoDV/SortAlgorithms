@@ -31,9 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ResultTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
-            this.ComparationLabel = new System.Windows.Forms.Label();
-            this.SwapLabel = new System.Windows.Forms.Label();
-            this.RuntimeLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -96,6 +93,7 @@
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
             this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -104,7 +102,10 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.TestsRadioButton_1 = new System.Windows.Forms.RadioButton();
+            this.TestsRadioButton_2 = new System.Windows.Forms.RadioButton();
+            this.TestsRadioButton_3 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.ResultTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -137,15 +138,15 @@
             this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.ResultTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.ResultTableLayoutPanel.Controls.Add(this.TestsRadioButton_3, 0, 3);
+            this.ResultTableLayoutPanel.Controls.Add(this.TestsRadioButton_2, 0, 2);
             this.ResultTableLayoutPanel.Controls.Add(this.label14, 11, 0);
-            this.ResultTableLayoutPanel.Controls.Add(this.ComparationLabel, 0, 2);
-            this.ResultTableLayoutPanel.Controls.Add(this.SwapLabel, 0, 3);
-            this.ResultTableLayoutPanel.Controls.Add(this.RuntimeLabel, 0, 1);
             this.ResultTableLayoutPanel.Controls.Add(this.label5, 1, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label6, 2, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label7, 3, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label8, 4, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label9, 5, 0);
+            this.ResultTableLayoutPanel.Controls.Add(this.TestsRadioButton_1, 0, 1);
             this.ResultTableLayoutPanel.Controls.Add(this.label10, 6, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label11, 7, 0);
             this.ResultTableLayoutPanel.Controls.Add(this.label12, 8, 0);
@@ -192,6 +193,7 @@
             this.ResultTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.ResultTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.ResultTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ResultTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ResultTableLayoutPanel.Size = new System.Drawing.Size(842, 154);
             this.ResultTableLayoutPanel.TabIndex = 0;
             // 
@@ -203,33 +205,6 @@
             this.label14.Size = new System.Drawing.Size(62, 52);
             this.label14.TabIndex = 3;
             this.label14.Text = "Quick Sort Сложн.: O(n log n) - O(n²)";
-            // 
-            // ComparationLabel
-            // 
-            this.ComparationLabel.AutoSize = true;
-            this.ComparationLabel.Location = new System.Drawing.Point(3, 91);
-            this.ComparationLabel.Name = "ComparationLabel";
-            this.ComparationLabel.Size = new System.Drawing.Size(127, 13);
-            this.ComparationLabel.TabIndex = 3;
-            this.ComparationLabel.Text = "Количество сравнений:";
-            // 
-            // SwapLabel
-            // 
-            this.SwapLabel.AutoSize = true;
-            this.SwapLabel.Location = new System.Drawing.Point(3, 121);
-            this.SwapLabel.Name = "SwapLabel";
-            this.SwapLabel.Size = new System.Drawing.Size(116, 13);
-            this.SwapLabel.TabIndex = 3;
-            this.SwapLabel.Text = "Количество обменов:";
-            // 
-            // RuntimeLabel
-            // 
-            this.RuntimeLabel.AutoSize = true;
-            this.RuntimeLabel.Location = new System.Drawing.Point(3, 61);
-            this.RuntimeLabel.Name = "RuntimeLabel";
-            this.RuntimeLabel.Size = new System.Drawing.Size(118, 13);
-            this.RuntimeLabel.TabIndex = 3;
-            this.RuntimeLabel.Text = "Время выполнения, с:";
             // 
             // label5
             // 
@@ -808,6 +783,7 @@
             this.panel3.Controls.Add(this.radioButton8);
             this.panel3.Controls.Add(this.radioButton7);
             this.panel3.Controls.Add(this.radioButton6);
+            this.panel3.Controls.Add(this.radioButton12);
             this.panel3.Controls.Add(this.radioButton11);
             this.panel3.Controls.Add(this.radioButton10);
             this.panel3.Controls.Add(this.radioButton9);
@@ -854,6 +830,17 @@
             this.radioButton6.Text = "HeapSort";
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
+            // radioButton11
+            // 
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.Location = new System.Drawing.Point(207, 50);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(71, 17);
+            this.radioButton11.TabIndex = 2;
+            this.radioButton11.Text = "QuickSort";
+            this.radioButton11.UseVisualStyleBackColor = true;
+            this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton10
             // 
@@ -941,16 +928,53 @@
             this.panel4.Size = new System.Drawing.Size(461, 100);
             this.panel4.TabIndex = 0;
             // 
-            // radioButton11
+            // radioButton12
             // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(207, 50);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(71, 17);
-            this.radioButton11.TabIndex = 2;
-            this.radioButton11.Text = "QuickSort";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton12.AutoSize = true;
+            this.radioButton12.Enabled = false;
+            this.radioButton12.Location = new System.Drawing.Point(207, 73);
+            this.radioButton12.Name = "radioButton12";
+            this.radioButton12.Size = new System.Drawing.Size(77, 17);
+            this.radioButton12.TabIndex = 2;
+            this.radioButton12.Text = "QuickSort2";
+            this.radioButton12.UseVisualStyleBackColor = true;
+            this.radioButton12.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
+            // TestsRadioButton_1
+            // 
+            this.TestsRadioButton_1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TestsRadioButton_1.Location = new System.Drawing.Point(0, 61);
+            this.TestsRadioButton_1.Margin = new System.Windows.Forms.Padding(0);
+            this.TestsRadioButton_1.Name = "TestsRadioButton_1";
+            this.TestsRadioButton_1.Size = new System.Drawing.Size(133, 30);
+            this.TestsRadioButton_1.TabIndex = 2;
+            this.TestsRadioButton_1.Text = "Время выполнения, с";
+            this.TestsRadioButton_1.UseVisualStyleBackColor = true;
+            this.TestsRadioButton_1.CheckedChanged += new System.EventHandler(this.testsRadioButton_CheckedChanged);
+            // 
+            // TestsRadioButton_2
+            // 
+            this.TestsRadioButton_2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TestsRadioButton_2.Location = new System.Drawing.Point(0, 91);
+            this.TestsRadioButton_2.Margin = new System.Windows.Forms.Padding(0);
+            this.TestsRadioButton_2.Name = "TestsRadioButton_2";
+            this.TestsRadioButton_2.Size = new System.Drawing.Size(133, 30);
+            this.TestsRadioButton_2.TabIndex = 4;
+            this.TestsRadioButton_2.Text = "Кол-во сравнений";
+            this.TestsRadioButton_2.UseVisualStyleBackColor = true;
+            this.TestsRadioButton_2.CheckedChanged += new System.EventHandler(this.testsRadioButton_CheckedChanged);
+            // 
+            // TestsRadioButton_3
+            // 
+            this.TestsRadioButton_3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TestsRadioButton_3.Location = new System.Drawing.Point(0, 121);
+            this.TestsRadioButton_3.Margin = new System.Windows.Forms.Padding(0);
+            this.TestsRadioButton_3.Name = "TestsRadioButton_3";
+            this.TestsRadioButton_3.Size = new System.Drawing.Size(133, 30);
+            this.TestsRadioButton_3.TabIndex = 5;
+            this.TestsRadioButton_3.Text = "Кол-во обменов";
+            this.TestsRadioButton_3.UseVisualStyleBackColor = true;
+            this.TestsRadioButton_3.CheckedChanged += new System.EventHandler(this.testsRadioButton_CheckedChanged);
             // 
             // Form1
             // 
@@ -995,9 +1019,6 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label RuntimeLabel;
-        private System.Windows.Forms.Label ComparationLabel;
-        private System.Windows.Forms.Label SwapLabel;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.TrackBar SpeedTrackBar;
@@ -1057,6 +1078,10 @@
         private System.Windows.Forms.CheckBox RadixSortCheckBox;
         private System.Windows.Forms.RadioButton radioButton10;
         private System.Windows.Forms.RadioButton radioButton11;
+        private System.Windows.Forms.RadioButton radioButton12;
+        private System.Windows.Forms.RadioButton TestsRadioButton_3;
+        private System.Windows.Forms.RadioButton TestsRadioButton_2;
+        private System.Windows.Forms.RadioButton TestsRadioButton_1;
     }
 
     public class VerticalProgressBar : System.Windows.Forms.ProgressBar

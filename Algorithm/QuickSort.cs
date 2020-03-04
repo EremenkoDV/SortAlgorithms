@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Algorithm
 {
-    public class QuickSort<T> : AlgorithmBase<T>
+    public class BadQuickSort<T> : AlgorithmBase<T>
         where T : IComparable
     {
 
-        public QuickSort(IEnumerable<T> items) : base(items) { }
+        public BadQuickSort(IEnumerable<T> items) : base(items) { }
 
-        public QuickSort() { }
+        public BadQuickSort() { }
 
         protected override void Sort()
         {

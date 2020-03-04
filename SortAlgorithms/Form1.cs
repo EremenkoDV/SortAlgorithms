@@ -17,10 +17,12 @@ namespace SortAlgorithms
 
         private List<int> values = new List<int>();
 
+        private int allMethods = 11;
+
         private int sortedItemsCount = 0;
 
         private int maxSortedItemsCount = 20;
-        
+
         private int maxValue = 100;
 
         public Form1()
@@ -31,6 +33,10 @@ namespace SortAlgorithms
         private void Form1_Shown(object sender, EventArgs e)
         {
             FillTextBox.Focus();
+            for (int i = 1; i <= 3; i++)
+            {
+                ResultTableLayoutPanel.Controls["TestsRadioButton_" + i.ToString()].Enabled = false;
+            }
         }
 
         private void SortButton_Click(object sender, EventArgs e)
@@ -44,7 +50,7 @@ namespace SortAlgorithms
                 if (SpeedTrackBar.Value == 0)
                 {
                     SpeedTrackBar.Enabled = false;
-                    methods = 11;
+                    methods = allMethods;
                     VisualPanel.Controls.Clear();
                 }
 
@@ -70,7 +76,7 @@ namespace SortAlgorithms
                     }
                     else if (methodNumber > 1)
                     {
-                        RefillItems();
+                        RefillItems(SpeedTrackBar.Value > 0);
                     }
 
                     switch (methodNumber)
@@ -160,6 +166,14 @@ namespace SortAlgorithms
                 }
 
                 SpeedTrackBar.Enabled = true;
+
+                if (SpeedTrackBar.Value == 0)
+                {
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        ResultTableLayoutPanel.Controls["TestsRadioButton_" + i.ToString()].Enabled = true;
+                    }
+                }
 
             }
         }
@@ -253,16 +267,16 @@ namespace SortAlgorithms
                         value = rnd.Next(0, maxValue);
                         values.Add(value);
                     }
-                    RefillItems();
+                    RefillItems(SpeedTrackBar.Value > 0);
                     FillTextBox.Text = "";
                     FillTextBox.Focus();
                 }
             }
         }
 
-        private void RefillItems()
+        private void RefillItems(bool enableVisualization = true)
         {
-            if (SpeedTrackBar.Value > 0)
+            if (enableVisualization)
             {
                 VisualPanel.Controls.Clear();
             }
@@ -270,16 +284,16 @@ namespace SortAlgorithms
             items.Clear();
             for (int i = 0; i < values.Count; i++)
             {
-                if (SpeedTrackBar.Value == 0)
-                {
-                    SortedItem item = new SortedItem(++sortedItemsCount, values[i]);
-                    items.Add(item);
-                }
-                else
+                if (enableVisualization)
                 {
                     SortedItem item = new SortedItem(VisualPanel, ++sortedItemsCount, values[i]);
                     items.Add(item);
                     VisualPanel.Refresh();
+                }
+                else
+                {
+                    SortedItem item = new SortedItem(++sortedItemsCount, values[i]);
+                    items.Add(item);
                 }
             }
             //MessageBox.Show($"Количество items {items.Count} : {sortedItemsCount}");
@@ -296,13 +310,13 @@ namespace SortAlgorithms
             {
                 RadixSortCheckBox.Text = "MSD - со старшего разряда (алфавитная)";
             }
-            RefillItems();
+            RefillItems(SpeedTrackBar.Value > 0);
             SortButton.Enabled = true;
         }
 
         private void reverseSortCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            RefillItems();
+            RefillItems(SpeedTrackBar.Value > 0);
             SortButton.Enabled = true;
         }
 
@@ -312,7 +326,7 @@ namespace SortAlgorithms
             {
                 RadixSortCheckBox.Visible = (sender as RadioButton).Name == "radioButton9";
                 RadixSortCheckBox.Refresh();
-                RefillItems();
+                RefillItems(SpeedTrackBar.Value > 0);
                 SortButton.Enabled = true;
             }
         }
@@ -356,10 +370,42 @@ namespace SortAlgorithms
                 {
                     values.RemoveRange(maxSortedItemsCount, values.Count - maxSortedItemsCount);
                 }
+                for (int i = 1; i <= 3; i++)
+                {
+                    ResultTableLayoutPanel.Controls["TestsRadioButton_" + i.ToString()].Enabled = false;
+                }
             }
             testsLabel.Refresh();
         }
 
-    }
+        private void testsRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SpeedTrackBar.Value == 0)
+            {
+                if ((sender as RadioButton).Checked)
+                {
+                    int parameterNumber = 1;
+                    if (Int32.TryParse((sender as RadioButton).Name.Substring("TestsRadioButton_".Length), out parameterNumber))
+                    {
+                        {
+                            float value = 0;
+                            values.Clear();
+                            for (int i = 1; i <= allMethods; i++)
+                            {
+                                float.TryParse(ResultTableLayoutPanel.Controls["label_" + i.ToString() + parameterNumber.ToString()].Text, out value);
+                                values.Add(Convert.ToInt32(value));
+                            }
+                            int maxValue = values.Max();
+                            for (int i = 0; i < values.Count; i++)
+                            {
+                                values[i] = 100 * values[i] / maxValue;
+                            }
+                            RefillItems(true);
+                        }
+                    }
+                }
+            }
+        }
 
+    }
 }

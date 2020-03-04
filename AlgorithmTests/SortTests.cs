@@ -217,7 +217,7 @@ namespace Algorithm.Tests
         {
             // arrange
             //List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
-            AlgorithmBase<int> quick = new QuickSort<int>(items);
+            AlgorithmBase<int> quick = new BadQuickSort<int>(items);
 
             // act
             quick.SortAndGetSpan();
@@ -226,6 +226,23 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], quick.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void QuickSort2Test()
+        {
+            // arrange
+            //List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
+            AlgorithmBase<int> quick2 = new QuickSort<int>(items);
+
+            // act
+            quick2.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], quick2.Items[i]);
             }
         }
 
