@@ -15,6 +15,8 @@ namespace SortAlgorithms
 
         public Label Label = new Label();
 
+        public Label LabelID = new Label();
+
         public int Value { get; private set; }
 
         public int Index { get; set; }
@@ -22,6 +24,16 @@ namespace SortAlgorithms
         private static int indent = 4;
 
         private static int border = 15;
+
+        private static int vertProgressBarSize = 100;
+
+        private static int labelsSize = 15;
+
+        private static int vertProgressBarPositionY = 10;
+
+        private static int labelPositionY = 115;
+
+        private static int labelIDPositionY = 130;
 
         /// <summary>
         /// Контруктор без графического представления (для групповых тестов)
@@ -50,22 +62,28 @@ namespace SortAlgorithms
                 if (control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).Any())
                 {
                     Control subControl = control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).First();
-                    subControl.Location = new Point(border + (size + indent) * i, 25);
-                    subControl.Size = new Size(size, 86);
+                    subControl.Location = new Point(border + (size + indent) * i, vertProgressBarPositionY);
+                    subControl.Size = new Size(size, vertProgressBarSize);
                     subControl.ForeColor = color;
                 }
                 if (control.Controls.Find("label" + (i + 1).ToString(), false).Any())
                 {
                     Control subControl = control.Controls.Find("label" + (i + 1).ToString(), false).First();
-                    subControl.Location = new Point(border + (size + indent) * i, 114);
-                    subControl.Size = new Size(size, 13);
+                    subControl.Location = new Point(border + (size + indent) * i, labelPositionY);
+                    subControl.Size = new Size(size, labelsSize);
+                }
+                if (control.Controls.Find("labelID" + (i + 1).ToString(), false).Any())
+                {
+                    Control subControl = control.Controls.Find("labelID" + (i + 1).ToString(), false).First();
+                    subControl.Location = new Point(border + (size + indent) * i, labelIDPositionY);
+                    subControl.Size = new Size(size, labelsSize);
                 }
             }
 
             VerticalProgressBar.BackColor = SystemColors.Control;
-            VerticalProgressBar.Location = new Point(border + (size + indent) * (instance - 1), 25);
+            VerticalProgressBar.Location = new Point(border + (size + indent) * (instance - 1), vertProgressBarPositionY);
             VerticalProgressBar.Name = "verticalProgressBar" + instance.ToString();
-            VerticalProgressBar.Size = new Size(size, 86);
+            VerticalProgressBar.Size = new Size(size, vertProgressBarSize);
             VerticalProgressBar.Style = ProgressBarStyle.Continuous;
             VerticalProgressBar.Step = 1;
             VerticalProgressBar.Maximum = 100;
@@ -77,16 +95,24 @@ namespace SortAlgorithms
             //control.Refresh();
 
             Label.AutoSize = true;
-            Label.Location = new Point(border + (size + indent) * (instance - 1), 114);
+            Label.Location = new Point(border + (size + indent) * (instance - 1), labelPositionY);
             Label.Name = "label" + instance.ToString();
-            Label.Size = new Size(size, 13);
+            Label.Size = new Size(size, labelsSize);
             //Label.Text = value.ToString();
             control.Controls.Add(Label);
+
+            LabelID.AutoSize = true;
+            LabelID.Location = new Point(border + (size + indent) * (instance - 1), labelIDPositionY);
+            LabelID.Name = "labelID" + instance.ToString();
+            LabelID.Size = new Size(size, labelsSize);
+            //Label.Text = value.ToString();
+            control.Controls.Add(LabelID);
 
             // Set value
             Value = value;
             VerticalProgressBar.Value = value;
             Label.Text = value.ToString();
+            LabelID.Text = "[" + instance.ToString() + "]";
 
             // Set index
             Index = instance;
@@ -119,6 +145,10 @@ namespace SortAlgorithms
                 first.Label.Location = second.Label.Location;
                 second.Label.Location = locationFirst;
 
+                locationFirst = first.LabelID.Location;
+                first.LabelID.Location = second.LabelID.Location;
+                second.LabelID.Location = locationFirst;
+
                 // Swap index
                 //int index = first.Index;
                 //first.Index = second.Index;
@@ -131,6 +161,10 @@ namespace SortAlgorithms
                 first.Label.TabIndex = second.Label.TabIndex;
                 second.Label.TabIndex = index;
 
+                first.LabelID.Text = second.LabelID.Text;
+                first.LabelID.Text = second.LabelID.Text;
+                second.LabelID.Text = "[" + index.ToString() + "]";
+
                 // Swap name
                 string name = first.VerticalProgressBar.Name;
                 first.VerticalProgressBar.Name = second.VerticalProgressBar.Name;
@@ -139,6 +173,10 @@ namespace SortAlgorithms
                 name = first.Label.Name;
                 first.Label.Name = second.Label.Name;
                 second.Label.Name = name;
+
+                name = first.LabelID.Name;
+                first.LabelID.Name = second.LabelID.Name;
+                second.LabelID.Name = name;
 
             }
         }
@@ -159,6 +197,14 @@ namespace SortAlgorithms
                 }
                 control.Controls.Remove(item.Label);
             }
+            if (item.LabelID != null)
+            {
+                if (control == null)
+                {
+                    control = item.LabelID.Parent;
+                }
+                control.Controls.Remove(item.LabelID);
+            }
             item = null;
             Replace(control);
         }
@@ -170,21 +216,30 @@ namespace SortAlgorithms
             {
                 int value = 0;
                 int controlWidth = control.Width - 2 * border;
-                int size = (controlWidth - (indent * instances)) / instances > 15 ? (int)((controlWidth - (indent * instances)) / instances) : 15;
+                int size = (controlWidth - (indent * instances)) / instances > labelsSize ? (int)((controlWidth - (indent * instances)) / instances) : labelsSize;
                 if (control.Controls.Find("verticalProgressBar" + (i + 1).ToString(), false).Any())
                 {
                     Control subControl = control.Controls["verticalProgressBar" + (i + 1).ToString()];
                     value = (subControl as VerticalProgressBar).Value;
-                    subControl.Location = new Point(border + (size + indent) * i, 25);
-                    subControl.Size = new Size(size, 86);
+                    subControl.Location = new Point(border + (size + indent) * i, vertProgressBarPositionY);
+                    subControl.Size = new Size(size, vertProgressBarSize);
                 }
                 if (control.Controls.Find("label" + (i + 1).ToString(), false).Any())
                 {
                     Control subControl = control.Controls["label" + (i + 1).ToString()];
                     if (value.ToString() == (subControl as Label).Text)
                     {
-                        subControl.Location = new Point(border + (size + indent) * i, 114);
-                        subControl.Size = new Size(size, 13);
+                        subControl.Location = new Point(border + (size + indent) * i, labelPositionY);
+                        subControl.Size = new Size(size, labelsSize);
+                    }
+                }
+                if (control.Controls.Find("labelID" + (i + 1).ToString(), false).Any())
+                {
+                    Control subControl = control.Controls["labelID" + (i + 1).ToString()];
+                    if ("[" + (i + 1).ToString() + "]" == (subControl as Label).Text)
+                    {
+                        subControl.Location = new Point(border + (size + indent) * i, labelIDPositionY);
+                        subControl.Size = new Size(size, labelsSize);
                     }
                 }
             }
