@@ -18,7 +18,7 @@ namespace SortAlgorithms
 
         private List<int> values = new List<int>();
 
-        private int allMethods = 11;
+        private string[,] allMethods = new int[12, 4];
 
         private int sortedItemsCount = 0;
 
@@ -34,6 +34,82 @@ namespace SortAlgorithms
         private void Form1_Shown(object sender, EventArgs e)
         {
             FillTextBox.Focus();
+
+            allMethods[0, 0] = "Bubble Sort";
+            allMethods[0, 1] = "Сложн.: O(n²)";
+            allMethods[0, 2] = "1";
+            allMethods[0, 3] = "1";
+
+            allMethods[1, 0] = "Cocktail Sort";
+            allMethods[1, 1] = "Сложн.: O(n²)";
+            allMethods[1, 2] = "1";
+            allMethods[1, 3] = "1";
+
+            allMethods[2, 0] = "Gnome Sort";
+            allMethods[2, 1] = "Сложн.: O(n²)";
+            allMethods[2, 2] = "1";
+            allMethods[2, 3] = "1";
+
+            allMethods[3, 0] = "Quick Sort";
+            allMethods[3, 1] = "Сложн.: O(n log n) - O(n²)";
+            allMethods[3, 2] = "1";
+            allMethods[3, 3] = "0";
+
+            allMethods[4, 0] = "Comb Sort";
+            allMethods[4, 1] = "Сложн.: O(n log n) - O(n²)";
+            allMethods[4, 2] = "1";
+            allMethods[4, 3] = "1";
+
+            allMethods[5, 0] = "Gnome Sort";
+            allMethods[5, 1] = "Сложн.: O(n²)";
+            allMethods[5, 2] = "1";
+            allMethods[5, 3] = "1";
+
+            allMethods[6, 0] = "Gnome Sort";
+            allMethods[6, 1] = "Сложн.: O(n²)";
+            allMethods[6, 2] = "1";
+            allMethods[6, 3] = "1";
+
+            allMethods[7, 0] = "Gnome Sort";
+            allMethods[7, 1] = "Сложн.: O(n²)";
+            allMethods[7, 2] = "1";
+            allMethods[7, 3] = "1";
+
+            allMethods[8, 0] = "Gnome Sort";
+            allMethods[8, 1] = "Сложн.: O(n²)";
+            allMethods[8, 2] = "1";
+            allMethods[8, 3] = "1";
+
+            allMethods[9, 0] = "Gnome Sort";
+            allMethods[9, 1] = "Сложн.: O(n²)";
+            allMethods[9, 2] = "1";
+            allMethods[9, 3] = "1";
+
+            allMethods[10, 0] = "Gnome Sort";
+            allMethods[10, 1] = "Сложн.: O(n²)";
+            allMethods[10, 2] = "1";
+            allMethods[10, 3] = "1";
+
+            allMethods[11, 0] = "Gnome Sort";
+            allMethods[11, 1] = "Сложн.: O(n²)";
+            allMethods[11, 2] = "1";
+            allMethods[11, 3] = "1";
+
+            allMethods[2, 0] = "Gnome Sort";
+            allMethods[2, 1] = "Сложн.: O(n²)";
+            allMethods[2, 2] = "1";
+            allMethods[2, 3] = "1";
+
+            allMethods[2, 0] = "Gnome Sort";
+            allMethods[2, 1] = "Сложн.: O(n²)";
+            allMethods[2, 2] = "1";
+            allMethods[2, 3] = "1";
+            
+
+            for (int i = 1; i <= allMethods.Length; i++)
+            {
+            }
+
             for (int i = 1; i <= 3; i++)
             {
                 ResultTableLayoutPanel.Controls["TestsRadioButton_" + i.ToString()].Enabled = false;
@@ -51,7 +127,7 @@ namespace SortAlgorithms
                 if (SpeedTrackBar.Value == 0)
                 {
                     SpeedTrackBar.Enabled = false;
-                    methods = allMethods;
+                    methods = allMethods.Length;
                     VisualPanel.Controls.Clear();
                 }
 
@@ -394,7 +470,7 @@ namespace SortAlgorithms
                             string text = "";
                             float value = 0;
                             values.Clear();
-                            for (int i = 1; i <= allMethods; i++)
+                            for (int i = 1; i <= allMethods.Length; i++)
                             {
                                 text = ResultTableLayoutPanel.Controls["label_" + i.ToString() + parameterNumber.ToString()].Text.Replace(".", culture.NumberFormat.NumberDecimalSeparator);
                                 float.TryParse(text, out value);
