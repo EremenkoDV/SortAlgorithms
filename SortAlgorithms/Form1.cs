@@ -20,6 +20,8 @@ namespace SortAlgorithms
 
         private string[,] allMethods = new string[13, 4];
 
+        private int delayMilliSeconds = 10;
+        
         private int sortedItemsCount = 0;
 
         private int maxSortedItemsCount = 20;
@@ -274,10 +276,14 @@ namespace SortAlgorithms
                     }
                     else
                     {
+                        if (methodNumber > 1 && ((methodNumber - 1) % (VisualPanel.Height / 15)) == 0)
+                        {
+                            VisualPanel.Controls.Clear();
+                        }
                         label.Name = "label_" + methodNumber.ToString();
                         label.Text = "Идет сортировка массива из " + items.Count.ToString() + " элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " ...";
                         label.AutoSize = true;
-                        label.Location = new Point(5, 15 * (methodNumber - 1));
+                        label.Location = new Point(5, 15 * ((methodNumber - 1) % (VisualPanel.Height / 15)));
                         VisualPanel.Controls.Add(label);
                         VisualPanel.Refresh();
                     }
@@ -333,7 +339,7 @@ namespace SortAlgorithms
 
                 VisualPanel.Refresh();
 
-                System.Threading.Thread.Sleep(50 * SpeedTrackBar.Value - 1);
+                System.Threading.Thread.Sleep(delayMilliSeconds * SpeedTrackBar.Value - 1);
 
                 e.Item1.SetColor(Color.Blue);
                 e.Item2.SetColor(Color.Blue);
@@ -353,7 +359,7 @@ namespace SortAlgorithms
 
                 SortedItem.SwapPosition(e.Item1, e.Item2);
 
-                System.Threading.Thread.Sleep(50 * SpeedTrackBar.Value - 1);
+                System.Threading.Thread.Sleep(delayMilliSeconds * SpeedTrackBar.Value - 1);
 
                 e.Item1.SetColor(Color.Blue);
                 e.Item2.SetColor(Color.Blue);

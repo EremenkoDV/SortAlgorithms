@@ -16,16 +16,21 @@ namespace Algorithm
 
         protected override void Sort()
         {
-            for (int i = 0; i < Items.Count - 1; i++)
+            bool wasSwapped;
+            int count = Items.Count;
+            do
             {
-                for (int j = i + 1; j < Items.Count; j++)
+                wasSwapped = false;
+                for (int i = 0; i < count - 1; i++)
                 {
-                    if (Compare(i, j) == (IsAscending ? 1 : -1))
+                    if (Compare(i, i + 1) == (IsAscending ? 1 : -1))
                     {
-                        Swap(i, j);
+                        Swap(i, i + 1);
+                        wasSwapped = true;
                     }
                 }
-            }
+                count--;
+            } while (wasSwapped);
         }
 
     }
