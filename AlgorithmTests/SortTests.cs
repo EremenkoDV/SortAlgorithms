@@ -20,9 +20,9 @@ namespace Algorithm.Tests
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 10000; i++)
             {
-                items.Add(rnd.Next(0, 10000));
+                items.Add(rnd.Next(0, 1000));
             }
 
             sorted.Clear();
@@ -226,6 +226,23 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], quick.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void OddEvenSortTest()
+        {
+            // arrange
+            //List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
+            AlgorithmBase<int> oddEven = new OddEvenSort<int>(items);
+
+            // act
+            oddEven.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], oddEven.Items[i]);
             }
         }
 
