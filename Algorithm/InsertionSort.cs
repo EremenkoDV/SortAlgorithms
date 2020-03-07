@@ -16,10 +16,10 @@ namespace Algorithm
 
         protected override void Sort()
         {
-            int sortedIndex = 0;
-            while (sortedIndex + 1 < Items.Count)
+            int sortedIndex = 1;
+            while (sortedIndex < Items.Count)
             {
-                for (int i = sortedIndex; i >= 0; i--)
+                for (int i = sortedIndex - 1; i >= 0; i--)
                 {
                     if (Compare(i, i + 1) == (IsAscending ? 1 : -1))
                     {

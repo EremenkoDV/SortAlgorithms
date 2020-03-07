@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Algorithm
 {
-    public class ShellSort<T> : AlgorithmBase<T>
+    public class CombSort<T> : AlgorithmBase<T>
         where T : IComparable
     {
-        public ShellSort(IEnumerable<T> items) : base(items) { }
+        public CombSort(IEnumerable<T> items) : base(items) { }
 
-        public ShellSort() { }
+        public CombSort() { }
 
         protected override void Sort()
         {
             int sortedIndex;
             int step = Items.Count / 2;
+            double factor = 1 / (1 - Math.Exp(-(Math.Sqrt(5) - 1) / 2));
 
             while (step > 0)
             {

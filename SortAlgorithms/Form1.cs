@@ -199,6 +199,7 @@ namespace SortAlgorithms
                     VisualPanel.Controls.Clear();
                 }
 
+                string methodName = "";
                 for (int methodNumber = 1; methodNumber <= methods; methodNumber++)
                 {
 
@@ -211,6 +212,7 @@ namespace SortAlgorithms
                         {
                             if (radioButton.Checked)
                             {
+                                methodName = radioButton.Text;
                                 if (!Int32.TryParse(radioButton.Name.Substring("radioButton".Length), out methodNumber))
                                 {
                                     methodNumber = 1;
@@ -224,7 +226,7 @@ namespace SortAlgorithms
                         RefillItems(SpeedTrackBar.Value > 0);
                     }
 
-                    switch (panel3.Controls["radioButton" + methodNumber.ToString()].Text)
+                    switch (methodName)
                     {
                         case "Bubble Sort":
                             algorithm = new BubbleSort<SortedItem>();
@@ -276,14 +278,15 @@ namespace SortAlgorithms
                     }
                     else
                     {
-                        if (methodNumber > 1 && ((methodNumber - 1) % (VisualPanel.Height / 15)) == 0)
+                        int verticalInterval = 15;
+                        if (methodNumber > 1 && ((methodNumber - 1) % (VisualPanel.Height / verticalInterval)) == 0)
                         {
                             VisualPanel.Controls.Clear();
                         }
                         label.Name = "label_" + methodNumber.ToString();
                         label.Text = "Идет сортировка массива из " + items.Count.ToString() + " элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " ...";
                         label.AutoSize = true;
-                        label.Location = new Point(5, 15 * ((methodNumber - 1) % (VisualPanel.Height / 15)));
+                        label.Location = new Point(5, verticalInterval * ((methodNumber - 1) % (VisualPanel.Height / verticalInterval)));
                         VisualPanel.Controls.Add(label);
                         VisualPanel.Refresh();
                     }
@@ -296,7 +299,7 @@ namespace SortAlgorithms
                     algorithm.AddRange(items);
                     TimeSpan runTime = algorithm.SortAndGetSpan();
 
-                    if (SpeedTrackBar.Value > 0 && methodNumber == 6)
+                    if (SpeedTrackBar.Value > 0 && methodName == "Heap Sort")
                     {
                         VisualPanel.Controls.Clear();
                         sortedItemsCount = 0;
