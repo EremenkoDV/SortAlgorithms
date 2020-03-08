@@ -20,7 +20,7 @@ namespace Algorithm.Tests
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 items.Add(rnd.Next(0, 1000));
             }
@@ -113,10 +113,7 @@ namespace Algorithm.Tests
         public void TreeSortTest()
         {
             // arrange
-            //items.Clear();
-            //items = new List<int> { 57, 17, 71, 11, 55, 30, 67, 74, 87, 49 };
             AlgorithmBase<int> tree = new DataStructures.Tree<int>(items);
-            //tree.Items.AddRange(items);
 
             // act
             tree.SortAndGetSpan();
@@ -243,6 +240,23 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], oddEven.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void CombSortTest()
+        {
+            // arrange
+            //List<int> items = new List<int> { 57, 7, 471, 359, 311, 1552, 730, 77, 311, 74234, 87, 419, 359 };
+            AlgorithmBase<int> comb = new CombSort<int>(items);
+
+            // act
+            comb.SortAndGetSpan();
+
+            // assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], comb.Items[i]);
             }
         }
 

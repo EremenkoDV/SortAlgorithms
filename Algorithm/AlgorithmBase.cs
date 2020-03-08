@@ -98,8 +98,9 @@ namespace Algorithm
             }
         }
 
-        public TimeSpan SortAndGetSpan()
+        public TimeSpan SortAndGetSpan(bool isAscending = true)
         {
+            IsAscending = isAscending;
             SwapCount = 0;
             Stopwatch timer = new Stopwatch();
 

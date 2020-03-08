@@ -259,7 +259,7 @@
             this.TestsRadioButton_3.TabIndex = 5;
             this.TestsRadioButton_3.Text = "Кол-во обменов";
             this.TestsRadioButton_3.UseVisualStyleBackColor = true;
-            this.TestsRadioButton_3.CheckedChanged += new System.EventHandler(this.testsRadioButton_CheckedChanged);
+            this.TestsRadioButton_3.CheckedChanged += new System.EventHandler(this.TestsRadioButton_CheckedChanged);
             // 
             // TestsRadioButton_2
             // 
@@ -273,7 +273,7 @@
             this.TestsRadioButton_2.TabIndex = 4;
             this.TestsRadioButton_2.Text = "Кол-во сравнений";
             this.TestsRadioButton_2.UseVisualStyleBackColor = true;
-            this.TestsRadioButton_2.CheckedChanged += new System.EventHandler(this.testsRadioButton_CheckedChanged);
+            this.TestsRadioButton_2.CheckedChanged += new System.EventHandler(this.TestsRadioButton_CheckedChanged);
             // 
             // label__11
             // 
@@ -369,7 +369,7 @@
             this.TestsRadioButton_1.TabIndex = 2;
             this.TestsRadioButton_1.Text = "Время выполнения, с";
             this.TestsRadioButton_1.UseVisualStyleBackColor = true;
-            this.TestsRadioButton_1.CheckedChanged += new System.EventHandler(this.testsRadioButton_CheckedChanged);
+            this.TestsRadioButton_1.CheckedChanged += new System.EventHandler(this.TestsRadioButton_CheckedChanged);
             // 
             // label__6
             // 
@@ -1010,7 +1010,7 @@
             this.reverseSortCheckBox.TabIndex = 3;
             this.reverseSortCheckBox.Text = "Обратная сортировка";
             this.reverseSortCheckBox.UseVisualStyleBackColor = true;
-            this.reverseSortCheckBox.CheckedChanged += new System.EventHandler(this.reverseSortCheckBox_CheckedChanged);
+            this.reverseSortCheckBox.CheckedChanged += new System.EventHandler(this.ReverseSortCheckBox_CheckedChanged);
             // 
             // testsLabel
             // 
@@ -1112,7 +1112,7 @@
             this.radioButton8.TabIndex = 2;
             this.radioButton8.Text = "GnomeSort";
             this.radioButton8.UseVisualStyleBackColor = true;
-            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton7
             // 
@@ -1123,7 +1123,7 @@
             this.radioButton7.TabIndex = 2;
             this.radioButton7.Text = "SelectionSort";
             this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton6
             // 
@@ -1134,7 +1134,7 @@
             this.radioButton6.TabIndex = 2;
             this.radioButton6.Text = "HeapSort";
             this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton12
             // 
@@ -1145,7 +1145,7 @@
             this.radioButton12.TabIndex = 2;
             this.radioButton12.Text = "Odd-EvenSort";
             this.radioButton12.UseVisualStyleBackColor = true;
-            this.radioButton12.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton12.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton11
             // 
@@ -1156,7 +1156,7 @@
             this.radioButton11.TabIndex = 2;
             this.radioButton11.Text = "QuickSort";
             this.radioButton11.UseVisualStyleBackColor = true;
-            this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton11.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton10
             // 
@@ -1167,7 +1167,7 @@
             this.radioButton10.TabIndex = 2;
             this.radioButton10.Text = "MergeSort";
             this.radioButton10.UseVisualStyleBackColor = true;
-            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton9
             // 
@@ -1178,7 +1178,7 @@
             this.radioButton9.TabIndex = 2;
             this.radioButton9.Text = "RadixSort";
             this.radioButton9.UseVisualStyleBackColor = true;
-            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton5
             // 
@@ -1189,7 +1189,7 @@
             this.radioButton5.TabIndex = 2;
             this.radioButton5.Text = "TreeSort";
             this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -1200,7 +1200,7 @@
             this.radioButton4.TabIndex = 2;
             this.radioButton4.Text = "ShellSort";
             this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -1211,7 +1211,7 @@
             this.radioButton3.TabIndex = 2;
             this.radioButton3.Text = "InsertionSort";
             this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -1222,7 +1222,7 @@
             this.radioButton2.TabIndex = 2;
             this.radioButton2.Text = "CocktailSort";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -1235,7 +1235,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "BubbleSort";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // label__12
             // 
@@ -1351,7 +1351,7 @@
             this.radioButton13.TabIndex = 2;
             this.radioButton13.Text = "CombSort";
             this.radioButton13.UseVisualStyleBackColor = true;
-            this.radioButton13.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton13.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // Form1
             // 

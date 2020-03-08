@@ -212,7 +212,6 @@ namespace SortAlgorithms
                         {
                             if (radioButton.Checked)
                             {
-                                methodName = radioButton.Text;
                                 if (!Int32.TryParse(radioButton.Name.Substring("radioButton".Length), out methodNumber))
                                 {
                                     methodNumber = 1;
@@ -221,9 +220,10 @@ namespace SortAlgorithms
                             }
                         }
                     }
-                    else if (methodNumber > 1)
+
+                    if (panel3.Controls.Find("radioButton" + methodNumber.ToString(), false).Any())
                     {
-                        RefillItems(SpeedTrackBar.Value > 0);
+                        methodName = panel3.Controls["radioButton" + methodNumber.ToString()].Text;
                     }
 
                     switch (methodName)
@@ -264,11 +264,14 @@ namespace SortAlgorithms
                         case "Odd-Even Sort":
                             algorithm = new OddEvenSort<SortedItem>();
                             break;
+                        case "Comb Sort":
+                            algorithm = new CombSort<SortedItem>();
+                            break;
                         default:
                             algorithm = new BubbleSort<SortedItem>();
                             break;
                     }
-                    MessageBox.Show("Вы выбрали метод сортировки " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " : " + methodNumber.ToString());
+                    //MessageBox.Show("Вы выбрали метод сортировки " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " : " + methodNumber.ToString());
 
                     if (SpeedTrackBar.Value > 0)
                     {
@@ -291,15 +294,14 @@ namespace SortAlgorithms
                         VisualPanel.Refresh();
                     }
 
-                    if (reverseSortCheckBox.Checked)
-                    {
-                        algorithm.IsAscending = false;
-                    }
-
                     algorithm.AddRange(items);
-                    TimeSpan runTime = algorithm.SortAndGetSpan();
+                    TimeSpan runTime = algorithm.SortAndGetSpan(!reverseSortCheckBox.Checked);
 
-                    if (SpeedTrackBar.Value > 0 && methodName == "Heap Sort")
+                    if (SpeedTrackBar.Value == 0)
+                    {
+                        label.Text = "Сортировка " + items.Count.ToString() + " элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " завершена.";
+                    }
+                    else if (methodName == "Heap Sort")
                     {
                         VisualPanel.Controls.Clear();
                         sortedItemsCount = 0;
@@ -310,8 +312,6 @@ namespace SortAlgorithms
                         }
                         VisualPanel.Refresh();
                     }
-
-                    label.Text = "Сортировка " + items.Count.ToString() + " элементов по методу " + panel3.Controls["radioButton" + methodNumber.ToString()].Text + " завершена.";
 
                     ResultTableLayoutPanel.GetControlFromPosition(methodNumber, 3).Text = runTime.Seconds.ToString() + "." + runTime.Milliseconds.ToString();
                     ResultTableLayoutPanel.GetControlFromPosition(methodNumber, 4).Text = algorithm.ComparisonCount.ToString();
@@ -451,8 +451,6 @@ namespace SortAlgorithms
                     items.Add(item);
                 }
             }
-            //MessageBox.Show($"Количество items {items.Count} : {sortedItemsCount}");
-            //VisualPanel.Refresh();
         }
 
         private void RadixSortCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -469,13 +467,13 @@ namespace SortAlgorithms
             SortButton.Enabled = true;
         }
 
-        private void reverseSortCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void ReverseSortCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             RefillItems(SpeedTrackBar.Value > 0);
             SortButton.Enabled = true;
         }
 
-        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if ((sender as RadioButton).Checked)
             {
@@ -512,9 +510,6 @@ namespace SortAlgorithms
                 testsLabel.BackColor = Color.DarkRed;
                 for (int i = 0; i < allMethods.GetLength(0); i++)
                 {
-                    //ResultTableLayoutPanel.Controls["label_" + i.ToString("D2") + "1"].Text = "-";
-                    //ResultTableLayoutPanel.Controls["label_" + i.ToString("D2") + "2"].Text = "-";
-                    //ResultTableLayoutPanel.Controls["label_" + i.ToString("D2") + "3"].Text = "-";
                     ResultTableLayoutPanel.GetControlFromPosition(i + 1, 3).Text = "-";
                     ResultTableLayoutPanel.GetControlFromPosition(i + 1, 4).Text = "-";
                     ResultTableLayoutPanel.GetControlFromPosition(i + 1, 5).Text = "-";
@@ -536,7 +531,7 @@ namespace SortAlgorithms
             testsLabel.Refresh();
         }
 
-        private void testsRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void TestsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (SpeedTrackBar.Value == 0)
             {
@@ -546,22 +541,21 @@ namespace SortAlgorithms
                     if (Int32.TryParse((sender as RadioButton).Name.Substring("TestsRadioButton_".Length), out parameterNumber))
                     {
                         {
-                            //NumberStyles style = NumberStyles.AllowDecimalPoint;
+                            string text;
                             CultureInfo culture = CultureInfo.CreateSpecificCulture("ru-RU");
-                            string text = "";
-                            float value = 0;
+                            float[] floatValues = new float[allMethods.GetLength(0)];
                             values.Clear();
                             for (int i = 1; i <= allMethods.GetLength(0); i++)
                             {
-                                //text = ResultTableLayoutPanel.Controls["label_" + i.ToString("D2") + parameterNumber.ToString()].Text.Replace(".", culture.NumberFormat.NumberDecimalSeparator);
                                 text = ResultTableLayoutPanel.GetControlFromPosition(i, parameterNumber + 2).Text.Replace(".", culture.NumberFormat.NumberDecimalSeparator);
-                                float.TryParse(text, out value);
-                                values.Add(Convert.ToInt32(parameterNumber == 1 ? value * 1000 : value));
+                                float.TryParse(text, out floatValues[i - 1]);
                             }
-                            int maxValue = values.Max();
-                            for (int i = 0; i < values.Count; i++)
+                            float maxFloatValue = floatValues.Max();
+                            for (int i = 0; i < floatValues.Length; i++)
                             {
-                                values[i] = 100 * values[i] / (maxValue == 0 ? 100 : maxValue);
+                                // convert value to %
+                                floatValues[i] = 100 * floatValues[i] / (maxFloatValue == 0 ? 100 : maxFloatValue);
+                                values.Add(Convert.ToInt32(floatValues[i]));
                             }
                             RefillItems(true);
                         }
@@ -572,10 +566,10 @@ namespace SortAlgorithms
 
         private void ResultTableLayoutPanel_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
-                using (var b = new SolidBrush(bgColors[e.Column, e.Row]))
-                {
-                    e.Graphics.FillRectangle(b, e.CellBounds);
-                }
+            using (var b = new SolidBrush(bgColors[e.Column, e.Row]))
+            {
+                e.Graphics.FillRectangle(b, e.CellBounds);
+            }
         }
 
     }

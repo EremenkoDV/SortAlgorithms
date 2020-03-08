@@ -15,40 +15,34 @@ namespace Algorithm
 
         protected override void Sort()
         {
-            int sortedIndex;
-            int step = Items.Count / 2;
-            double factor = 1 / (1 - Math.Exp(-(Math.Sqrt(5) - 1) / 2));
+            bool wasSwapped;
+            int count = 0;
+            int step = Items.Count - 1;
+            double factor = 1 / (1 - Math.Exp( -(Math.Sqrt(5) + 1) / 2));
 
-            while (step > 0)
+            do
             {
-                for (int offset = 0; offset < step; offset++)
+                // Bubble Sort Method begin when step = 1
+                wasSwapped = false;
+                for (int i = step; i < Items.Count - count; i++)
                 {
-                    // Insertion Sort Method for each offset begin 
-                    sortedIndex = offset;
-                    while (sortedIndex + step < Items.Count)
+                    if (Compare(i - step, i) == (IsAscending ? 1 : -1))
                     {
-                        for (int i = sortedIndex; i >= 0; i -= step)
-                        {
-                            if (Compare(i, i + step) == (IsAscending ? 1 : -1))
-                            {
-                                Swap(i, i + step);
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-                        sortedIndex += step;
+                        Swap(i - step, i);
+                        wasSwapped = true;
                     }
-                    // Insertion Sort Method for each offset end
                 }
-                step /= 2;
-            }
-
-
+                if ((int)(step / factor) > 0)
+                {
+                    step = (int)(step / factor);
+                }
+                else
+                {
+                    step = 1;
+                    count++;
+                }
+            } while (wasSwapped || step > 1);
         }
-
-
 
     }
 }
